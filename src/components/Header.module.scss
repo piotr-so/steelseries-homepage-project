@@ -1,0 +1,29 @@
+header {
+    padding-top: 55px;
+    margin: 0 115px;
+}
+
+.appHeader {
+    display: grid;
+    grid-template-columns: 3fr 1fr 520px 1fr;
+    height: 77px;
+
+    nav {
+        grid-column: 3/4;
+    }
+}
+
+
+
+.userSection {
+    display: grid;
+    justify-self: end;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 34px;
+}
+
+
+.divAdd {
+    height: 200px;
+    width: 100%;
+}

@@ -1,0 +1,88 @@
+.menu {
+    display: grid;
+    grid-template-columns: 1.2fr repeat(3, 1fr);
+    align-items: start;
+    justify-items: start;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    color: #909090;
+
+    cursor: pointer;
+
+    a {
+        text-decoration: none;
+        position: relative;
+        &:visited {        
+            color: inherit;
+        }
+    }
+
+    li {
+        width: 100%;
+    }
+}
+
+.productsList {
+    position: relative;
+    &::before {
+        content: "";
+        position: absolute;
+        display: block;
+        background: url("../assets/arrow.svg");
+        width: 14px;
+        height: 8px;
+        right: 16px;
+        top: 5px;
+        transition: 0.3s ease-in-out;   
+    }
+    &:hover::before {
+        transform: rotate(180deg);
+        transition: 0.3s ease-in-out;
+    }
+}
+
+.dropMenu {
+    position: absolute;
+    z-index: 900;
+
+    ul {
+        list-style: none;
+        padding: 5px 0 5px 0px;
+
+        li {
+            width: 101px;
+            border-top: 1px solid #624C3C;
+            line-height: 30px;
+            padding-left: 5px;
+            background-color: rgba($color: #282829, $alpha: 0.5)
+
+        }
+    }
+}
+
+// Dropdown animations for CSSTransitionGroup
+// work in progress (usage of :global for class export, ommiting css.modules) 
+
+
+:global .reveal-enter {
+    opacity: 0.01;
+  }
+  
+:global .reveal-enter.reveal-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in, top 500ms ease-in;
+  }
+  
+:global .reveal-leave {
+    opacity: 1;
+  }
+  
+:global .reveal-leave.reveal-leave-active {
+    opacity: 0.01;
+    transition: opacity 200ms ease-in;
+  }
+
+
