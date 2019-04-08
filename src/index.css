@@ -7,6 +7,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   
+  
   background-color: #282829;
   background: url("./assets/Background.png");
   background-repeat: no-repeat;
@@ -16,4 +17,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+html { 
+  font-size: 10px;
 }

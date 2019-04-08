@@ -24,7 +24,6 @@ const Header = () => (
             </div>
         </div>
     </header>
-    <div className={styles.divAdd}><span>Hello world</span></div>
     </>
 )
 
