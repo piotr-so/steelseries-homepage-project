@@ -35,9 +35,9 @@ class Dropdown extends Component {
                             {this.state.displayMenu ? (
                                 <div key={'dropdownMenu'} className={styles.dropMenu} >
                                     <ul>
-                                        <li>Headset</li>
-                                        <li>Keyboard</li>
-                                        <li>Mouse</li>
+                                        <li>Headsets</li>
+                                        <li>Keyboards</li>
+                                        <li>Mice</li>
                                     </ul>
                                 </div>
                             ) :
