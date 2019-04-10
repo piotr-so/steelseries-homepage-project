@@ -4,6 +4,7 @@ import headset from '../assets/Headset.png';
 import keyboard from '../assets/steelseries-keyboard.png';
 import mice from '../assets/steelseries-mice.png';
 import arrow from '../assets/slider-arrow.svg';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 const itemsForSlider = [
     {
@@ -21,12 +22,12 @@ const itemsForSlider = [
         image: mice,
         description: "The Rival 500 is the first MOBA/MMO mouse designed to function with the natural movements of your hand. Featuring a next-gen button layout, flickdown switches, and tactile alerts, the Rival 500 helps you react quickly and effectively to anything thrown your way.",
     }
-]
+];
 
 class ProductSlider extends Component {
     state = {
         productToShow: [...itemsForSlider],
-        currentImageIndex: 2,
+        currentImageIndex: 0,
     }
 
     slideToNext = (e) => {
@@ -51,14 +52,14 @@ class ProductSlider extends Component {
             <div className={styles.sliderWrapper}>
                 <div className={styles.itemToShowIdentifiersWrapper}>
                     <div className={styles.identifiers}>
-                        {productToShow.map( (element, idx) => {
+                        {productToShow.map((element, idx) => {
                             return (
                                 currentImageIndex === idx ? (
-                                    <span className={styles.active} key={"identifier"+idx} />
+                                    <span className={styles.active} key={"identifier" + idx} />
                                 ) : (
-                                    <span className={styles.inactive} key={"identifier"+idx} />
-                                )
-                            )  
+                                        <span className={styles.inactive} key={"identifier" + idx} />
+                                    )
+                            )
                         })
                         }
                     </div>
@@ -69,8 +70,8 @@ class ProductSlider extends Component {
                         <img src={arrow} className={styles.arrowDown} alt="arrow-next" />
                     </div>
                 </div>
-                <img src={productToShow[currentImageIndex].image} className={styles.productImage} alt={productToShow[currentImageIndex].name} />
-                <div className={styles.productDescription}>
+                <img src={productToShow[currentImageIndex].image} key={this.state.currentImageIndex + "img"} className={styles.productImage} alt={productToShow[currentImageIndex].name} />
+                <div className={styles.productDescription} key={this.state.currentImageIndex + "descSec"}>
                     <h1>{productToShow[currentImageIndex].name}</h1>
                     <p>{productToShow[currentImageIndex].description}</p>
                     <button>BUY NOW</button>

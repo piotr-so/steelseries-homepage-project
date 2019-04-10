@@ -29,7 +29,7 @@ class Dropdown extends Component {
                         <CSSTransitionGroup
                             component={FirstChild}
                             transitionName="reveal"
-                            transitionEnterTimeout={500}
+                            transitionEnterTimeout={200}
                             transitionLeaveTimeout={200}
                         >
                             {this.state.displayMenu ? (

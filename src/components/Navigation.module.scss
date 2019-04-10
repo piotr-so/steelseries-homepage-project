@@ -73,7 +73,7 @@
   
 :global .reveal-enter.reveal-enter-active {
     opacity: 1;
-    transition: opacity 500ms ease-in, top 500ms ease-in;
+    transition: opacity 200ms ease-in, top 200ms ease-in;
   }
   
 :global .reveal-leave {
