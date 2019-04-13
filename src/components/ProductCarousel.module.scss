@@ -1,0 +1,113 @@
+.wrapper {
+    margin: 0 auto;
+    width: 904px;
+    position: relative;
+
+    h1 {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        font-size: 3.585rem;
+        font-weight: 400;
+        color: #624C3C;
+    }
+}
+
+.backElements {
+    display: grid;
+    grid-template-columns: 319px 1fr 319px;   
+}
+
+.leftElement {
+    background-color: rgba($color: #252526, $alpha: 0.5);
+    width: inherit;
+    height: 430px;
+    // box-shadow: 0 20px 40px -5px rgba(#624C3C, .3);
+    box-shadow: 7px 9px 32px 4px rgba(#000000, .3);
+    
+    &:hover {
+        box-shadow: 7px 9px 32px 4px rgba(#624C3C, .6);
+        cursor: pointer;
+    }
+
+    .item {
+        background: url('../assets/headset_background.png') no-repeat;
+        display: flex;
+        width: inherit;
+        height: inherit;
+        justify-content: space-between;
+
+        h3 {
+            align-self: flex-start;
+            font-family: Arial, sans-serif;
+            font-size: 1.4rem;
+            font-weight: 100;
+            color: #59595C;
+            margin: 0;
+            margin: 60px 0 0 29px;
+
+        }
+
+        img {
+            align-self: flex-end;
+            margin-bottom: 21px;
+        }
+        
+    }
+}
+
+.rightElement {
+    @extend .leftElement;
+    grid-column: 3/3;
+    overflow: hidden;
+
+    .item {
+        background: url('../assets/Layer\ 10.png') no-repeat; 
+    }
+}
+
+.middleElement {
+    @extend .leftElement;
+    position: absolute;
+    width: 386px;
+    height: 530px;
+    // background: rgba($color: red, $alpha: 0.5);
+    background-color: #282829;
+    top: calc(66px + 40px);
+    left: 50%;
+    margin-left: calc(386px/2 * -1);
+    box-shadow: 0 20px 40px -5px rgba(#000000, .3);
+    z-index: 2;
+
+    &:hover {
+        box-shadow: 0 20px 40px -5px rgba(#000000, .3);
+        cursor: default;
+    }
+
+    .item {
+        flex-direction: column;
+        background: url('../assets/Layer\ 7.png') no-repeat 0% 100%;
+
+        h2 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 2.4rem;
+            font-weight: 400;
+            color: #78787B;
+            line-height: 3.8rem;
+            margin: 0 0 35px 29px;
+            
+        }
+
+        button { 
+            width: 170px;
+            height: 50px;
+            background-color: #624C3C;
+            color: #FFEADB;
+            border: transparent;
+            border-radius: 5px;
+            margin: 0 0 50px 29px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
