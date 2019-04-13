@@ -71,7 +71,7 @@
 .slideNext {
     width: 77px;
     height: 77px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.02);
     border-radius: 50%;
     cursor: pointer;
 }
@@ -87,6 +87,18 @@
     grid-row: 3/3;
     grid-column: 2/2;
     user-select: none;
+}
+
+.slidePrevActive {
+    @extend .slidePrev;
+    background: rgba(255, 255, 255, 0.15);
+    transition: all .3s;
+}
+
+.slideNextActive {
+    @extend .slideNext;
+    background: rgba(255, 255, 255, 0.15);
+    transition: all .3s;
 }
 
 .arrowUp {

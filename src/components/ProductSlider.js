@@ -4,7 +4,6 @@ import headset from '../assets/Headset.png';
 import keyboard from '../assets/steelseries-keyboard.png';
 import mice from '../assets/steelseries-mice.png';
 import arrow from '../assets/slider-arrow.svg';
-import { CSSTransitionGroup } from 'react-transition-group';
 
 const itemsForSlider = [
     {
@@ -28,6 +27,7 @@ class ProductSlider extends Component {
     state = {
         productToShow: [...itemsForSlider],
         currentImageIndex: 0,
+        arrowsHovered: false,
     }
 
     slideToNext = (e) => {
@@ -46,10 +46,22 @@ class ProductSlider extends Component {
         )
     }
 
+    handleWrapperHover = (e) => {
+        this.state.arrowsHovered === false ? (
+            this.setState({
+                arrowsHovered: true
+            })
+        ) : (
+                this.setState({
+                    arrowsHovered: false
+                })
+            )
+    }
+
     render() {
-        const { productToShow, currentImageIndex } = this.state;
+        const { productToShow, currentImageIndex, arrowsHovered } = this.state;
         return (
-            <div className={styles.sliderWrapper}>
+            <div className={styles.sliderWrapper} onMouseEnter={this.handleWrapperHover} onMouseLeave={this.handleWrapperHover}>
                 <div className={styles.itemToShowIdentifiersWrapper}>
                     <div className={styles.identifiers}>
                         {productToShow.map((element, idx) => {
@@ -63,12 +75,18 @@ class ProductSlider extends Component {
                         })
                         }
                     </div>
-                    <div className={styles.slidePrev} onClick={this.slideToPrev}>
-                        <img src={arrow} className={styles.arrowUp} alt="arrow-prev" />
-                    </div>
-                    <div className={styles.slideNext} onClick={this.slideToNext}>
-                        <img src={arrow} className={styles.arrowDown} alt="arrow-next" />
-                    </div>
+                    {currentImageIndex !== 0 && (
+                        <div className={arrowsHovered ? styles.slidePrevActive : styles.slidePrev} onClick={this.slideToPrev}>
+                            <img src={arrow} className={styles.arrowUp} alt="arrow-prev" />
+                        </div>
+                    )
+                    }
+                    {currentImageIndex !== 2 && (
+                        <div className={arrowsHovered ? styles.slideNextActive : styles.slideNext} onClick={this.slideToNext}>
+                            <img src={arrow} className={styles.arrowDown} alt="arrow-next" />
+                        </div>
+                    )
+                    }
                 </div>
                 <img src={productToShow[currentImageIndex].image} key={this.state.currentImageIndex + "img"} className={styles.productImage} alt={productToShow[currentImageIndex].name} />
                 <div className={styles.productDescription} key={this.state.currentImageIndex + "descSec"}>
