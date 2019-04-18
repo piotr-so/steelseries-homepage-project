@@ -31,15 +31,27 @@ class ProductCarousel extends Component {
         carouselElements: [...products],
         switchAnimation: 'none',
         renderElement: true,
+        animationComplete: true,
     }
 
     handleLeftClick = () => {
         const newFirstElem = this.state.carouselElements.slice(2, 3);
         const newMidAndLastElem = this.state.carouselElements.slice(0, 2);
         const sum = [...newFirstElem, ...newMidAndLastElem];
+
         this.setState({
-            carouselElements: sum
+            renderElement: false,
+            switchAnimation: "left",
+            animationComplete: !this.state.animationComplete,
         })
+        this.timeoutOne = setTimeout(() => {
+            this.setState({
+                carouselElements: sum,
+                switchAnimation: 'none',
+                renderElement: true,
+                animationComplete: !this.state.animationComplete,
+            })
+        }, 500)
     }
 
     handleRightClick = () => {
@@ -49,15 +61,17 @@ class ProductCarousel extends Component {
 
         this.setState({
             renderElement: false,
-            switchAnimation: "right"
+            switchAnimation: "right",
+            animationComplete: !this.state.animationComplete,
         })
         this.timeoutOne = setTimeout(() => {
             this.setState({
                 carouselElements: sum,
                 switchAnimation: 'none',
                 renderElement: true,
+                animationComplete: !this.state.animationComplete,
             })
-        }, 1000)
+        }, 500)
     }
 
     componentWillUnmount() {
@@ -65,11 +79,19 @@ class ProductCarousel extends Component {
     }
 
     render() {
-        const { carouselElements, switchAnimation, renderElement } = this.state;
+        const { carouselElements, switchAnimation, renderElement, animationComplete } = this.state;
         return (
             <div className={styles.wrapper}>
                 <h1>SELECT PRODUCT</h1>
-                <div className={switchAnimation === 'none' ? styles.middleElement : styles.middleElementSwitchFromRightMid}>
+                <div
+                    className={
+                        switchAnimation === 'none' ? styles.middleElement
+                            :
+                            switchAnimation === 'left' ? styles.middleElementSwitchFromLeftMid
+                                :
+                                styles.middleElementSwitchFromRightMid
+                    }
+                >
                     <div
                         className={carouselElements[1].name === "Headset" ? styles.buttonFix : styles.item}
                         style={
@@ -80,8 +102,8 @@ class ProductCarousel extends Component {
                         <h3>{carouselElements[1].name}</h3>
                         {renderElement && (
                             <>
-                            <h2>{`FIND THE PERFECT GAMING ${carouselElements[1].name.toUpperCase()} FOR YOU`}</h2>
-                            <button>START GUIDE</button>
+                                <h2>{`FIND THE PERFECT GAMING ${carouselElements[1].name.toUpperCase()} FOR YOU`}</h2>
+                                <button>START GUIDE</button>
                             </>
                         )}
 
@@ -89,7 +111,13 @@ class ProductCarousel extends Component {
                     </div>
                 </div>
                 <div className={styles.backElements}>
-                    <div className={switchAnimation === 'none' ? styles.leftElement : styles.leftElementSwitchFromRightLeftElem} onClick={this.handleLeftClick}>
+                    <div
+                        className={
+                            switchAnimation === 'none' ? styles.leftElement
+                                : switchAnimation === 'left' ? styles.leftElementSwitchFromLeftLeftElem :
+                                    styles.leftElementSwitchFromRightLeftElem}
+                        onClick={animationComplete ? this.handleLeftClick : undefined}
+                    >
                         <div
                             className={styles.item}
                             style={
@@ -101,7 +129,13 @@ class ProductCarousel extends Component {
                             <img src={carouselElements[0].img} alt={carouselElements[0].name} />
                         </div>
                     </div>
-                    <div className={switchAnimation === 'none' ? styles.rightElement : styles.rightElementSwitchFromRightRhtElem} onClick={this.handleRightClick}>
+                    <div
+                        className={
+                            switchAnimation === 'none' ? styles.rightElement
+                                : switchAnimation === 'left' ? styles.rightElementSwitchFromLeftRhtElem :
+                                    styles.rightElementSwitchFromRightRhtElem}
+                        onClick={animationComplete ? this.handleRightClick : undefined}
+                    >
                         <div
                             className={styles.item}
                             style={

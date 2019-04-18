@@ -2,6 +2,7 @@
     margin: 0 auto;
     width: 904px;
     height: 670px;
+    user-select: none;
     position: relative;
 
     h1 {
@@ -15,7 +16,7 @@
 
 .backElements {
     display: grid;
-    grid-template-columns: 320px 1fr 320px;   
+    grid-template-columns: 320px 1fr 320px;  
 }
 
 .leftElement {
@@ -25,27 +26,41 @@
     // box-shadow: 0 20px 40px -5px rgba(#624C3C, .3);
     box-shadow: 7px 9px 32px 4px rgba(#000000, .3);
     overflow: hidden;
-    // background-color: yellow;
+    // background-color: red;
     
     &:hover {
         box-shadow: 7px 9px 32px 4px rgba(#624C3C, .6);
         cursor: pointer;
     }
 
-    //animation
+    //animations for Left Element
     &SwitchFromRightLeftElem {
         @extend .leftElement;
         &:hover {
             box-shadow: 7px 9px 32px 4px rgba(#000000, .3);
         }
         z-index: 1;
-        animation: SwitchFromRightLeftElem 1s;
+        animation: SwitchFromRightLeftElem .5s;
 
+    }
+
+    &SwitchFromLeftLeftElem {
+        @extend .leftElement;
+        &:hover {
+            box-shadow: 7px 9px 32px 4px rgba(#000000, .3);
+        }
+        z-index: 2;
+        animation: SwitchFromLeftLeftElem .5s;
     }
 
     @keyframes SwitchFromRightLeftElem {
         from {transform: translateX(0); z-index: 1;}
         to {transform: translateX(583px); z-index: 0;}
+    }
+
+    @keyframes SwitchFromLeftLeftElem {
+        from {width: 320px; height:440px;}
+        to {transform: translateX(259px) translateY(41px); width: 385px; height:530px; }
     }
     //
 
@@ -85,22 +100,37 @@
     // transform: translateX(-91%) translateY(21%);
     // background-color: red;  
 
-    //animation
+    //animations for Right Element
     &SwitchFromRightRhtElem {
         @extend .rightElement;
         &:hover {
             box-shadow: 7px 9px 32px 4px rgba(#000000, .3);
         }
         z-index: 2;
-        animation: SwitchFromRightRhtElem 1s;
+        animation: SwitchFromRightRhtElem .5s;
+
+    }
+    
+    &SwitchFromLeftRhtElem {
+        @extend .rightElement;
+        &:hover {
+            box-shadow: 7px 9px 32px 4px rgba(#000000, .3);
+        }
+        z-index: 1;
+        animation: SwitchFromLeftRhtElem .5s;
 
     }
 
     @keyframes SwitchFromRightRhtElem {
-        from {width: 380px; height:430px;}
-        // to {transform: translateX(-91%) translateY(21%) scale(1.2, 1.23);}
+        from {width: 320px; height:440px;}
         to {transform: translateX(-325px) translateY(41px); width: 385px; height:530px; }
     }
+
+    @keyframes SwitchFromLeftRhtElem {
+        from {transform: translateX(0); z-index: 1;}
+        to {transform: translateX(-583px); z-index: 0;}
+    }
+
     //
 
     .item {
@@ -115,6 +145,7 @@
     height: 530px;
     // background: rgba($color: red, $alpha: 0.5);
     background-color: #282829;
+    // background-color: yellow;
     top: calc(66px + 40px);
     left: 50%;
     margin-left: calc(386px/2 * -1);
@@ -131,16 +162,28 @@
         cursor: default;
     }
 
-    //animation
+    //animations for Middle Element
     &SwitchFromRightMid {
         @extend .middleElement;
-        animation: switchFromRightMid 1s;
+        animation: switchFromRightMid .5s;
+
+    }
+
+    &SwitchFromLeftMid {
+        @extend .middleElement;
+        animation: switchFromLeftMid .5s;
 
     }
 
     @keyframes switchFromRightMid {
-        from {transform: translateX(0) translateY(0) scale(1);}
+        from {transform: translateX(0) translateY(0);}
         to {transform: translateX(-81%) translateY(-41px); width: 320px; height: 440px;
+        z-index: 1}
+    }
+
+    @keyframes switchFromLeftMid {
+        from {transform: translateX(0) translateY(0);}
+        to {transform: translateX(325px) translateY(-41px); width: 320px; height: 440px;
         z-index: 1}
     }
     //
