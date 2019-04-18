@@ -1,6 +1,7 @@
 .wrapper {
     margin: 0 auto;
     width: 904px;
+    height: 670px;
     position: relative;
 
     h1 {
@@ -14,27 +15,48 @@
 
 .backElements {
     display: grid;
-    grid-template-columns: 319px 1fr 319px;   
+    grid-template-columns: 320px 1fr 320px;   
 }
 
 .leftElement {
-    background-color: rgba($color: #252526, $alpha: 0.5);
+    background-color: rgba($color: #252526, $alpha: 1);
     width: inherit;
-    height: 430px;
+    height: 440px;
     // box-shadow: 0 20px 40px -5px rgba(#624C3C, .3);
     box-shadow: 7px 9px 32px 4px rgba(#000000, .3);
+    overflow: hidden;
+    // background-color: yellow;
     
     &:hover {
         box-shadow: 7px 9px 32px 4px rgba(#624C3C, .6);
         cursor: pointer;
     }
 
+    //animation
+    &SwitchFromRightLeftElem {
+        @extend .leftElement;
+        &:hover {
+            box-shadow: 7px 9px 32px 4px rgba(#000000, .3);
+        }
+        z-index: 1;
+        animation: SwitchFromRightLeftElem 1s;
+
+    }
+
+    @keyframes SwitchFromRightLeftElem {
+        from {transform: translateX(0); z-index: 1;}
+        to {transform: translateX(583px); z-index: 0;}
+    }
+    //
+
     .item {
-        background: url('../assets/headset_background.png') no-repeat;
         display: flex;
+        // background: url('../assets/headset_background.png') no-repeat;
+        flex-direction: column;
+        align-items: baseline;
+        justify-content: space-between;
         width: inherit;
         height: inherit;
-        justify-content: space-between;
 
         h3 {
             align-self: flex-start;
@@ -59,16 +81,37 @@
     @extend .leftElement;
     grid-column: 3/3;
     overflow: hidden;
+    // width: 386px; height:530px;
+    // transform: translateX(-91%) translateY(21%);
+    // background-color: red;  
+
+    //animation
+    &SwitchFromRightRhtElem {
+        @extend .rightElement;
+        &:hover {
+            box-shadow: 7px 9px 32px 4px rgba(#000000, .3);
+        }
+        z-index: 2;
+        animation: SwitchFromRightRhtElem 1s;
+
+    }
+
+    @keyframes SwitchFromRightRhtElem {
+        from {width: 380px; height:430px;}
+        // to {transform: translateX(-91%) translateY(21%) scale(1.2, 1.23);}
+        to {transform: translateX(-325px) translateY(41px); width: 385px; height:530px; }
+    }
+    //
 
     .item {
-        background: url('../assets/Layer\ 10.png') no-repeat; 
+        // background: url('../assets/Layer\ 10.png') no-repeat; 
     }
 }
 
 .middleElement {
     @extend .leftElement;
     position: absolute;
-    width: 386px;
+    width: 385px;
     height: 530px;
     // background: rgba($color: red, $alpha: 0.5);
     background-color: #282829;
@@ -78,14 +121,33 @@
     box-shadow: 0 20px 40px -5px rgba(#000000, .3);
     z-index: 2;
 
+
+    // for develop
+    // opacity: 0.8;
+    
+
     &:hover {
         box-shadow: 0 20px 40px -5px rgba(#000000, .3);
         cursor: default;
     }
 
+    //animation
+    &SwitchFromRightMid {
+        @extend .middleElement;
+        animation: switchFromRightMid 1s;
+
+    }
+
+    @keyframes switchFromRightMid {
+        from {transform: translateX(0) translateY(0) scale(1);}
+        to {transform: translateX(-81%) translateY(-41px); width: 320px; height: 440px;
+        z-index: 1}
+    }
+    //
+
     .item {
         flex-direction: column;
-        background: url('../assets/Layer\ 7.png') no-repeat 0% 100%;
+        // background: url('../assets/Layer\ 7.png') no-repeat 0% 100%;
 
         h2 {
             font-family: Arial, Helvetica, sans-serif;
@@ -94,6 +156,7 @@
             color: #78787B;
             line-height: 3.8rem;
             margin: 0 0 35px 29px;
+            animation: reveal .3s;
             
         }
 
@@ -105,9 +168,36 @@
             border: transparent;
             border-radius: 5px;
             margin: 0 0 50px 29px;
+            animation: reveal .3s;
             &:hover {
                 cursor: pointer;
             }
         }
+
+        //animation
+        @keyframes reveal {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        //
+    }
+
+    .buttonFix {
+        @extend .item;
+        position: relative;
+        button { 
+            position: absolute;
+            top: 210px;
+            margin: 0 0 0 29px;
+            z-index: 3;
+        }
+
+        h2 {
+            position: absolute;
+            top: 95px;
+            margin: 0 0 0 29px;
+            z-index: 3;
+        }
     }
 }
+

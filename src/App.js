@@ -11,6 +11,7 @@ class App extends Component {
         <Header />
         <ProductSlider />
         <ProductCarousel />
+        <div style={{'width': `100px`, 'height': `400px`}}>Hello hello</div>
       </div>
     );
   }
