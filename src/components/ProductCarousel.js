@@ -88,9 +88,9 @@ class ProductCarousel extends Component {
         const { switchAnimation } = this.state;
 
         const classStyles = {
-            middle: [styles.middleElement, styles.middleElementSwitchFromLeftMid, styles.middleElementSwitchFromRightMid],
-            left: [styles.leftElement, styles.leftElementSwitchFromLeftLeftElem, styles.leftElementSwitchFromRightLeftElem],
-            right: [styles.rightElement, styles.rightElementSwitchFromLeftRhtElem, styles.rightElementSwitchFromRightRhtElem],
+            middle: [styles.middleElement, styles.midToRight, styles.midToLeft],
+            left: [styles.leftElement, styles.leftToMid, styles.leftToRight],
+            right: [styles.rightElement, styles.rightToLeft, styles.rightToMid],
         };
 
 

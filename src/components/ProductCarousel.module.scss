@@ -14,59 +14,20 @@
     }
 }
 
-.backElements {
-    display: grid;
-    grid-template-columns: 320px 1fr 320px;  
-}
-
-.leftElement {
+%element-properties {
     background-color: rgba($color: #252526, $alpha: 1);
     width: inherit;
     height: 440px;
-    // box-shadow: 0 20px 40px -5px rgba(#624C3C, .3);
     box-shadow: 7px 9px 32px 4px rgba(#000000, .3);
     overflow: hidden;
-    // background-color: red;
     
     &:hover {
         box-shadow: 7px 9px 32px 4px rgba(#624C3C, .6);
         cursor: pointer;
     }
 
-    //animations for Left Element
-    &SwitchFromRightLeftElem {
-        @extend .leftElement;
-        &:hover {
-            box-shadow: 7px 9px 32px 4px rgba(#000000, .3);
-        }
-        z-index: 1;
-        animation: SwitchFromRightLeftElem .5s;
-
-    }
-
-    &SwitchFromLeftLeftElem {
-        @extend .leftElement;
-        &:hover {
-            box-shadow: 7px 9px 32px 4px rgba(#000000, .3);
-        }
-        z-index: 2;
-        animation: SwitchFromLeftLeftElem .5s;
-    }
-
-    @keyframes SwitchFromRightLeftElem {
-        from {transform: translateX(0); z-index: 1;}
-        to {transform: translateX(583px); z-index: 0;}
-    }
-
-    @keyframes SwitchFromLeftLeftElem {
-        from {width: 320px; height:440px;}
-        to {transform: translateX(259px) translateY(41px); width: 385px; height:530px; }
-    }
-    //
-
     .item {
         display: flex;
-        // background: url('../assets/headset_background.png') no-repeat;
         flex-direction: column;
         align-items: baseline;
         justify-content: space-between;
@@ -92,101 +53,96 @@
     }
 }
 
-.rightElement {
-    @extend .leftElement;
-    grid-column: 3/3;
-    overflow: hidden;
-    // width: 386px; height:530px;
-    // transform: translateX(-91%) translateY(21%);
-    // background-color: red;  
-
-    //animations for Right Element
-    &SwitchFromRightRhtElem {
-        @extend .rightElement;
-        &:hover {
-            box-shadow: 7px 9px 32px 4px rgba(#000000, .3);
-        }
-        z-index: 2;
-        animation: SwitchFromRightRhtElem .5s;
-
-    }
-    
-    &SwitchFromLeftRhtElem {
-        @extend .rightElement;
-        &:hover {
-            box-shadow: 7px 9px 32px 4px rgba(#000000, .3);
-        }
-        z-index: 1;
-        animation: SwitchFromLeftRhtElem .5s;
-
-    }
-
-    @keyframes SwitchFromRightRhtElem {
-        from {width: 320px; height:440px;}
-        to {transform: translateX(-325px) translateY(41px); width: 385px; height:530px; }
-    }
-
-    @keyframes SwitchFromLeftRhtElem {
-        from {transform: translateX(0); z-index: 1;}
-        to {transform: translateX(-583px); z-index: 0;}
-    }
-
-    //
-
-    .item {
-        // background: url('../assets/Layer\ 10.png') no-repeat; 
-    }
+.backElements {
+    display: grid;
+    grid-template-columns: 320px 1fr 320px;  
 }
 
+.leftElement {
+    @extend %element-properties;
+}
+
+//animations mixin
+@mixin switch-position($indexToChange, $animationType) {
+    &:hover {
+        box-shadow: 7px 9px 32px 4px rgba(#000000, .3);
+    }
+    z-index: $indexToChange;
+    animation: $animationType .5s;
+}
+
+//switch-animations for Left Element
+.leftToMid {
+    @extend %element-properties;
+    @include switch-position(2, leftToMid);
+}
+
+.leftToRight {
+    @extend %element-properties;
+    @include switch-position(1, leftToRight);
+}
+
+
+@keyframes leftToMid {
+    from {width: 320px; height:440px;}
+    to {transform: translateX(259px) translateY(41px); width: 385px; height:530px; }
+}
+
+@keyframes leftToRight {
+    from {z-index: 1;}
+    to {transform: translateX(583px); z-index: 0;}
+}
+//
+
+
+
+.rightElement {
+    @extend %element-properties;
+    grid-column: 3/3;
+    overflow: hidden;
+}
+
+//switch-animations for Right Element
+.rightToMid {
+    @extend .rightElement;
+    @include switch-position(2, rightToMid);
+}
+
+.rightToLeft {
+    @extend .rightElement;
+    @include switch-position(1, rightToLeft);
+}
+
+@keyframes rightToMid {
+    from {width: 320px; height:440px;}
+    to {transform: translateX(-325px) translateY(41px); width: 385px; height:530px; }
+}
+
+@keyframes rightToLeft {
+    from {transform: translateX(0); z-index: 1;}
+    to {transform: translateX(-583px); z-index: 0;}
+}
+//
+
 .middleElement {
-    @extend .leftElement;
+    @extend %element-properties;
     position: absolute;
     width: 385px;
     height: 530px;
-    // background: rgba($color: red, $alpha: 0.5);
     background-color: #282829;
-    // background-color: yellow;
     top: calc(66px + 40px);
     left: 50%;
     margin-left: calc(386px/2 * -1);
     box-shadow: 0 20px 40px -5px rgba(#000000, .3);
     z-index: 2;
 
-
-    // for develop
-    // opacity: 0.8;
-    
-
+    //middle element hover override
     &:hover {
         box-shadow: 0 20px 40px -5px rgba(#000000, .3);
         cursor: default;
     }
 
-    //animations for Middle Element
-    &SwitchFromRightMid {
-        @extend .middleElement;
-        animation: switchFromRightMid .5s;
-
-    }
-
-    &SwitchFromLeftMid {
-        @extend .middleElement;
-        animation: switchFromLeftMid .5s;
-
-    }
-
-    @keyframes switchFromRightMid {
-        from {transform: translateX(0) translateY(0);}
-        to {transform: translateX(-81%) translateY(-41px); width: 320px; height: 440px;
-        z-index: 1}
-    }
-
-    @keyframes switchFromLeftMid {
-        from {transform: translateX(0) translateY(0);}
-        to {transform: translateX(325px) translateY(-41px); width: 320px; height: 440px;
-        z-index: 1}
-    }
-    //
+    
 
     .item {
         flex-direction: column;
@@ -217,7 +173,7 @@
             }
         }
 
-        //animation
+        //animation for button
         @keyframes reveal {
             from {opacity: 0;}
             to {opacity: 1;}
@@ -243,4 +199,26 @@
         }
     }
 }
+
+//switch-animations for Middle Element
+.midToLeft {
+    @extend .middleElement;
+    @include switch-position(2, midToLeft);
+}
+
+.midToRight {
+    @extend .middleElement;
+    @include switch-position(2, midToRight);
+}
+
+@keyframes midToLeft {
+    from {width: 385px; height: 530px;}
+    to {transform: translateX(-81%) translateY(-41px); width: 320px; height: 440px; z-index: 1}
+}
+
+@keyframes midToRight {
+    from {width: 385px; height: 530px;}
+    to {transform: translateX(325px) translateY(-41px); width: 320px; height: 440px; z-index: 1}
+}
+//
 
