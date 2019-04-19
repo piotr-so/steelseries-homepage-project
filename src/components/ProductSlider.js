@@ -48,13 +48,13 @@ class ProductSlider extends Component {
 
     handleWrapperHover = (e) => {
         this.state.arrowsHovered === false ? (
-            this.setState({
-                arrowsHovered: true
-            })
+            this.setState(prevState => ({
+                arrowsHovered: !prevState.arrowsHovered
+            }))
         ) : (
-                this.setState({
-                    arrowsHovered: false
-                })
+                this.setState(prevState => ({
+                    arrowsHovered: !prevState.arrowsHovered
+                }))
             )
     }
 
