@@ -6,176 +6,64 @@ import keyboard from '../assets/apex300_leadin_proof2_r.png';
 import HeadsetBackground from '../assets/headset_background.png';
 import MouseBackground from '../assets/Layer7.png';
 import KeyboardBackground from '../assets/Layer10.png';
+import Product from '../components/Product';
 
 const products = [
     {
+        index: 0,
         name: "Headset",
         img: headset,
         background: HeadsetBackground,
     },
     {
+        index: 1,
         name: "Mouse",
         img: mouse,
         background: MouseBackground,
     },
     {
+        index: 2,
         name: "Keyboard",
         img: keyboard,
         background: KeyboardBackground,
     },
 ];
 
-
 class ProductCarousel extends Component {
     state = {
         carouselElements: [...products],
-        switchAnimation: 'none',
-        renderElement: true,
-        animationComplete: true,
+        elementsStyle: {
+            elem0: 'left',
+            elem1: 'center',
+            elem2: 'right',
+        },
     }
 
-    // first step function for handling click event, it's checking direction and rotating array elements
-    handleRotationInDirection = (direction) => {
-
+    switchElementsStyle = (elemIdx) => {
         this.setState({
-            switchAnimation: direction,
+            elementsStyle: {
+                ['elem'+ elemIdx]: 'center',
+                ['elem'+ ((elemIdx + 1) % 3)]: 'right',
+                ['elem'+ ((elemIdx + 2) % 3)]: 'left',
+            }  
         });
-
-        let newFirstElem = [];
-        let newMidAndLastElem = [];
-        let sum = [];
-
-        if (direction === 'left') {
-            newFirstElem = this.state.carouselElements.slice(2, 3);
-            newMidAndLastElem = this.state.carouselElements.slice(0, 2);
-            sum = [...newFirstElem, ...newMidAndLastElem];
-            this.arrayRotation(sum);
-        }
-        else {
-            newFirstElem = this.state.carouselElements.slice(1, 3);
-            newMidAndLastElem = this.state.carouselElements.slice(0, 1);
-            sum = [...newFirstElem, ...newMidAndLastElem];
-            this.arrayRotation(sum);
-        }
-    }
-
-    // second step function for handling click event, it's handling multiple click-events prevention, delaying next elements mount for the time of animation
-    // and conditionally rendering text for centered product element
-    arrayRotation = (rotatedElements) => {
-
-        this.setState({
-            renderElement: false,
-            animationComplete: !this.state.animationComplete,
-        });
-
-        const switchArrayElems = () => {
-            this.setState({
-                carouselElements: rotatedElements,
-                switchAnimation: 'none',
-                renderElement: true,
-                animationComplete: !this.state.animationComplete,
-            });
-
-            clearTimeout(newArrayMountTimeout);
-        }
-
-        let newArrayMountTimeout = setTimeout(switchArrayElems, 500);
-    }
-
-    // function for changing class during animation
-    animationClassChanger = (element) => {
-
-        const { switchAnimation } = this.state;
-
-        const classStyles = {
-            middle: [styles.middleElement, styles.midToRight, styles.midToLeft],
-            left: [styles.leftElement, styles.leftToMid, styles.leftToRight],
-            right: [styles.rightElement, styles.rightToLeft, styles.rightToMid],
-        };
-
-
-        if (element === 'middle') {
-            return giveClass(classStyles.middle)
-        }
-        else if (element === 'left') {
-            return giveClass(classStyles.left)
-        }
-        else if (element === 'right') {
-            return giveClass(classStyles.right)
-        }
-
-        function giveClass(whichAnimation) {
-            if (switchAnimation === 'none') {
-                return whichAnimation[0]
-            }
-            else if (switchAnimation === 'left') {
-                return whichAnimation[1]
-            }
-            else if (switchAnimation === 'right') {
-                return whichAnimation[2]
-            }
-        }
-    }
-
-    // function for injecting background as in-line style or fixing mouse element background position
-    addBackgroundOrFixMouseElem = (number) => {
-        const { carouselElements } = this.state;
-
-        return carouselElements[number].name === "Mouse" ? 
-
-        { 'background': `url(${carouselElements[number].background}) no-repeat 0% 100%` } 
-        :
-        { 'background': `url(${carouselElements[number].background}) no-repeat` }
     }
 
     render() {
-        const { carouselElements, renderElement, animationComplete } = this.state;
+        const { carouselElements } = this.state;
         return (
-            <div className={styles.wrapper}>
+            <div className={styles.carousel}>
                 <h1>SELECT PRODUCT</h1>
-                <div
-                    className={this.animationClassChanger('middle')}
-                >
-                    <div
-                        className={carouselElements[1].name === "Headset" ? styles.buttonFix : styles.item}
-                        style={this.addBackgroundOrFixMouseElem(1)}
-                    >
-                        <h3>{carouselElements[1].name}</h3>
-                        {renderElement && (
-                            <>
-                                <h2>{`FIND THE PERFECT GAMING ${carouselElements[1].name.toUpperCase()} FOR YOU`}</h2>
-                                <button>START GUIDE</button>
-                            </>
-                        )}
-
-                        <img src={carouselElements[1].img} alt={carouselElements[1].name}></img>
-                    </div>
-                </div>
-                <div className={styles.backElements}>
-                    <div
-                        className={this.animationClassChanger('left')}
-                        onClick={animationComplete ? () => this.handleRotationInDirection('left') : undefined}
-                    >
-                        <div
-                            className={styles.item}
-                            style={this.addBackgroundOrFixMouseElem(0)}
-                        >
-                            <h3>{carouselElements[0].name}</h3>
-                            <img src={carouselElements[0].img} alt={carouselElements[0].name} />
-                        </div>
-                    </div>
-                    <div
-                        className={this.animationClassChanger('right')}
-                        onClick={animationComplete ? () => this.handleRotationInDirection('right') : undefined}
-                    >
-                        <div
-                            className={styles.item}
-                            style={this.addBackgroundOrFixMouseElem(2)}
-                        >
-                            <h3>{carouselElements[2].name}</h3>
-                            <img src={carouselElements[2].img} alt={carouselElements[2].name}></img>
-                        </div>
-                    </div>
+                <div className={styles.wrapper}>
+                    {carouselElements.map((element, mapIdx) => (
+                        <Product
+                            key={`id_0${element.index}`}
+                            _index={mapIdx}
+                            item={element}
+                            elementsStyle={this.state.elementsStyle}
+                            switchFn={this.switchElementsStyle}
+                        />
+                    ))}
                 </div>
             </div>
         )
