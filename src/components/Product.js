@@ -25,9 +25,10 @@ class Product extends Component {
                         ${styles.element} 
                         ${this.setPosition(_index, elementsStyle)} 
                     `}
-                    style={item.name === 'Mouse' ? { 'background': `url(${item.background}) no-repeat 0% 100% #252526` } : {
-                        'background': `url(${item.background}) no-repeat #252526`
-                    }}
+                    style={
+                        item.name === 'Mouse' ? { 'background': `url(${item.background}) no-repeat 0% 100% #252526` } :
+                        {'background': `url(${item.background}) no-repeat #252526`, 'backgroundSize': 'contain'}
+                    }
                     onClick={() => switchFn(_index)}>
                     
                     <h3>{item.name}</h3>
