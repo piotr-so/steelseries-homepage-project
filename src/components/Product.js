@@ -3,6 +3,9 @@ import styles from './Product.module.scss';
 
 
 class Product extends Component {
+    state = {
+        canRender: false,
+    }
 
     setPosition = (_index, elementsStyle) => {
         let whichElement = 
@@ -17,8 +20,9 @@ class Product extends Component {
     }
 
     render() {
-        const { item, _index, switchFn, elementsStyle } = this.props;
+        const { item, _index, switchFn, elementsStyle, isDescAllowedToRender, delayFn } = this.props;
         const renderDescription = this.setPosition(_index, elementsStyle);
+
         return (
                 <div
                     className={`
@@ -29,10 +33,10 @@ class Product extends Component {
                         item.name === 'Mouse' ? { 'background': `url(${item.background}) no-repeat 0% 100% #252526` } :
                         {'background': `url(${item.background}) no-repeat #252526`, 'backgroundSize': 'contain'}
                     }
-                    onClick={() => switchFn(_index)}>
+                    onClick={renderDescription !== styles.center ? (() => {switchFn(_index); delayFn()}) : undefined}>
                     
                     <h3>{item.name}</h3>
-                    {renderDescription === styles.center ? (
+                    {isDescAllowedToRender && renderDescription === styles.center ? (
                         <>
                             <h2>{`FIND THE PERFECT GAMING ${item.name.toUpperCase()} FOR YOU`}</h2>
                             <button>START GUIDE</button>

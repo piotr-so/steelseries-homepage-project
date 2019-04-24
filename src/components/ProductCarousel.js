@@ -37,6 +37,7 @@ class ProductCarousel extends Component {
             elem1: 'center',
             elem2: 'right',
         },
+        canRender: true,
     }
 
     switchElementsStyle = (elemIdx) => {
@@ -47,6 +48,23 @@ class ProductCarousel extends Component {
                 ['elem'+ ((elemIdx + 2) % 3)]: 'left',
             }  
         });
+    }
+
+    // this function tries to fix hovering center card button by delaying it's content rendering
+    delayRender = () => {
+        this.setState(prevState => ({
+            canRender: !prevState.canRender
+        }));
+
+        const unlockRender = () => {
+
+            this.setState(prevState => ({
+                canRender: !prevState.canRender
+            }));
+            clearTimeout(desciptionRenderTimeout);
+        };
+
+        let desciptionRenderTimeout = setTimeout(unlockRender, 500);
     }
 
     render() {
@@ -62,6 +80,8 @@ class ProductCarousel extends Component {
                             item={element}
                             elementsStyle={this.state.elementsStyle}
                             switchFn={this.switchElementsStyle}
+                            isDescAllowedToRender={this.state.canRender}
+                            delayFn={this.delayRender}
                         />
                     ))}
                 </div>

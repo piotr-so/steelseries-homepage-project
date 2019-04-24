@@ -39,7 +39,7 @@
         line-height: 3.8rem;
         margin: 0 0 0 29px;
         z-index: 3;
-        animation: reveal 2.5s;       
+        animation: reveal .3s;       
     }
 
     button {
@@ -53,9 +53,26 @@
         border-radius: 5px;
         margin: 0 0 0 29px;
         z-index: 3;
-        animation: reveal 2.5s;
+        animation: reveal .3s;
+        transition: all .2s;
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            left: 0;
+            bottom: 0;
+            transition: width .2s;
+            
+
+        }
         &:hover {
             cursor: pointer;
+            &::after {
+                width: inherit;
+            }
         }
     }
 
@@ -64,24 +81,18 @@
         from {opacity: 0;}
         to {opacity: 1;}
     }
+
+    @keyframes showUnderline {
+        from {width: 0;}
+        to {width: inherit;}
+    }
     //
 }
 
-.buttonFix {
-    button { 
-        position: absolute;
-        top: 210px;
-        margin: 0 0 0 29px;
-        z-index: 3;
-        animation: reveal 2.5s;
-    }
-
-    h2 {
-        position: absolute;
-        top: 95px;
-        margin: 0 0 0 29px;
-        z-index: 3;
-        animation: reveal 2.5s;
+@mixin cardHover {
+    &:hover {
+        box-shadow: 7px 9px 32px 4px rgba(#624C3C, .6);
+        cursor: pointer;
     }
 }
 
@@ -94,10 +105,12 @@
   
 .right {
     z-index: 0;
-    transform: translate(35%, 0);
+    transform: translate(41%, 0);
+    @include cardHover;
 }
   
 .left {
     z-index: 1;
-    transform: translate(-135%, 0);
+    transform: translate(-141%, 0);
+    @include cardHover;
 }
