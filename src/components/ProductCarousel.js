@@ -47,7 +47,14 @@ class ProductCarousel extends Component {
                 ['elem'+ ((elemIdx + 1) % 3)]: 'right',
                 ['elem'+ ((elemIdx + 2) % 3)]: 'left',
             }  
-        });
+        }, () => this.props.whichIsCentered(checker(this.state.elementsStyle)));
+        // callback information for ProductGuide component
+        
+        const checker = (elemObj) => {
+            const centeredElem = Object.keys(elemObj).find(key => elemObj[key] === 'center');
+            const nameOfCentered = this.state.carouselElements[centeredElem.substring(4,5)].name;
+            return nameOfCentered            
+        }
     }
 
     // this function tries to fix hovering center card button by delaying it's content rendering
