@@ -1,13 +1,71 @@
 .wrapper {
-    margin: 0 auto;
     max-width: 767px;
     height: 818px;
+    margin: 171px auto 0 auto;
 
     h1 {
+        width: 70%;
         text-align: center;
         font-family: Arial, sans-serif;
         font-size: 3.585rem;
         font-weight: 400;
         color: #624C3C;
+        margin: 0 auto;
+        line-height: 48px;
     }
+}
+
+.cardWrapper {
+    position: relative;
+    height: 470px;
+    margin-top: 50px;
+}
+
+.card {
+    
+    width: 767px;
+    height: 425px;
+    box-shadow: -26.1px 28.98px 40px rgba(#000000, .2);
+}
+
+.card1 {
+    position: absolute;
+    bottom: 0;
+    background-color: #252526;
+    z-index: 3;
+}
+
+.card2 {
+    position: absolute;
+    width: 700px;
+    height: 387px;
+    background-color: #232324;
+    margin: 22px 34px 61px 34.5px;
+    box-shadow: none;
+    z-index: 2;
+}
+
+.card3 {
+    position: absolute;
+    width: 640px;
+    height: 353px;
+    background-color: #232324;
+    margin: 0 64px 117px 65.5px;
+    box-shadow: none;
+    z-index: 1;
+}
+
+.content {
+    margin: 52px 0 59.5px 0;
+    h2 { 
+        color: #3E3E40;
+    }
+    span {
+        color: #624C3C;
+    }
+}
+
+.variantsWrapper {
+    display: flex;
+    height: 76px;
 }

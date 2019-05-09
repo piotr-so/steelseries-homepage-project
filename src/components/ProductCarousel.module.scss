@@ -1,8 +1,8 @@
 .carousel {
-    margin: 0 auto;
-    width: 904px;
-    height: 650px;
     position: relative;
+    width: 904px;
+
+    margin: 102px auto 0;
 
     h1 {
         text-align: center;
@@ -10,11 +10,14 @@
         font-size: 3.585rem;
         font-weight: 400;
         color: #624C3C;
+        margin: 0 auto;
     }
 }
 
 .wrapper {
     display: flex;
     position: relative;
+    height: 550px;
+    margin-top: 46px;
 }
 

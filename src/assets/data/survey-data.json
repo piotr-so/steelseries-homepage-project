@@ -1,0 +1,56 @@
+{
+    "Headset" : {
+        "card1" : {
+            "question" : "Filler question?",
+            "answers": ["Option1", "Option2", "Option3", "Option4"]
+        },
+        "card2" : {
+            "question" : "Filler question?",
+            "answers": ["Option1", "Option2", "Option3", "Option4"]
+        },
+        "card3": {
+            "question" : "Filler question?",
+            "answers": ["Option1", "Option2", "Option3", "Option4"]
+        },
+        "card4" : {
+            "question" : "Filler question?",
+            "answers": ["Option1", "Option2", "Option3", "Option4"]
+        },
+        "card5" : {
+            "question" : "Filler question?",
+            "answers": ["Option1", "Option2", "Option3", "Option4"]
+        }  
+    },
+    "Mouse" : {
+        "card1" : {
+            "question" : "What genre of games do you play the most?",
+            "answers": ["FPS", "MOBA", "MMO", "RTS", "Other"]
+        },
+        "card2" : {
+            "question" : "What is your preffered grip type?",
+            "answers" : ["CLAW", "FINGERTIP", "PALM"]
+        },
+        "card3": {
+            "question" : "Do you preffer using mousepad or just desk top?",
+            "answers" : ["Mousepad", "Desk top only"]
+        }
+    },
+    "Keyboard" : {
+        "card1" : {
+            "question" : "Do you enjoy 'click sound'?",
+            "answers": ["Yes", "No"]
+        },
+        "card2" : {
+            "question" : "Filler question?",
+            "answers": ["Option1", "Option2", "Option3", "Option4"]
+        },
+        "card3": {
+            "question" : "Filler question?",
+            "answers": ["Option1", "Option2", "Option3", "Option4"]
+        },
+        "card4" : {
+            "question" : "Filler question?",
+            "answers": ["Option1", "Option2", "Option3", "Option4"]
+        }
+    }
+}
