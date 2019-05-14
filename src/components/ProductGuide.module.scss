@@ -16,56 +16,150 @@
 }
 
 .cardWrapper {
+    // display: flex;
+    // flex-direction: column;
     position: relative;
     height: 470px;
     margin-top: 50px;
+    overflow-y: hidden;
+
+    .modCard1 {
+        bottom: 0;
+        background-color: #252526;
+        z-index: 3;
+        transform: none;
+        transition: all .5s;
+    }
+    .modCard2 {
+        bottom: 42px;
+        background-color: #232324;
+        box-shadow: none;
+        z-index: 2;
+        transform: scale(0.91);
+    }
 }
 
-.card {
+// .card {
+//     width: 767px;
+//     height: 425px;
+//     box-shadow: -26.1px 28.98px 40px rgba(#000000, .2);
+//     &::after {
+//         content: url('../assets/steel_logo.png');
+//         position: absolute;
+//         width: 41px;
+//         height: 48px;
+//         right: 60px;
+//         bottom: 59px;
+//     }
+
+// }
+
     
-    width: 767px;
-    height: 425px;
-    box-shadow: -26.1px 28.98px 40px rgba(#000000, .2);
-}
 
-.card1 {
-    position: absolute;
-    bottom: 0;
-    background-color: #252526;
-    z-index: 3;
-}
+// .card2 {
 
-.card2 {
-    position: absolute;
-    width: 700px;
-    height: 387px;
-    background-color: #232324;
-    margin: 22px 34px 61px 34.5px;
-    box-shadow: none;
-    z-index: 2;
-}
+//     transition: all .5s;
+// }
 
-.card3 {
-    position: absolute;
-    width: 640px;
-    height: 353px;
-    background-color: #232324;
-    margin: 0 64px 117px 65.5px;
-    box-shadow: none;
+// .card3 {
+//     transition: all .5s;
+// }
+
+// .cardContent {
+//     margin: 52px 0 59.5px 0;
+//     font-family: Arial, sans-serif;
+//     h2 { 
+//         color: #3E3E40;
+//         font-size: 2.4rem;
+//         font-weight: 300;
+//         margin: 0;
+//         span {
+//             color: #624C3C;
+//         }
+//     }
+    
+//     p {
+//         color: #78787B;
+//         font-size: 1.8rem;
+//         margin: 21px 0 0 0;
+//     }
+// }
+
+// .variantsWrapper {
+//     display: flex;
+//     height: 76px;
+//     margin-top: 58.8px;
+// }
+
+// .variantImage {
+//     display: flex;
+//     position: relative;
+//     justify-content: center;
+//     width: 76px;
+//     height: 76px;
+//     margin-right: 25.6px;
+//     border-radius: 50%;
+
+//     span {
+//         line-height: 76px;
+//         font-size: 1.4rem;
+//         color: #FFFFFF;
+//         z-index: 2;
+//     }
+
+//     &:hover {
+//         cursor: pointer;
+//     }
+// }
+
+// .active {
+//     &::before {
+//         content: url('../assets/SelectedTick.svg');
+//         position: absolute;
+//         width: 45px;
+//         height: 52px;
+//         left: -18px;
+//         top: -8.8px;
+//         z-index: 3;
+//     }
+// }
+
+// .disabled {
+//     &::after {
+//         content: '';
+//         position: absolute;
+//         width: inherit;
+//         height: inherit;
+//         border-radius: inherit;
+//         background: rgba(#624C3C, .7);
+//         z-index: 1;
+//     }
+// }
+
+// .nextButton {
+//     width: 170px;
+//     height: 50px;
+//     color: #ACACAC;
+//     font-size: 1.4rem;
+//     text-align: right;
+//     padding: 14px 12.6px 0 0;
+//     margin-top: 63px;
+//     border: 3px solid #624C3C;
+//     border-radius: 3px;
+//     &::before {
+//         content: url('../assets/arrowsDownSymbol.svg');
+//         width: 8px;
+//         height: 10px;
+//         padding-right: 8.5px;
+//     }
+//     &:hover {
+//         cursor: pointer;
+//     }
+// }
+
+.hidden {
+    // display: none;
+    opacity: 0;
+    transform: translateY(385px);
     z-index: 1;
-}
-
-.content {
-    margin: 52px 0 59.5px 0;
-    h2 { 
-        color: #3E3E40;
-    }
-    span {
-        color: #624C3C;
-    }
-}
-
-.variantsWrapper {
-    display: flex;
-    height: 76px;
 }
