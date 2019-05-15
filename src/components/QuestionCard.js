@@ -1,45 +1,60 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styles from './QuestionCard.module.scss';
 
-class QuestionCard extends Component {
+const QuestionCard = ({ surveyData, productCategory, activeStyle, variantsBackground, switchQuestion }) =>
+    (
+        <form>
+            {surveyData[productCategory].map((questionCard, cardIdx) =>
 
-    render() {
-        const { surveyData, productCategory, activeStyle, variantsBackground, switchQuestion, transformIt } = this.props;
-        return (
-            <>
-                {surveyData[productCategory].map((questionCard, idx) =>
-
-                    <div className={`
-                    ${styles.card} 
-                    ${styles[`card${idx+1}`]}
-                    ${activeStyle[idx]}
-                    ${idx === 1 ? transformIt[1] :
-                        idx === 2 && transformIt[2]}
+                <div className={`
+                        ${styles.card} 
+                        ${activeStyle[cardIdx]}
                     `}
-                    // style={{'transform': `translateY(${(idx+transformIt)*20}px)`}}
-                    >
-                        <div className={styles.cardContent}>
-                            <h2 onClick={() => switchQuestion('previous')} >QUESTION <span>#{questionCard.index}</span></h2>
-                            <p>{questionCard.question}</p>
+                    key={`cardId-${cardIdx}`}
+                >
+                    <div className={styles.cardContent}>
+                        <p
+                            className={cardIdx !== 0 ? styles.previous : `${styles.previous} ${styles.hiddenPrev}`}
+                            onClick={() => switchQuestion('previous')}
+                        >Previous</p>
+                        <h2>QUESTION <span>#{questionCard.index}</span></h2>
+                        <p>{questionCard.question}</p>
 
-                            <div className={styles.variantsWrapper}>
-                                {questionCard.answers.map((variants, idx) => (
-                                    <div
-                                        className={`${styles.variantImage} ${styles.disabled}`}
+                        <div className={styles.variantsWrapper}>
+
+                            {questionCard.answers.map((variants, idx) => (
+                                <label
+                                    htmlFor={`variant_button${cardIdx + '_' + (idx + 1)}`}
+                                    key={`variant${idx + 1}`}
+                                >
+                                    <input
+                                        type='radio'
+                                        name={`question${cardIdx + 1}`}
+                                        id={`variant_button${cardIdx + '_' + (idx + 1)}`}
+                                        value={variants}
+                                        required
+                                    >
+                                    </input>
+                                    <span
+                                        className={`${styles.variantImage} ${styles.variantOverlay}`}
                                         style={{ 'background': `url(${Object.values(variantsBackground)[idx]}) center no-repeat #624C3C`, 'backgroundSize': 'cover' }}
                                     >
-                                        <span>{variants}</span>
-                                    </div>
-                                ))}
-                            </div>
+                                        <span className={styles.variantText}>{variants}</span>
+                                    </span>
 
-                            <div className={styles.nextButton} onClick={() => switchQuestion('next')}>NEXT QUESTION</div>
+                                </label>
+                            ))}
                         </div>
+                        {questionCard.index !== surveyData[productCategory].length ?
+                            <div className={styles.nextButton} onClick={() => switchQuestion('next')}>NEXT QUESTION</div>
+                            :
+                            <button className={styles.submitButton} type='submit'>Submit</button>
+                        }
+
                     </div>
-                )}
-            </>
-        )
-    }
-}
+                </div>
+            )}
+        </form>
+    )
 
 export default QuestionCard;

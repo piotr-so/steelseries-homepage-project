@@ -39,8 +39,8 @@
         },
         {
             "index": 3,
-            "question" : "Do you preffer using mousepad or just desk top?",
-            "answers" : ["Mousepad", "Desk top only"]
+            "question" : "Do you preffer using mousepad or rather bare desk?",
+            "answers" : ["Mousepad", "Bare desk"]
         }
     ],
     "Keyboard" : [

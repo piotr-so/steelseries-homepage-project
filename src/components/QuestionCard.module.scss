@@ -1,6 +1,9 @@
 .card {
     width: 767px;
     height: 425px;
+    left: 0;
+    right: 0;
+    margin: auto;
     padding-left: 59.5px;
     box-shadow: -26.1px 28.98px 40px rgba(#000000, .2);
     background: url('../assets/background_productGuide.png') no-repeat #252526;
@@ -15,36 +18,9 @@
 
 }
 
-.card1 {
-    position: absolute;
-    bottom: 0;
-    z-index: 3;
-    transition: all .5s;
-}
-
-.card2 {
-    position: absolute;
-    bottom: 42px;
-    background-color: #232324;
-    box-shadow: none;
-    z-index: 2;
-    transform: scale(0.91);
-    transition: all .5s;
-}
-
-.card3 {
-    position: absolute;
-    bottom: 82px;
-    background-color: #232324;
-    box-shadow: none;
-    z-index: 1;
-    transform: scale(0.832);
-    transition: all .5s;
-}
-
 .cardContent {
-    margin: 52px 0 59.5px 0;
     font-family: Arial, sans-serif;
+    margin: calc(52px - 20.91px) 0 0 0;
     h2 { 
         color: #3E3E40;
         font-size: 2.4rem;
@@ -60,61 +36,116 @@
         font-size: 1.8rem;
         margin: 21px 0 0 0;
     }
+    
+    .previous {
+        display: inline-block;
+        position: relative;
+        margin: 0 0 10px 20px;
+        color: #78787B;
+        font-size: 1.4rem;
+        cursor: pointer;
+        &:hover {
+            color: white;
+            &::after {
+                background-color: white;
+            }
+        }
+        &::after {
+            content: '';
+            mask: url('../assets/left-arrow.svg');
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            left: -20px;
+            background-color: #78787B; 
+        }
+    }
     transition: all 3s;
 }
 
+.hiddenPrev {
+    visibility: hidden;
+}
+
 .variantsWrapper {
+    position: relative;
     display: flex;
     height: 76px;
     margin-top: 58.8px;
 }
 
-.variantImage {
-    display: flex;
-    position: relative;
-    justify-content: center;
-    width: 76px;
-    height: 76px;
-    margin-right: 25.6px;
-    border-radius: 50%;
+label {
+    position: relative;    
 
-    span {
+    &:hover {
+        cursor: pointer;
+        border: #FFFFFF;
+    }
+
+    .variantText {
+        position: absolute;
         line-height: 76px;
         font-size: 1.4rem;
         color: #FFFFFF;
         z-index: 2;
     }
 
-    &:hover {
-        cursor: pointer;
+    .variantImage {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        width: 76px;
+        height: 76px;
+        margin-right: 25.6px;
+        border-radius: 50%;
+        //!!! Tick icon controlled by CSS part 1 !!!
+        &::before {
+            content: url('../assets/SelectedTick.svg');
+            position: absolute;
+            width: 45px;
+            height: 52px;
+            left: -18px;
+            top: -8.8px;
+            z-index: 3;
+            display: none;
+        }
     }
-}
 
-.active {
-    &::before {
-        content: url('../assets/SelectedTick.svg');
-        position: absolute;
-        width: 45px;
-        height: 52px;
-        left: -18px;
-        top: -8.8px;
-        z-index: 3;
+    .variantOverlay {
+        &::after {
+            content: '';
+            position: absolute;
+            width: inherit;
+            height: inherit;
+            border-radius: inherit;
+            border: 1px hidden transparent;
+            background: rgba(#624C3C, .7);
+            z-index: 1;
+        }
+        &:hover::after {
+            border: 1px solid white;
+        }
     }
-}
 
-.disabled {
-    &::after {
-        content: '';
+    input {
         position: absolute;
-        width: inherit;
-        height: inherit;
-        border-radius: inherit;
-        background: rgba(#624C3C, .7);
-        z-index: 1;
+        visibility: hidden;
+        //!!! Tick icon controlled by CSS part 2 !!!
+        &:checked ~ .variantImage::before {
+            display: block;
+        }
+        &:checked ~ .variantImage {
+            text-shadow: 3px 3px 3px black;
+        }
+        &:checked ~ .variantOverlay::after {
+            visibility: hidden;
+        }
     }
+
 }
 
 .nextButton {
+    position: relative;
     width: 170px;
     height: 50px;
     color: #ACACAC;
@@ -124,18 +155,37 @@
     margin-top: 63px;
     border: 3px solid #624C3C;
     border-radius: 3px;
+    background-color: transparent;
+    transition: background-color .3s linear;
     &::before {
-        content: url('../assets/arrowsDownSymbol.svg');
+        content: '';
+        mask: url('../assets/arrowsDownSymbol.svg');
+        position: absolute;
         width: 8px;
         height: 10px;
-        padding-right: 8.5px;
+        top: 17px;
+        left: 20px;
+        background-color: #78787B; 
     }
     &:hover {
         cursor: pointer;
+        background-color: #624C3C;
+        color: white;
+        &::before {
+            background-color: white;
+        }
     }
 }
 
-// .hidden {
-//     background-color: red;
-//     display: none;
-// }
+.submitButton {
+    @extend .nextButton;
+    padding: 0 60px 0 0;
+    &::before {
+        transform: translateX(0) rotate(-90deg);
+        left: 110px;
+        transition: transform .5s linear;
+    }
+    &:hover::before {
+        transform: translateX(45px) rotate(-90deg);
+    }
+}
