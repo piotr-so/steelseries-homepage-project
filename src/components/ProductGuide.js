@@ -50,17 +50,26 @@ class ProductGuide extends Component {
     }
     
     
-    componentWillMount() {
-        const stylesForNewProps = this.initialVisibilityOfCards();
-        this.setState({
-            styles: stylesForNewProps
-        })
-    }
-    componentWillReceiveProps() {
-        const stylesForNewProps = this.initialVisibilityOfCards();
-        this.setState({
-            styles: stylesForNewProps,
-        }) 
+    // componentWillMount() {
+    //     const stylesForNewProps = this.initialVisibilityOfCards();
+    //     this.setState({
+    //         styles: stylesForNewProps
+    //     })
+    // }
+    // componentWillReceiveProps() {
+    //     const stylesForNewProps = this.initialVisibilityOfCards();
+    //     this.setState({
+    //         styles: stylesForNewProps,
+    //     }) 
+    // }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.textToRender !== prevProps.textToRender) {
+            const stylesFromNewProps = this.initialVisibilityOfCards();
+            this.setState({
+                styles: stylesFromNewProps
+            })
+        }
     }
 
     render() {
