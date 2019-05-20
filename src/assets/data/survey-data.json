@@ -39,7 +39,7 @@
         },
         {
             "index": 3,
-            "question" : "Which one do you preffer, left or right-handed mouse?",
+            "question" : "Do you preffer left or right-handed mouse?",
             "answers" : ["Left", "Right"]
         }
     ],

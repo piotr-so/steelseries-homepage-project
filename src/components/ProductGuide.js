@@ -104,6 +104,8 @@ class ProductGuide extends Component {
 
 export default ProductGuide;
 
+// // This props tells which product category survey is loaded
+// const productCategory = textToRender;
 
 // const multipleProductCategoriesImgs = {
 //     Mouse: this.importKeysAndValues(require.context('../assets/images/ProductGuide/Mouse', false, /\.(png|jpe?g|svg)$/)),

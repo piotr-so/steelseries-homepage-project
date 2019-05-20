@@ -5,23 +5,40 @@ import styles from './QuestionCard.module.scss';
 class QuestionCard extends Component {
     state = {
         gripTypeToShow: 'claw',
-        showInitialGripType: 0
+        handTypeToShow: 'left',
+        showGripType: 0,
+        showHandType: 0,
     }
-    changeGripType = (e) => {
-        this.state.showInitialGripType === 0 &&
+    changeTypesToShow = (e) => {
+        this.state.showGripType === 0 &&
         this.setState({
-            showInitialGripType: 1
+            showGripType: 1
         })
         this.setState({
             gripTypeToShow: e.target.value.toLowerCase(),
         })
+
+        if (e.target.value === "Left" || e.target.value === "Right") {
+            this.state.showHandType === 0 &&
+            this.setState({
+                showHandType: 1
+            })
+            this.setState({
+                handTypeToShow: e.target.value.toLowerCase(),
+            })
+        }
     }
+    
     render() {
         const { surveyData, productCategory, activeStyle, variantsBackground, switchQuestion } = this.props;
         const gripTypesSprite = {
             claw: 'left',
             fingertip: 'center',
             palm: 'right'
+        }
+        const handsTypes = {
+            left: '0px',
+            right: '-105px'
         }
         return (
             <form>
@@ -54,14 +71,16 @@ class QuestionCard extends Component {
                                                 name={`question${cardIdx + 1}`}
                                                 id={`variant_button${cardIdx + '_' + (idx + 1)}`}
                                                 value={variants}
-                                                onChange={e => this.changeGripType(e)}
-                                                checked={this.props.productCategory && false}
+                                                onChange={e => this.changeTypesToShow(e)}
                                                 required
                                             >
                                             </input>
                                             <span
                                                 className={`${styles.variantImage} ${styles.variantOverlay}`}
                                                 style={productCategory === 'Mouse' && cardIdx === 1 ?
+                                                    { 'backgroundColor': 'grey' } 
+                                                    :
+                                                    productCategory === 'Mouse' && cardIdx === 2 ?
                                                     { 'backgroundColor': 'grey' }
                                                     : productCategory === 'Mouse' ?
                                                         { 'background': `url(${Object.values(variantsBackground(productCategory, cardIdx))[idx]}) center no-repeat #624C3C`, 'backgroundSize': 'cover' }
@@ -82,16 +101,14 @@ class QuestionCard extends Component {
                                     <button className={styles.submitButton} type='submit'>Submit</button>
                                 }
                             </div>
-                            {cardIdx === 1 &&
-                                <div className={styles.gripType}
+                            {productCategory === 'Mouse' ? cardIdx === 1 || cardIdx === 2 ? (
+                                <div className={`${styles.gripType} ${cardIdx === 2 && styles.handTypePos}`}
                                     style={{
-                                        'opacity' : `${this.state.showInitialGripType}`,
-                                        'background': `url(${Object.values(variantsBackground(productCategory, cardIdx))}) ${gripTypesSprite[this.state.gripTypeToShow]} no-repeat`,
-                                        'backgroundSize': 'auto'
-                                    }
-                                    }
+                                        'opacity' : `${cardIdx === 1 ? this.state.showGripType : this.state.showHandType}`,
+                                        'background': `url(${Object.values(variantsBackground(productCategory, cardIdx))}) ${cardIdx === 1 ? gripTypesSprite[this.state.gripTypeToShow] : handsTypes[this.state.handTypeToShow]} no-repeat ${cardIdx === 1 ? '/ auto' : '/ cover'}`,                                        
+                                    }}
                                 >
-                                </div>
+                                </div>) : undefined : undefined
                             }
                         </div>
                     </div>
