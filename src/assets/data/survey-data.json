@@ -39,8 +39,8 @@
         },
         {
             "index": 3,
-            "question" : "Do you preffer using mousepad or rather bare desk?",
-            "answers" : ["Mousepad", "Bare desk"]
+            "question" : "Which one do you preffer, left or right-handed mouse?",
+            "answers" : ["Left", "Right"]
         }
     ],
     "Keyboard" : [

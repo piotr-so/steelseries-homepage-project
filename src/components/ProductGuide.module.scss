@@ -49,98 +49,6 @@
     transition: all .4s linear;
 }
 
-// .cardContent {
-//     margin: 52px 0 59.5px 0;
-//     font-family: Arial, sans-serif;
-//     h2 { 
-//         color: #3E3E40;
-//         font-size: 2.4rem;
-//         font-weight: 300;
-//         margin: 0;
-//         span {
-//             color: #624C3C;
-//         }
-//     }
-    
-//     p {
-//         color: #78787B;
-//         font-size: 1.8rem;
-//         margin: 21px 0 0 0;
-//     }
-// }
-
-// .variantsWrapper {
-//     display: flex;
-//     height: 76px;
-//     margin-top: 58.8px;
-// }
-
-// .variantImage {
-//     display: flex;
-//     position: relative;
-//     justify-content: center;
-//     width: 76px;
-//     height: 76px;
-//     margin-right: 25.6px;
-//     border-radius: 50%;
-
-//     span {
-//         line-height: 76px;
-//         font-size: 1.4rem;
-//         color: #FFFFFF;
-//         z-index: 2;
-//     }
-
-//     &:hover {
-//         cursor: pointer;
-//     }
-// }
-
-// .active {
-//     &::before {
-//         content: url('../assets/SelectedTick.svg');
-//         position: absolute;
-//         width: 45px;
-//         height: 52px;
-//         left: -18px;
-//         top: -8.8px;
-//         z-index: 3;
-//     }
-// }
-
-// .disabled {
-//     &::after {
-//         content: '';
-//         position: absolute;
-//         width: inherit;
-//         height: inherit;
-//         border-radius: inherit;
-//         background: rgba(#624C3C, .7);
-//         z-index: 1;
-//     }
-// }
-
-// .nextButton {
-//     width: 170px;
-//     height: 50px;
-//     color: #ACACAC;
-//     font-size: 1.4rem;
-//     text-align: right;
-//     padding: 14px 12.6px 0 0;
-//     margin-top: 63px;
-//     border: 3px solid #624C3C;
-//     border-radius: 3px;
-//     &::before {
-//         content: url('../assets/arrowsDownSymbol.svg');
-//         width: 8px;
-//         height: 10px;
-//         padding-right: 8.5px;
-//     }
-//     &:hover {
-//         cursor: pointer;
-//     }
-// }
-
 .hidden {
     position: absolute;
     bottom: 0;
@@ -152,4 +60,5 @@
 
 .behind {
     @extend .card3;
+    z-index: 0;
 }

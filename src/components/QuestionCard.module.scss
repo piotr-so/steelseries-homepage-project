@@ -60,7 +60,18 @@
             background-color: #78787B; 
         }
     }
-    transition: all 3s;
+
+    .questionContent {
+        display: inline-block;
+    }
+
+    .gripType {
+        position: absolute;
+        display: inline-block;
+        top: 110px;
+        width: 200px;
+        height: 200px;
+    }
 }
 
 .hiddenPrev {
@@ -68,14 +79,15 @@
 }
 
 .variantsWrapper {
-    position: relative;
     display: flex;
+    position: relative;
     height: 76px;
     margin-top: 58.8px;
 }
 
 label {
-    position: relative;    
+    position: relative;
+    margin-right: 25.6px;    
 
     &:hover {
         cursor: pointer;
@@ -95,8 +107,7 @@ label {
         position: relative;
         justify-content: center;
         width: 76px;
-        height: 76px;
-        margin-right: 25.6px;
+        height: 76px;      
         border-radius: 50%;
         //!!! Tick icon controlled by CSS part 1 !!!
         &::before {
@@ -145,6 +156,7 @@ label {
 }
 
 .nextButton {
+    display: inline-block;
     position: relative;
     width: 170px;
     height: 50px;

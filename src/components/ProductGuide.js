@@ -14,6 +14,20 @@ class ProductGuide extends Component {
         return images;
     }
 
+    getImages = (productCategory, qIdx) => {
+        if (productCategory === 'Mouse') {
+            const img = 
+            qIdx === 0 ? this.importKeysAndValues(require.context('../assets/images/ProductGuide/Mouse/q1', false, /\.(png|jpe?g|svg)$/)) :
+            qIdx === 1 ? this.importKeysAndValues(require.context('../assets/images/ProductGuide/Mouse/q2', false, /\.(png|jpe?g|svg)$/)) :
+            qIdx === 2 ? this.importKeysAndValues(require.context('../assets/images/ProductGuide/Mouse/q3', false, /\.(png|jpe?g|svg)$/)) : undefined
+            return img
+        }
+        else {
+            const img = this.importKeysAndValues(require.context('../assets/images/ProductGuide/Mouse/q1', false, /\.(png|jpe?g|svg)$/));
+            return img
+        }
+    }
+
     handleCardChange = (direction) => {
         const arrayToChange = this.state.styles;
         const lastElem = this.state.styles.length - 1;
@@ -49,20 +63,6 @@ class ProductGuide extends Component {
         return arr1;
     }
     
-    
-    // componentWillMount() {
-    //     const stylesForNewProps = this.initialVisibilityOfCards();
-    //     this.setState({
-    //         styles: stylesForNewProps
-    //     })
-    // }
-    // componentWillReceiveProps() {
-    //     const stylesForNewProps = this.initialVisibilityOfCards();
-    //     this.setState({
-    //         styles: stylesForNewProps,
-    //     }) 
-    // }
-
     componentDidUpdate(prevProps) {
         if (this.props.textToRender !== prevProps.textToRender) {
             const stylesFromNewProps = this.initialVisibilityOfCards();
@@ -74,20 +74,9 @@ class ProductGuide extends Component {
 
     render() {
         const { textToRender } = this.props;
-        const { currentCardsStyle } = this.state;
-        const images = this.importKeysAndValues(require.context('../assets/images/ProductGuide/Mouse', false, /\.(png|jpe?g|svg)$/));
-        // console.log(images);
-        // console.log('show me' + Object.keys(surveyData[this.props.textToRender]));
-        const lastElem = this.state.styles.length -1;
-        console.log(this.state.styles[lastElem]);
-
 
         // This props tells which product category survey is loaded
         const productCategory = textToRender;
-
-        // this.settingStateArray(surveyData[productCategory]);
-        const test = Object.keys(surveyData[productCategory]).map((elem, idx) => elem === 'card1' ? 'visible' : 'hidden');
-        // console.log(test);
 
         return (
             <div className={styles.wrapper}>
@@ -100,7 +89,7 @@ class ProductGuide extends Component {
                         surveyData={surveyData}
                         productCategory={productCategory}
                         activeStyle={this.state.styles}
-                        variantsBackground={images}
+                        variantsBackground={this.getImages}
                         switchQuestion={this.handleCardChange}
                     />
 
@@ -115,8 +104,6 @@ class ProductGuide extends Component {
 
 export default ProductGuide;
 
-// // This props tells which product category survey is loaded
-// const productCategory = textToRender;
 
 // const multipleProductCategoriesImgs = {
 //     Mouse: this.importKeysAndValues(require.context('../assets/images/ProductGuide/Mouse', false, /\.(png|jpe?g|svg)$/)),
