@@ -7,13 +7,13 @@ import ProductGuide from "./components/ProductGuide";
 
 class App extends Component {
   state = {
-    textToRender: 'Mouse',
+    productCategory: 'Mouse',
   }
   // !!! Change to database later !!!
 
   setCenteredToRender = (centeredELement) => {
     this.setState({
-      textToRender: centeredELement
+      productCategory: centeredELement
     })
   }
 
@@ -23,7 +23,7 @@ class App extends Component {
         <Header />
         <ProductSlider />
         <ProductCarousel whichIsCentered={this.setCenteredToRender}/>
-        <ProductGuide textToRender={this.state.textToRender}/>
+        <ProductGuide productCategory={this.state.productCategory}/>
         <div style={{'width': `100px`, 'height': `400px`}}>Hello hello</div>
       </div>
     );

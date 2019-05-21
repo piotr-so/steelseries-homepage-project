@@ -3,66 +3,254 @@
         {
             "index": 1,
             "question" : "Filler question?",
-            "answers": ["Option1", "Option2", "Option3", "Option4"]
+            "answers": [
+                {
+                    "text": "Option1",
+                    "url": ""
+                },
+                {
+                    "text": "Option2",
+                    "url": ""
+                },
+                {
+                    "text": "Option3",
+                    "url": ""
+                },
+                {
+                    "text": "Option4",
+                    "url": ""
+                }
+            ]
         },
         {
             "index": 2,
             "question" : "Filler question?",
-            "answers": ["Option1", "Option2", "Option3", "Option4"]
+            "answers": [
+                {
+                    "text": "Option1",
+                    "url": ""
+                },
+                {
+                    "text": "Option2",
+                    "url": ""
+                },
+                {
+                    "text": "Option3",
+                    "url": ""
+                },
+                {
+                    "text": "Option4",
+                    "url": ""
+                }
+            ]
         },
         {
             "index": 3,
             "question" : "Filler question?",
-            "answers": ["Option1", "Option2", "Option3", "Option4"]
+            "answers": [
+                {
+                    "text": "Option1",
+                    "url": ""
+                },
+                {
+                    "text": "Option2",
+                    "url": ""
+                },
+                {
+                    "text": "Option3",
+                    "url": ""
+                },
+                {
+                    "text": "Option4",
+                    "url": ""
+                }
+            ]
         },
         {
             "index": 4,
             "question" : "Filler question?",
-            "answers": ["Option1", "Option2", "Option3", "Option4"]
+            "answers": [
+                {
+                    "text": "Option1",
+                    "url": ""
+                },
+                {
+                    "text": "Option2",
+                    "url": ""
+                },
+                {
+                    "text": "Option3",
+                    "url": ""
+                },
+                {
+                    "text": "Option4",
+                    "url": ""
+                }
+            ]
         },
         {
             "index": 5,
             "question" : "Filler question?",
-            "answers": ["Option1", "Option2", "Option3", "Option4"]
+            "answers": [
+                {
+                    "text": "Option1",
+                    "url": ""
+                },
+                {
+                    "text": "Option2",
+                    "url": ""
+                },
+                {
+                    "text": "Option3",
+                    "url": ""
+                },
+                {
+                    "text": "Option4",
+                    "url": ""
+                }
+            ]
         }  
     ],
     "Mouse" : [
         {
             "index": 1,
             "question" : "What genre of games do you play the most?",
-            "answers": ["FPS", "MMO", "MOBA", "RTS", "Other"]
+            "answers": [
+                {
+                    "text": "FPS",
+                    "url": "/ProductGuide/Mouse/q1/fps.jpg"
+                },
+                {
+                    "text": "MMO",
+                    "url": "/ProductGuide/Mouse/q1/mmo.jpg"
+                },
+                {
+                    "text": "MOBA",
+                    "url": "/ProductGuide/Mouse/q1/moba.jpg"
+                },
+                {
+                    "text": "RTS",
+                    "url": "/ProductGuide/Mouse/q1/rts.jpg"
+                },
+                {
+                    "text": "Other",
+                    "url": "/ProductGuide/Mouse/q1/other.jpg"
+                } 
+            ]
         },
         {
             "index": 2,
             "question" : "What is your preffered grip type?",
-            "answers" : ["CLAW", "FINGERTIP", "PALM"]
+            "answers" : [
+                {
+                    "text": "CLAW",
+                    "url": "/ProductGuide/Mouse/q2/finter_tips.png"
+                },
+                {
+                    "text": "FINGERTIP",
+                    "url": "/ProductGuide/Mouse/q2/finter_tips.png"
+                },
+                {
+                    "text": "PALM",
+                    "url": "/ProductGuide/Mouse/q2/finter_tips.png"
+                }
+            ]
         },
         {
             "index": 3,
             "question" : "Do you preffer left or right-handed mouse?",
-            "answers" : ["Left", "Right"]
+            "answers" : [
+                {
+                    "text": "Left",
+                    "url": "/ProductGuide/Mouse/q3/hands.png"
+                },
+                {
+                    "text": "Right",
+                    "url": "/ProductGuide/Mouse/q3/hands.png"
+                }
+            ]
         }
     ],
     "Keyboard" : [
         {
             "index": 1,
             "question" : "Do you enjoy 'click sound'?",
-            "answers": ["Yes", "No"]
+            "answers": [
+                {
+                    "text": "Yes",
+                    "url": ""
+                },
+                {
+                    "text": "No",
+                    "url": ""
+                }
+            ]
         },
         {
             "index": 2,
             "question" : "Filler question?",
-            "answers": ["Option1", "Option2", "Option3", "Option4"]
+            "answers": [
+                {
+                    "text": "Option1",
+                    "url": ""
+                },
+                {
+                    "text": "Option2",
+                    "url": ""
+                },
+                {
+                    "text": "Option3",
+                    "url": ""
+                },
+                {
+                    "text": "Option4",
+                    "url": ""
+                }
+            ]
         },
         {
             "index": 3,
             "question" : "Filler question?",
-            "answers": ["Option1", "Option2", "Option3", "Option4"]
+            "answers": [
+                {
+                    "text": "Option1",
+                    "url": ""
+                },
+                {
+                    "text": "Option2",
+                    "url": ""
+                },
+                {
+                    "text": "Option3",
+                    "url": ""
+                },
+                {
+                    "text": "Option4",
+                    "url": ""
+                }
+            ]
         },
         {
             "index": 4,
             "question" : "Filler question?",
-            "answers": ["Option1", "Option2", "Option3", "Option4"]
+            "answers": [
+                {
+                    "text": "Option1",
+                    "url": ""
+                },
+                {
+                    "text": "Option2",
+                    "url": ""
+                },
+                {
+                    "text": "Option3",
+                    "url": ""
+                },
+                {
+                    "text": "Option4",
+                    "url": ""
+                }
+            ]
         }
     ]
 }

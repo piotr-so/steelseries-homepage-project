@@ -116,6 +116,7 @@ label {
         width: 76px;
         height: 76px;      
         border-radius: 50%;
+        background-color: grey;
         //!!! Tick icon controlled by CSS part 1 !!!
         &::before {
             content: url('../assets/SelectedTick.svg');
@@ -163,14 +164,13 @@ label {
 }
 
 .nextButton {
-    display: inline-block;
     position: relative;
     width: 170px;
     height: 50px;
     color: #ACACAC;
     font-size: 1.4rem;
     text-align: right;
-    padding: 14px 12.6px 0 0;
+    padding: 14px 16px 0 16px;
     margin-top: 63px;
     border: 3px solid #624C3C;
     border-radius: 3px;
@@ -183,7 +183,7 @@ label {
         width: 8px;
         height: 10px;
         top: 17px;
-        left: 20px;
+        left: 16px;
         background-color: #78787B; 
     }
     &:hover {
@@ -198,13 +198,14 @@ label {
 
 .submitButton {
     @extend .nextButton;
-    padding: 0 60px 0 0;
+    display: block;
+    padding: 0 37px 0 16px;
     &::before {
         transform: translateX(0) rotate(-90deg);
-        left: 110px;
-        transition: transform .5s linear;
+        left: 139px;
+        transition: transform .2s linear;
     }
     &:hover::before {
-        transform: translateX(45px) rotate(-90deg);
+        transform: translateX(10px) rotate(-90deg);
     }
 }

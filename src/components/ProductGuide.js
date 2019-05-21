@@ -8,25 +8,6 @@ class ProductGuide extends Component {
         styles: [styles.card1, styles.card2, styles.card3, styles.hidden, styles.hidden],
     }
 
-    importKeysAndValues = (obj) => {
-        const images = {};
-        obj.keys().map(item => { images[item.replace('./', '')] = obj(item); });
-        return images;
-    }
-
-    getImages = (productCategory, qIdx) => {
-        if (productCategory === 'Mouse') {
-            const img = 
-            qIdx === 0 ? this.importKeysAndValues(require.context('../assets/images/ProductGuide/Mouse/q1', false, /\.(png|jpe?g|svg)$/)) :
-            qIdx === 1 ? this.importKeysAndValues(require.context('../assets/images/ProductGuide/Mouse/q2', false, /\.(png|jpe?g|svg)$/)) :
-            qIdx === 2 ? this.importKeysAndValues(require.context('../assets/images/ProductGuide/Mouse/q3', false, /\.(png|jpe?g|svg)$/)) : undefined
-            return img
-        }
-        else {
-            const img = this.importKeysAndValues(require.context('../assets/images/ProductGuide/Mouse/q1', false, /\.(png|jpe?g|svg)$/));
-            return img
-        }
-    }
 
     handleCardChange = (direction) => {
         const arrayToChange = this.state.styles;
@@ -52,7 +33,7 @@ class ProductGuide extends Component {
 
     initialVisibilityOfCards = () => {
         const arr1 = [];
-        for (let i=0; i < (2 * surveyData[this.props.textToRender].length) - 1; i++) {
+        for (let i=0; i < (2 * surveyData[this.props.productCategory].length) - 1; i++) {
             if (i <= 2) {
                 arr1.push(styles[`card${i+1}`]);
             }
@@ -64,7 +45,7 @@ class ProductGuide extends Component {
     }
     
     componentDidUpdate(prevProps) {
-        if (this.props.textToRender !== prevProps.textToRender) {
+        if (this.props.productCategory !== prevProps.productCategory) {
             const stylesFromNewProps = this.initialVisibilityOfCards();
             this.setState({
                 styles: stylesFromNewProps
@@ -73,15 +54,13 @@ class ProductGuide extends Component {
     }
 
     render() {
-        const { textToRender } = this.props;
-
         // This props tells which product category survey is loaded
-        const productCategory = textToRender;
+        const { productCategory } = this.props;
 
         return (
             <div className={styles.wrapper}>
 
-                <h1>FIND THE PERFECT<br />GAMING {textToRender.toUpperCase()} FOR YOU</h1>
+                <h1>FIND THE PERFECT<br />GAMING {productCategory.toUpperCase()} FOR YOU</h1>
 
                 <div className={styles.cardWrapper}>
 
@@ -89,7 +68,6 @@ class ProductGuide extends Component {
                         surveyData={surveyData}
                         productCategory={productCategory}
                         activeStyle={this.state.styles}
-                        variantsBackground={this.getImages}
                         switchQuestion={this.handleCardChange}
                     />
 
@@ -103,15 +81,3 @@ class ProductGuide extends Component {
 
 
 export default ProductGuide;
-
-// // This props tells which product category survey is loaded
-// const productCategory = textToRender;
-
-// const multipleProductCategoriesImgs = {
-//     Mouse: this.importKeysAndValues(require.context('../assets/images/ProductGuide/Mouse', false, /\.(png|jpe?g|svg)$/)),
-//     Keyborad: this.importKeysAndValues(require.context('../assets/images/ProductGuide/Keyboard', false, /\.(png|jpe?g|svg)$/)),
-//     Headset: this.importKeysAndValues(require.context('../assets/images/ProductGuide/Headset', false, /\.(png|jpe?g|svg)$/)),
-// }
-
-// const variantsImgs = multipleProductCategoriesImgs[productCategory];
-// console.log(variantsImgs);
