@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import ProductSlider from "./components/ProductSlider";
 import ProductCarousel from "./components/ProductCarousel";
 import ProductGuide from "./components/ProductGuide";
+import ProductComparison from "./components/ProductComparison";
 
 class App extends Component {
   state = {
@@ -24,6 +25,7 @@ class App extends Component {
         <ProductSlider />
         <ProductCarousel whichIsCentered={this.setCenteredToRender}/>
         <ProductGuide productCategory={this.state.productCategory}/>
+        <ProductComparison productCategory={this.state.productCategory}/>
         <div style={{'width': `100px`, 'height': `400px`}}>Hello hello</div>
       </div>
     );

@@ -1,0 +1,288 @@
+{
+    "Mouse": {
+        "features": ["SensorType", "Illumination", "Cover Material", "Ideal Grip Style", "Buttons", "CPI & IPS", "Gamesense", "Engine Support", "Double Shot Injected Rubber Sides", "Unique Features"],
+        "products": [
+            {
+                "name": "rival-700",
+                "url": "/ProductsComparison/Mouse/rival-700.png",
+                "Sensor Type": "Optical, Laser sensor sold separately",
+                "Illumination": "2 RGB Zones",
+                "Cover Material": "Matte Black",
+                "Ideal Grip Style": "Palm / Claw / Fingertip",
+                "Buttons": "7",
+                "CPI & IPS": "16000 CPI / 300 IPS",
+                "Gamesense": "yes",
+                "Engine Support": "SSE3",
+                "Double Shot Injected Rubber Sides": "yes",
+                "Unique Features": "OLED Display, Tactile Alerts, Modular Components"
+            },
+            {
+                "name": "rival-300",
+                "url": "/ProductsComparison/Mouse/rival-300.png",
+                "Sensor Type": "Optical",
+                "Illumination": "2 RGB Zones",
+                "Cover Material": "Soft-Touch black, glossy white, matte grey",
+                "Ideal Grip Style": "Palm / Claw",
+                "Buttons": "6",
+                "CPI & IPS": "6500 CPI / 200 IPS",
+                "Gamesense": "yes",
+                "Engine Support": "SSE3",
+                "Double Shot Injected Rubber Sides": "yes",
+                "Unique Features": "3D Printable Nameplate "
+            },
+            {
+                "name": "rival-100",
+                "url": "/ProductsComparison/Mouse/rival-100.png",
+                "Sensor Type": "Optical",
+                "Illumination": "1 RGB Zone",
+                "Cover Material": "Soft-Touch black, glossy colors",
+                "Ideal Grip Style": "Claw / Fingertip",
+                "Buttons": "6",
+                "CPI & IPS": "4000 CPI / 140 IPS",
+                "Gamesense": "yes",
+                "Engine Support": "SSE3",
+                "Double Shot Injected Rubber Sides": "no",
+                "Unique Features": ""
+            },
+            {
+                "name": "sensei-raw",
+                "url": "/ProductsComparison/Mouse/sensei-raw.png",
+                "Sensor Type": "Laser",
+                "Illumination": "2 single-color zones",
+                "Cover Material": "Soft-Touch black, glossy black",
+                "Ideal Grip Style": "Claw / Fingertip",
+                "Buttons": "8",
+                "CPI & IPS": "5670 CPI / 150 IPS",
+                "Gamesense": "no",
+                "Engine Support": "SSE3",
+                "Double Shot Injected Rubber Sides": "no",
+                "Unique Features": ""
+            },
+            {
+                "name": "sensei",
+                "url": "/ProductsComparison/Mouse/sensei.png",
+                "Sensor Type": "Laser",
+                "Illumination": "3 RGB zones",
+                "Cover Material": "Metallic",
+                "Ideal Grip Style": "Claw / Fingertip",
+                "Buttons": "8",
+                "CPI & IPS": "5700 CPI / 150 IPS",
+                "Gamesense": "no",
+                "Engine Support": "SSE3",
+                "Double Shot Injected Rubber Sides": "no",
+                "Unique Features": "LED display, 5 on-board profiles"
+            },
+            {
+                "name": "sensei-wireless",
+                "url": "/ProductsComparison/Mouse/sensei-wireless.png",
+                "Sensor Type": "Laser",
+                "Illumination": "3 RGB zones",
+                "Cover Material": "Soft-Touch",
+                "Ideal Grip Style": "Claw / Fingertip",
+                "Buttons": "8",
+                "CPI & IPS": "8200 CPI / 150 IPS",
+                "Gamesense": "yes",
+                "Engine Support": "SSE3",
+                "Double Shot Injected Rubber Sides": "no",
+                "Unique Features": "16+ hours of wireless battery, charging base"
+            },
+            {
+                "name": "sensei",
+                "url": "/ProductsComparison/Mouse/sensei.png",
+                "Sensor Type": "Laser",
+                "Illumination": "3 RGB zones",
+                "Cover Material": "Metallic",
+                "Ideal Grip Style": "Claw / Fingertip",
+                "Buttons": "8",
+                "CPI & IPS": "5700 CPI / 150 IPS",
+                "Gamesense": "no",
+                "Engine Support": "SSE3",
+                "Double Shot Injected Rubber Sides": "no",
+                "Unique Features": "LED display, 5 on-board profiles"
+            },
+            {
+                "name": "sensei",
+                "url": "/ProductsComparison/Mouse/sensei.png",
+                "Sensor Type": "Laser",
+                "Illumination": "3 RGB zones",
+                "Cover Material": "Metallic",
+                "Ideal Grip Style": "Claw / Fingertip",
+                "Buttons": "8",
+                "CPI & IPS": "5700 CPI / 150 IPS",
+                "Gamesense": "no",
+                "Engine Support": "SSE3",
+                "Double Shot Injected Rubber Sides": "no",
+                "Unique Features": "LED display, 5 on-board profiles"
+            },
+            {
+                "name": "sensei",
+                "url": "/ProductsComparison/Mouse/sensei.png",
+                "Sensor Type": "Laser",
+                "Illumination": "3 RGB zones",
+                "Cover Material": "Metallic",
+                "Ideal Grip Style": "Claw / Fingertip",
+                "Buttons": "8",
+                "CPI & IPS": "5700 CPI / 150 IPS",
+                "Gamesense": "no",
+                "Engine Support": "SSE3",
+                "Double Shot Injected Rubber Sides": "no",
+                "Unique Features": "LED display, 5 on-board profiles"
+            },
+            {
+                "name": "sensei",
+                "url": "/ProductsComparison/Mouse/sensei.png",
+                "Sensor Type": "Laser",
+                "Illumination": "3 RGB zones",
+                "Cover Material": "Metallic",
+                "Ideal Grip Style": "Claw / Fingertip",
+                "Buttons": "8",
+                "CPI & IPS": "5700 CPI / 150 IPS",
+                "Gamesense": "no",
+                "Engine Support": "SSE3",
+                "Double Shot Injected Rubber Sides": "no",
+                "Unique Features": "LED display, 5 on-board profiles"
+            }
+        ]
+    },
+    "Headset" : {
+        "features": ["Test1", "Test2", "Test3", "Test4", "Test5", "Test6", "Test7", "Test8", "Test9", "Test10", "Test11"],
+        "products": [
+            {
+                "name": "Headset1",
+                "url": "",
+                "Test1": "",
+                "Test2": "",
+                "Test3": "",
+                "Test4": "",
+                "Test5": "",
+                "Test6": "",
+                "Test7": "",
+                "Test8": "",
+                "Test9": "",
+                "Test10": "",
+                "Test11": ""
+            },
+            {
+                "name": "Headset2",
+                "url": "",
+                "Test1": "",
+                "Test2": "",
+                "Test3": "",
+                "Test4": "",
+                "Test5": "",
+                "Test6": "",
+                "Test7": "",
+                "Test8": "",
+                "Test9": "",
+                "Test10": "",
+                "Test11": ""
+            },
+            {
+                "name": "Headset3",
+                "url": "",
+                "Test1": "",
+                "Test2": "",
+                "Test3": "",
+                "Test4": "",
+                "Test5": "",
+                "Test6": "",
+                "Test7": "",
+                "Test8": "",
+                "Test9": "",
+                "Test10": "",
+                "Test11": ""
+            },
+            {
+                "name": "Headset4",
+                "url": "",
+                "Test1": "",
+                "Test2": "",
+                "Test3": "",
+                "Test4": "",
+                "Test5": "",
+                "Test6": "",
+                "Test7": "",
+                "Test8": "",
+                "Test9": "",
+                "Test10": "",
+                "Test11": ""
+            }, 
+            {
+                "name": "Headset5",
+                "url": "",
+                "Test1": "",
+                "Test2": "",
+                "Test3": "",
+                "Test4": "",
+                "Test5": "",
+                "Test6": "",
+                "Test7": "",
+                "Test8": "",
+                "Test9": "",
+                "Test10": "",
+                "Test11": ""
+            }
+        ]
+    },
+    "Keyboard": {
+        "features": ["Test1", "Test2", "Test3", "Test4"],
+        "products": [
+            {
+                "name": "Headset1",
+                "url": "",
+                "Test1": "",
+                "Test2": "",
+                "Test3": "",
+                "Test4": ""
+            },
+            {
+                "name": "Headset2",
+                "url": "",
+                "Test1": "",
+                "Test2": "",
+                "Test3": "",
+                "Test4": ""
+            },
+            {
+                "name": "Headset3",
+                "url": "",
+                "Test1": "",
+                "Test2": "",
+                "Test3": "",
+                "Test4": ""
+            },
+            {
+                "name": "Headset4",
+                "url": "",
+                "Test1": "",
+                "Test2": "",
+                "Test3": "",
+                "Test4": ""
+            }, 
+            {
+                "name": "Headset5",
+                "url": "",
+                "Test1": "",
+                "Test2": "",
+                "Test3": "",
+                "Test4": ""
+            },
+            {
+                "name": "Headset6",
+                "url": "",
+                "Test1": "",
+                "Test2": "",
+                "Test3": "",
+                "Test4": ""
+            },
+            {
+                "name": "Headset7",
+                "url": "",
+                "Test1": "",
+                "Test2": "",
+                "Test3": "",
+                "Test4": ""
+            }
+        ]
+    }
+}

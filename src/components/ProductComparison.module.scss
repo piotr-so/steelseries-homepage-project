@@ -1,0 +1,166 @@
+.table {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+header {
+    h1 {
+        width: 100%;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        font-size: 3.6rem;
+        font-weight: 400;
+        color: #624C3C;
+        margin: 0 auto;
+        line-height: 55px;
+    }
+}
+
+
+
+
+.productsTable {
+    position: relative;
+}
+
+.positionFeaturesBlock {
+    width: 130px;
+    height: 314px;
+}
+
+.features {
+    // display: inline-block; //subject to change !!! ///////
+
+    position: absolute;
+    width: 130px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    // background-color: rgba(#252526, 0.5);
+
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        height: 113px;
+        list-style: none;
+        font-size: 1.4rem;
+        color: #AEAEB2;
+        padding-bottom: 56px;
+    }
+}
+
+
+.productsWrapper {
+    overflow-x: scroll;
+    // -webkit-overflow-scrolling: touch;
+    margin-left: 130px;
+}
+
+.columns {
+    // !!! width injected in js, depends on quantity of products rendered (product-column width * quantity of products)
+    // width: 970px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    z-index: 0;
+    overflow: hidden;
+    
+    &::after {
+        content: '';
+        clear: both;
+        display: table;
+    }
+      
+}
+
+.product {
+    float: left;
+    // display: inline-block;
+    width: 160px;
+    margin-top: 90px;
+    margin-bottom: 90px;
+    border-right: 1px solid transparent;
+    border-left: 1px solid transparent;
+    transition: transform 0.5s linear, box-shadow 0.05s linear;
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.05);
+        box-shadow: 0 0 46px 0 rgba(#111111, 0.78);
+        .head {
+            color: #624C3C;
+            background-color: rgba(#282829, 1);
+        }
+        .featuresList {
+            color: #AEAEB2;
+        }
+        .colorVar1,
+        .colorVar2 {
+            background-color: rgba(#282829, 1);
+        }
+    }
+
+    .head {
+        position: relative;
+        padding-top: 42px;
+        padding-bottom: 61px;
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #4D4D4F;
+            text-align: center;
+            margin: 0;
+        }
+        .productImg {
+            // url and background are injected in jsx
+            position: absolute;
+            width: 130px;
+            height: 59px;
+            bottom: -37px;
+            left: 18px;
+            // margin-top: 39px;
+        }
+    }
+
+    .featuresList {
+        list-style: none;
+        text-align: center;
+        font-size: 1.2rem;
+        color: #505052;
+        padding: 0;
+        // padding-top: 63.7px;
+        padding-top: 100px;
+    }
+
+    li {
+        position: relative;
+        height: 113px;
+        padding-bottom: 56px;
+    }
+}
+
+.colorVar1 {
+    background-color: rgba(#242424, 0.8);
+}
+
+.colorVar2 {
+    background-color: rgba(#262626, 0.6);
+}
+
+.tickIcon {
+    &::after {
+        content: "";
+        mask: url('../assets/tick.svg');
+        position: absolute;
+        left: 50%;
+        margin-left: -12.5px;
+        top: 25%;
+        margin-top: -10px;
+        width: 25px;
+        height: 20px;
+        background-color: #505052;
+    }
+}
