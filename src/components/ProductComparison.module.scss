@@ -23,9 +23,19 @@ header {
     position: relative;
 }
 
-.positionFeaturesBlock {
+.featuresFillerBlock {
     width: 130px;
     height: 314px;
+}
+
+.featuresToFixed {
+    position: fixed;
+    top: 0;
+    width: 180px;
+    height: 193px;
+    border-bottom: 1px solid #4D4D4F;
+    background-color: #282829;
+    z-index: 3;
 }
 
 .features {
@@ -54,9 +64,24 @@ header {
 
 
 .productsWrapper {
-    overflow-x: scroll;
+    overflow-x: auto;
     // -webkit-overflow-scrolling: touch;
     margin-left: 130px;
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        border-radius: 10px;
+        background-color: rgba(38, 38, 38, 0.2);
+    }
+    &::-webkit-scrollbar{
+        width: 12px;
+        background-color: rgba(38, 38, 38, 0.2);
+    }
+    &::-webkit-scrollbar-thumb
+    {
+        border-radius: 10px;
+        box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background-color: #505052;
+    }
 }
 
 .columns {
@@ -77,18 +102,22 @@ header {
 }
 
 .product {
+    position: relative;
     float: left;
-    // display: inline-block;
     width: 160px;
     margin-top: 90px;
-    margin-bottom: 90px;
-    border-right: 1px solid transparent;
-    border-left: 1px solid transparent;
-    transition: transform 0.5s linear, box-shadow 0.05s linear;
+    margin-bottom: 50px;
+    // border-right: 1px solid transparent;
+    // border-left: 1px solid transparent;
+    transition: transform 0.2s linear, box-shadow 0.05s linear;
+    
+    &:first-of-type {
+        margin-left: 50px;
+    }
 
     &:hover {
         cursor: pointer;
-        transform: scale(1.05);
+        // transform: scale(1.01);
         box-shadow: 0 0 46px 0 rgba(#111111, 0.78);
         .head {
             color: #624C3C;
@@ -104,13 +133,17 @@ header {
     }
 
     .head {
-        position: relative;
+        position: absolute;
+        width: 160px;
+        height: 124px;
+        top: 0px;
         padding-top: 42px;
         padding-bottom: 61px;
+        color: #4D4D4F;
+        
         h2 {
             font-size: 1.6rem;
-            font-weight: 400;
-            color: #4D4D4F;
+            font-weight: 400; 
             text-align: center;
             margin: 0;
         }
@@ -119,10 +152,38 @@ header {
             position: absolute;
             width: 130px;
             height: 59px;
-            bottom: -37px;
+            top: 100px;
             left: 18px;
-            // margin-top: 39px;
         }
+    }
+
+
+    .tableHeadFiller {
+        width: 158px;
+        height: 124px;
+        margin: 0; 
+    }
+
+
+    .headFixed {
+        position: fixed;
+        top: 0;
+        padding-bottom: 150px;
+        background-color: rgba(#242424, 1);
+        border-bottom: 1px solid #4D4D4F;
+        z-index: 2;
+    }
+
+    .headColorVar1 {
+        background-color: #272727;
+        // border-left: 1px solid #272727;
+        // border-right: 1px solid #272727;    
+    }
+
+    .headColorVar2 {
+        background-color: #252525;
+        // border-left: 1px solid #252525;
+        // border-right: 1px solid #252525;
     }
 
     .featuresList {
@@ -140,6 +201,45 @@ header {
         height: 113px;
         padding-bottom: 56px;
     }
+}
+
+.testHead {
+    // visibility: hidden;
+    position: fixed;
+    width: 1010px;
+    top: 0;
+    left: 245px;
+    overflow: hidden;
+    div {
+        float: left;
+        // &:first-of-type {
+        //     margin-left: 50px;
+        // }
+    }
+}
+
+.testHeadWrapper {
+    margin-left: 50px;
+}
+
+.testHeadElement {
+    width: 160px;
+    height: 193px;
+    h2 {
+        font-size: 1.6rem;
+        font-weight: 400; 
+        text-align: center;
+        margin: 0;
+    }
+}
+
+.testHeadElementImg {
+    // url and background are injected in jsx
+    position: absolute;
+    width: 130px;
+    height: 59px;
+    top: 100px;
+    left: 18px;
 }
 
 .colorVar1 {
@@ -163,4 +263,14 @@ header {
         height: 20px;
         background-color: #505052;
     }
+}
+
+.visible {
+    // visibility: visible;
+    opacity: 1;
+}
+
+.hidden {
+    // visibility: hidden;
+    opacity: 0;
 }
