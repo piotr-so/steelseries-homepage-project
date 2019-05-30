@@ -28,7 +28,8 @@
 }
 
 .fixedFeaturesCover {
-    position: fixed;
+    display: inline-block;
+    position: sticky;
     top: 0;
     width: 130px;
     height: 193px;
@@ -38,11 +39,11 @@
 }
 
 .stickyBar {
+    display: inline-block;
     position: sticky;
     overflow: hidden;
     width: 960px;
     top: 0;
-    margin-left: 130px;
     z-index:3;
 
     div {
