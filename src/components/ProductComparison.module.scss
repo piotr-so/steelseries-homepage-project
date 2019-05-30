@@ -1,9 +1,13 @@
-.table {
+.wrapper {
+    position: relative;
     max-width: 1140px;
     margin: 0 auto;
 }
 
-header {
+.title {
+    position: absolute;
+    top: 55px;
+    left: 100px;
     h1 {
         width: 100%;
         text-align: center;
@@ -16,42 +20,75 @@ header {
     }
 }
 
-
-
-
 .productsTable {
     position: relative;
+    background: url('../assets/Background-b.png') 130px 195px no-repeat ;
+    background-size: 100%;
+    
 }
 
-.featuresFillerBlock {
-    width: 130px;
-    height: 314px;
-}
-
-.featuresToFixed {
+.fixedFeaturesCover {
     position: fixed;
     top: 0;
-    width: 180px;
+    width: 130px;
     height: 193px;
     border-bottom: 1px solid #4D4D4F;
     background-color: #282829;
     z-index: 3;
 }
 
-.features {
-    // display: inline-block; //subject to change !!! ///////
+.stickyBar {
+    position: sticky;
+    overflow: hidden;
+    width: 960px;
+    top: 0;
+    margin-left: 130px;
+    z-index:3;
 
+    div {
+        float: left;
+    }
+}
+
+.stickyElementsWrapper {
+    transition: transform 0.2s linear;
+}
+
+.stickyElement {
+    position: relative;
+    width: 160px;
+    height: 193px;
+    border-bottom: 1px solid #4D4D4F;
+    
+    h2 {
+        font-size: 1.6rem;
+        font-weight: 400; 
+        text-align: center;
+        margin: 0;
+        padding-top: 39px;
+        padding-bottom: 61px;
+        color: #4D4D4F;
+    }
+}
+
+.stickyElementImg {
+    // url and background are injected in jsx
     position: absolute;
     width: 130px;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    // background-color: rgba(#252526, 0.5);
+    height: 59px;
+    top: 97px;
+    left: 18px;
+}
 
-    ul {
-        margin: 0;
-        padding: 0;
-    }
+
+.productsFeatures {
+    position: absolute;
+    width: 130px;
+    text-align: end;
+    top: 467px;
+    left: 0;
+    padding: 0 30px 0 0;
+    margin: 0;
 
     li {
         height: 113px;
@@ -62,9 +99,10 @@ header {
     }
 }
 
-
 .productsWrapper {
-    overflow-x: auto;
+    position: relative;
+    overflow-x: hidden;
+    width: 960px;
     // -webkit-overflow-scrolling: touch;
     margin-left: 130px;
     &::-webkit-scrollbar-track {
@@ -82,42 +120,37 @@ header {
         box-shadow: inset 0 0 6px rgba(0,0,0,.3);
         background-color: #505052;
     }
+
+    .arrowLeft, .arrowRight {
+        top: 158px;
+    }
 }
 
 .columns {
     // !!! width injected in js, depends on quantity of products rendered (product-column width * quantity of products)
-    // width: 970px;
     margin: 0;
     padding: 0;
     list-style: none;
     z-index: 0;
-    overflow: hidden;
+    transition: transform 0.2s linear;
     
     &::after {
         content: '';
         clear: both;
         display: table;
     }
-      
 }
 
 .product {
     position: relative;
     float: left;
     width: 160px;
-    margin-top: 90px;
+    margin-top: 50px;
     margin-bottom: 50px;
-    // border-right: 1px solid transparent;
-    // border-left: 1px solid transparent;
     transition: transform 0.2s linear, box-shadow 0.05s linear;
-    
-    &:first-of-type {
-        margin-left: 50px;
-    }
 
     &:hover {
         cursor: pointer;
-        // transform: scale(1.01);
         box-shadow: 0 0 46px 0 rgba(#111111, 0.78);
         .head {
             color: #624C3C;
@@ -157,33 +190,10 @@ header {
         }
     }
 
-
     .tableHeadFiller {
         width: 158px;
         height: 124px;
         margin: 0; 
-    }
-
-
-    .headFixed {
-        position: fixed;
-        top: 0;
-        padding-bottom: 150px;
-        background-color: rgba(#242424, 1);
-        border-bottom: 1px solid #4D4D4F;
-        z-index: 2;
-    }
-
-    .headColorVar1 {
-        background-color: #272727;
-        // border-left: 1px solid #272727;
-        // border-right: 1px solid #272727;    
-    }
-
-    .headColorVar2 {
-        background-color: #252525;
-        // border-left: 1px solid #252525;
-        // border-right: 1px solid #252525;
     }
 
     .featuresList {
@@ -192,7 +202,6 @@ header {
         font-size: 1.2rem;
         color: #505052;
         padding: 0;
-        // padding-top: 63.7px;
         padding-top: 100px;
     }
 
@@ -203,43 +212,12 @@ header {
     }
 }
 
-.testHead {
-    // visibility: hidden;
-    position: fixed;
-    width: 1010px;
-    top: 0;
-    left: 245px;
-    overflow: hidden;
-    div {
-        float: left;
-        // &:first-of-type {
-        //     margin-left: 50px;
-        // }
-    }
+.headColorVar1 {
+    background-color: #272727; 
 }
 
-.testHeadWrapper {
-    margin-left: 50px;
-}
-
-.testHeadElement {
-    width: 160px;
-    height: 193px;
-    h2 {
-        font-size: 1.6rem;
-        font-weight: 400; 
-        text-align: center;
-        margin: 0;
-    }
-}
-
-.testHeadElementImg {
-    // url and background are injected in jsx
-    position: absolute;
-    width: 130px;
-    height: 59px;
-    top: 100px;
-    left: 18px;
+.headColorVar2 {
+    background-color: #252525;
 }
 
 .colorVar1 {
@@ -250,6 +228,53 @@ header {
     background-color: rgba(#262626, 0.6);
 }
 
+
+.arrow {
+    position: absolute;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    top: 105px;
+    // left: 15px;
+    background-color: rgba(#111111, 0.5);
+    border-radius: 50%;
+
+    &::after {
+        content: '';
+        mask: url('../assets/left-arrow.svg');
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: 10px;
+        left: 10px;
+        background-color: #AEAEB2;
+        opacity: 0.8;
+    }
+    &:hover {
+        background-color: rgba(#111111, 0.8);
+        &::after {
+            background-color: rgb(210, 210, 216);
+            opacity: 1;
+        }
+    }
+}
+
+.arrowLeft {
+    @extend .arrow;
+    left: 10px;
+    &::after {
+        transform: rotate(360deg);
+    }
+}
+
+.arrowRight {
+    @extend .arrow;
+    right: 10px;
+    &::after {
+        transform: rotate(180deg);
+    }
+}
+
 .tickIcon {
     &::after {
         content: "";
@@ -257,7 +282,7 @@ header {
         position: absolute;
         left: 50%;
         margin-left: -12.5px;
-        top: 25%;
+        top: 10%;
         margin-top: -10px;
         width: 25px;
         height: 20px;
@@ -266,11 +291,9 @@ header {
 }
 
 .visible {
-    // visibility: visible;
-    opacity: 1;
+    visibility: visible;
 }
 
 .hidden {
-    // visibility: hidden;
-    opacity: 0;
+    visibility: hidden;
 }
