@@ -15,12 +15,20 @@ class ProductComparison extends Component {
 
     checkStickyBarPos = (tableELemPosToWindow) => {
         const { isFixed } = this.state;
+        console.log(tableELemPosToWindow);
+        const quantityOfFeaturesRows = productsData[this.props.productCategory].products.length;
+        // console.log(quantityOfFeaturesRows)
+        const productHeadHeight = 124;
+        const productColumnPadding = 100;
+        const rowHeight = 113;
+        const TwoLastElementsVisibleBreakpoint = -(productHeadHeight + productColumnPadding + (rowHeight * quantityOfFeaturesRows - 4 * rowHeight) + 23);
+        // console.log(TwoLastElementsVisibleBreakpoint);
 
         if (isFixed === false) {
-            if (tableELemPosToWindow < 0 && tableELemPosToWindow > -925) this.toggleStickyBarVisibility();   
+            if (tableELemPosToWindow < 0 && tableELemPosToWindow > TwoLastElementsVisibleBreakpoint) this.toggleStickyBarVisibility();   
         }
         else {
-            if (tableELemPosToWindow >= 0 || tableELemPosToWindow <= -925) this.toggleStickyBarVisibility();
+            if (tableELemPosToWindow >= 0 || tableELemPosToWindow <= TwoLastElementsVisibleBreakpoint) this.toggleStickyBarVisibility();
         }
     }
 
@@ -37,11 +45,18 @@ class ProductComparison extends Component {
     }
 
     componentDidMount() {
-        const tableElement = document.getElementsByClassName(styles.product)[0];
+        this.tableElement = document.getElementsByClassName(styles.product)[0];
         this.quantityOfProducts = productsData[this.props.productCategory].products.length;
         this.availableTimesToScroll = this.quantityOfProducts - 6;
 
-        window.addEventListener('scroll', () => this.checkStickyBarPos(tableElement.getBoundingClientRect().top));
+        window.addEventListener('scroll', () => this.checkStickyBarPos(this.tableElement.getBoundingClientRect().top));
+    }
+
+    componentDidUpdate(prevProps) {
+        // if (this.props.productCategory !== prevProps.productCategory) {
+        //     console.log('changed');
+        //     window.removeEventListener('scroll', () => this.checkStickyBarPos(this.tableElement.getBoundingClientRect().top));
+        // }   
     }
 
     render() {
