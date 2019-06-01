@@ -1,0 +1,22 @@
+
+[
+    {
+        "name": "rival 700",
+        "url": "/MostPopular/Most_popular_rival700_sprite.png",
+        "description": "The Rival 700, equipped with gaming's first fully customizable OLED display, customizable tactile alerts and swappable physical components. Altogether, this makes the Rival700 the most powerful gaming mouse in the world, giving gamers real-time information and notifications while they play.",
+        "color-variants": ["#FF8F21", "#AF31A8", "#4363BF", "#FFFFFF"],
+        "price": "249,95"
+    },
+    {
+        "name": "siberia 200",
+        "url": "/MostPopular/Headset_mod.png",
+        "description": "The Siberia 200 gaming headset combines the comfort and sound of the best-selling Siberia V2 with quality updates, reclaiming its title as the best gaming headset in eSports and PC gaming",
+        "price": "109,99"
+    },
+    {
+        "name": "apex 150",
+        "url": "/MostPopular/steelseries-keyboard_mod.png",
+        "description": "Apex 150 delivers everything you need for competitive gaming at a competitive price. SteelSeries Quick Tension switches, 5-zone RGB, Discord notifications and splash resistance combine for the best value in gaming.",
+        "price": "159,99"
+    }
+]

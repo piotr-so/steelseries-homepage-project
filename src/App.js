@@ -5,6 +5,7 @@ import ProductSlider from "./components/ProductSlider";
 import ProductCarousel from "./components/ProductCarousel";
 import ProductGuide from "./components/ProductGuide";
 import ProductComparison from "./components/ProductComparison";
+import MostPopular from './components/MostPopular';
 
 class App extends Component {
   state = {
@@ -26,7 +27,7 @@ class App extends Component {
         <ProductCarousel whichIsCentered={this.setCenteredToRender}/>
         <ProductGuide productCategory={this.state.productCategory}/>
         <ProductComparison productCategory={this.state.productCategory}/>
-        <div style={{'width': `100px`, 'height': `400px`}}>Hello hello</div>
+        <MostPopular />
       </div>
     );
   }

@@ -13,16 +13,17 @@ class ProductComparison extends Component {
         this.setState({ isFixed: !this.state.isFixed })
     }
 
-    checkStickyBarPos = (tableELemPosToWindow) => {
+    checkStickyBarPos = () => {
+        const tableELemPosToWindow = this.tableElement.getBoundingClientRect().top; 
+
         const { isFixed } = this.state;
-        console.log(tableELemPosToWindow);
-        const quantityOfFeaturesRows = productsData[this.props.productCategory].products.length;
-        // console.log(quantityOfFeaturesRows)
+        // console.log(tableELemPosToWindow);
+        const quantityOfFeaturesRows = productsData[this.props.productCategory].features.length;
+        // console.log(quantityOfFeaturesRows+"features_rows")
         const productHeadHeight = 124;
         const productColumnPadding = 100;
         const rowHeight = 113;
         const TwoLastElementsVisibleBreakpoint = -(productHeadHeight + productColumnPadding + (rowHeight * quantityOfFeaturesRows - 4 * rowHeight) + 23);
-        // console.log(TwoLastElementsVisibleBreakpoint);
 
         if (isFixed === false) {
             if (tableELemPosToWindow < 0 && tableELemPosToWindow > TwoLastElementsVisibleBreakpoint) this.toggleStickyBarVisibility();   
@@ -46,17 +47,27 @@ class ProductComparison extends Component {
 
     componentDidMount() {
         this.tableElement = document.getElementsByClassName(styles.product)[0];
+        // console.log(this.tableElement.getBoundingClientRect().top+"- didmount");
         this.quantityOfProducts = productsData[this.props.productCategory].products.length;
         this.availableTimesToScroll = this.quantityOfProducts - 6;
-
-        window.addEventListener('scroll', () => this.checkStickyBarPos(this.tableElement.getBoundingClientRect().top));
+        window.addEventListener('scroll', this.checkStickyBarPos);
     }
 
     componentDidUpdate(prevProps) {
-        // if (this.props.productCategory !== prevProps.productCategory) {
-        //     console.log('changed');
-        //     window.removeEventListener('scroll', () => this.checkStickyBarPos(this.tableElement.getBoundingClientRect().top));
-        // }   
+        
+        if (this.props.productCategory !== prevProps.productCategory) {
+            console.log('changed');
+            window.removeEventListener('scroll', this.checkStickyBarPos);
+            this.tableElement = document.getElementsByClassName(styles.product)[0];
+            // console.log(this.tableElement.getBoundingClientRect().top+"nowy");
+            this.quantityOfProducts = productsData[this.props.productCategory].products.length;
+            this.availableTimesToScroll = this.quantityOfProducts - 6;
+            window.addEventListener('scroll', this.checkStickyBarPos);
+
+            this.setState({
+                scrollTimesCounter: 0
+            })
+        }   
     }
 
     render() {

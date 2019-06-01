@@ -9,7 +9,7 @@ import userImg from "../assets/Male User.svg";
 
 const Header = () => (
     <>
-    <header>
+    <header className={styles.header}>
         <div className={styles.appHeader}>
             <div>
                 <img src={logo} alt="logo" />
