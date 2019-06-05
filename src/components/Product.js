@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from './Product.module.scss';
-
+import Button from './Button';
 
 class Product extends Component {
     state = {
@@ -39,7 +39,7 @@ class Product extends Component {
                     {isDescAllowedToRender && renderDescription === styles.center ? (
                         <>
                             <h2>{`FIND THE PERFECT GAMING ${item.name.toUpperCase()} FOR YOU`}</h2>
-                            <button>START GUIDE</button>
+                            <Button text={"start guide"}/>
                         </>
                     ) : null}
                     <img src={item.img} alt={item.name}></img>

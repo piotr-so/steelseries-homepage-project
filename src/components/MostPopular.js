@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from '../components/MostPopular.module.scss';
 import products from '../assets/data/most-popular.json';
 import arrow from '../assets/slider-arrow.svg';
+import Button from './Button';
 
 class MostPopular extends Component {
     state = {
@@ -83,7 +84,7 @@ class MostPopular extends Component {
                             }
                         </div>
                         <div className={styles.purchase}>
-                            <button>BUY NOW</button>
+                            <Button text={"buy now"}/>
                             <span>{products[whichProductIsRendered].price}</span>
                         </div>
                         <p className={styles.deliveryTime}>3-5 day delivery</p>

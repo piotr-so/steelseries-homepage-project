@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import styles from './ProductSlider.module.scss';
-import headset from '../assets/Headset.png';
-import keyboard from '../assets/steelseries-keyboard.png';
-import mice from '../assets/steelseries-mice.png';
+import headset from '../assets/Headset_mod.png';
+import keyboard from '../assets/arctis2.png';
+import mice from '../assets/steelseries-mice_mod.png';
 import arrow from '../assets/slider-arrow.svg';
+import Button from './Button';
 
 const itemsForSlider = [
     {
@@ -12,9 +13,9 @@ const itemsForSlider = [
         description: "The Siberia 200 gaming headset combines the comfort and sound of the best-selling Siberia V2 with quality updates, reclaiming its title as the best gaming headset in eSports and PC gaming",
     },
     {
-        name: "APEX 150",
+        name: "ARCTIS 5",
         image: keyboard,
-        description: "Apex 150 delivers everything you need for competitive gaming at a competitive price. SteelSeries Quick Tension switches, 5-zone RGB, Discord notifications and splash resistance combine for the best value in gaming.",
+        description: "Specifically designed for the PC Gamer, Arctis 5 combines independent game and chat control, cutting-edge DTS surround sound, and dual zone RGB illumination to create the perfect audio solution for your battlestation.",
     },
     {
         name: "RIVAL 500",
@@ -46,6 +47,10 @@ class ProductSlider extends Component {
         )
     }
 
+    handleScrollOnImg = (e) => {
+        console.log(e.target.scrollLeft);
+    }
+
     handleWrapperHover = (e) => {
         this.state.arrowsHovered === false ? (
             this.setState(prevState => ({
@@ -61,7 +66,12 @@ class ProductSlider extends Component {
     render() {
         const { productToShow, currentImageIndex, arrowsHovered } = this.state;
         return (
-            <div className={styles.sliderWrapper} onMouseEnter={this.handleWrapperHover} onMouseLeave={this.handleWrapperHover}>
+            <div
+                className={styles.sliderWrapper}
+                onMouseEnter={this.handleWrapperHover}
+                onMouseLeave={this.handleWrapperHover}
+                onTouchStart={e => this.handleScrollOnImg(e)}
+            >
                 <div className={styles.itemToShowIdentifiersWrapper}>
                     <div className={styles.identifiers}>
                         {productToShow.map((element, idx) => {
@@ -88,11 +98,16 @@ class ProductSlider extends Component {
                     )
                     }
                 </div>
-                <img src={productToShow[currentImageIndex].image} key={this.state.currentImageIndex + "img"} className={styles.productImage} alt={productToShow[currentImageIndex].name} />
+                <img
+                    src={productToShow[currentImageIndex].image}
+                    key={this.state.currentImageIndex + "img"}
+                    className={styles.productImage}
+                    alt={productToShow[currentImageIndex].name}
+                />
                 <div className={styles.productDescription} key={this.state.currentImageIndex + "descSec"}>
                     <h1>{productToShow[currentImageIndex].name}</h1>
                     <p>{productToShow[currentImageIndex].description}</p>
-                    <button>BUY NOW</button>
+                    <Button text={"buy now"} />
                 </div>
             </div >
         )

@@ -9,6 +9,7 @@ import MostPopular from './components/MostPopular';
 
 class App extends Component {
   state = {
+    windowWidth: null,
     productCategory: 'Mouse',
   }
   // !!! Change to database later !!!
@@ -22,12 +23,12 @@ class App extends Component {
   render() {
     return (
       <div className={styles.main}>
-        <Header />
+        <Header/>
         <ProductSlider />
-        <ProductCarousel whichIsCentered={this.setCenteredToRender}/>
-        <ProductGuide productCategory={this.state.productCategory}/>
-        <ProductComparison productCategory={this.state.productCategory}/>
-        <MostPopular />
+        {/* <ProductCarousel whichIsCentered={this.setCenteredToRender}/> */}
+        {/* <ProductGuide productCategory={this.state.productCategory}/> */}
+        {/* <ProductComparison productCategory={this.state.productCategory}/> */}
+        {/* <MostPopular /> */}
       </div>
     );
   }

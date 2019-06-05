@@ -1,23 +1,109 @@
 .header {
-    padding-top: 55px;
-    margin: 0 115px;
+    @media only screen and (max-width: 799px) {
+        width: 100%;
+        position: fixed;
+        z-index: 2;
+    }
+
+    @media only screen and (min-width: 800px) {
+        max-width: 1170px;
+        padding-top: 55px;
+        margin: 0 auto;
+    }
 }
 
+//Hamburger menu dropdown
+
+.expandedMenu {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 77px;
+    background-color: #282829;
+}
+//
+
+
 .appHeader {
+    @media only screen and (max-width: 799px) {
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: inherit;
+        background-color: #282829;
+        padding: 0 10px;
+
+        &> img {
+            cursor: pointer;
+            width: 50px;
+        }
+    }
+
     display: grid;
     grid-template-columns: 3fr 1fr 520px 1fr;
     height: 77px;
-
+    
     nav {
         grid-column: 3/4;
     }
+
+    // Fix for hamburgermenu cancel ico
+    .cancelIco {
+        padding: 10px;
+    }
+
+}
+
+.logo {
+    @media only screen and (min-width: 800px) {
+        padding-right: 30px;
+    } 
 }
 
 
 
 .userSection {
-    display: grid;
-    justify-self: end;
-    grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 34px;
+    position: relative;
+    display: flex;
+
+    @media only screen and (min-width: 800px) {
+        display: grid;
+        cursor: pointer;
+        justify-self: end;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 34px;
+    }  
+ 
+    img:nth-of-type(1) {
+        margin-right: 10px;
+    }
+}
+
+.basketIndicator {
+    position: absolute;
+    top: 0;
+    right: 60px;
+    width: 15px;
+    height: 15px;
+    background-color: #9C7960;
+    border-radius: 50%;
+
+    @media only screen and (max-width: 799px) {
+        right: 5px;
+    }
+}
+
+.indicatorValue {
+    color: #FFFFFF;
+    font-weight: 500;
+    text-align: center;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.hidden {
+    visibility: hidden;
 }

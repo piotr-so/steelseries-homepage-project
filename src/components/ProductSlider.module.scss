@@ -5,10 +5,22 @@
 
 .sliderWrapper {
     display: grid;
-    grid-template-columns: 87px 2fr 2fr;
-    height: 630px;
-    margin: 0 115px;
+    @media only screen and (max-width: 799px) {
+        padding-top: 77px;
+    }
 
+    @media only screen and (min-width: 800px) {    
+        grid-template-columns: 87px 2fr 2fr;
+        height: 630px;
+        margin: 0 115px;
+    }
+    
+    
+    @media only screen and (min-width: 800px) and (max-width: 950px) {
+        margin: 0 20px 0 20px;
+        
+    }
+    
     @media screen and (min-width: 1400px) {
         width: 1170px;
         margin: 0 auto;
@@ -16,18 +28,31 @@
 }
 
 .itemToShowIdentifiersWrapper {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: 2fr 1fr 2fr;
-    position: relative;
+    @media only screen and (max-width: 799px) {
+        display: flex;
+        justify-content: center;
+        grid-row: 2;  
+    }
+
+    @media only screen and (min-width: 800px) {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 2fr 1fr 2fr;
+        position: relative;
+    }
+    
 
     .identifiers {
         display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        height: inherit;
-        grid-row: 2/3;
-        justify-self: end;
+
+        @media only screen and (min-width: 800px) {
+            flex-direction: column;
+            justify-content: space-evenly;
+            height: inherit;
+            grid-row: 2/3;
+            justify-self: end;
+        }
+        
     }
     
     span {
@@ -35,6 +60,7 @@
         width: 10px;
         height: 10px;
         grid-row: 2/3;
+        margin-right: 10px;
     }
     
     .inactive {
@@ -46,6 +72,7 @@
             width: 6px;
             height: 6px;
             right: 2px;
+            top: 2px;
             background-color: #FFFFFF;
             border-radius: 50%;
         }
@@ -81,12 +108,26 @@
     grid-column: 2/2;
     align-self: end;
     user-select: none;
+
+    @media only screen and (max-width: 799px) {
+        position: absolute;
+        top: 170px;
+        left: 5px;
+        transform: rotate(-90deg);
+    }
 }
 
 .slideNext {
     grid-row: 3/3;
     grid-column: 2/2;
     user-select: none;
+
+    @media only screen and (max-width: 799px) {
+        position: absolute;
+        top: 170px;
+        right: 5px;
+        transform: rotate(-90deg);
+    }
 }
 
 .slidePrevActive {
@@ -117,8 +158,11 @@
 .productImage {
     align-self: center;
     justify-self: center;
-    max-width: 750px;
-    animation: reveal .7s;  
+    animation: reveal .7s;
+
+    @media only screen and (max-width: 799px) {
+        max-width: 150px;
+    }
 }
 
 .productDescription {
@@ -128,19 +172,35 @@
     font-family: Arial, sans-serif;
     animation: reveal .5s; 
 
+    @media only screen and (max-width: 799px) {
+        padding: 10px 10px 0 10px;
+    }
+
+    
+
     h1 {
         color:#624C3C;
         font-weight: 300;
         font-size: 4.8rem;
         margin: 0 0 17.5px 0;
         opacity: 1;
+
+        @media only screen and (max-width: 799px) {
+            font-size: 3rem;
+            text-align: center;
+            margin: 0;
+        }
         
     }
 
     p {
         color: #78787B;
-        font-size: 18px;
+        font-size: 1.8rem;
         line-height: 2.5rem;
+
+        @media only screen and (max-width: 799px) {
+            margin: 0;
+        }
     }
 
     button {
@@ -151,5 +211,9 @@
         border: transparent;
         border-radius: 5px;
         margin-top: 10px;
+
+        @media only screen and (max-width: 799px) {
+            margin: 0 auto;
+        }
     }
 }
