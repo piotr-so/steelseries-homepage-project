@@ -24,6 +24,7 @@ const itemsForSlider = [
     }
 ];
 
+
 class ProductSlider extends Component {
     state = {
         productToShow: [...itemsForSlider],
@@ -47,8 +48,29 @@ class ProductSlider extends Component {
         )
     }
 
-    handleScrollOnImg = (e) => {
-        console.log(e.target.scrollLeft);
+
+    handleTouchOnSlider = (e) => {
+        const { currentImageIndex } = this.state;
+        const touchCoords = e.changedTouches[e.changedTouches.length-1].pageX;
+        console.log(this.lastCoord+" - last Coord")
+        console.log(touchCoords+" - touch coords");
+
+        if (this.lastCoord === null) {
+            this.lastCoord = touchCoords;
+        }
+        else {
+            const offsetDifference = touchCoords - this.lastCoord;
+            const offsetValue = Math.abs(offsetDifference);
+            if (currentImageIndex !== 0 && offsetDifference > 0 && offsetValue > 50) {
+                this.setState(prevState => ({currentImageIndex: prevState.currentImageIndex - 1}));
+                this.lastCoord = null;
+            }
+            else if (currentImageIndex < 2 && offsetDifference < 0 && offsetValue > 50) {
+                this.setState(prevState => ({currentImageIndex: prevState.currentImageIndex + 1}));
+                this.lastCoord = null;
+            }
+            this.lastCoord = null;
+        }
     }
 
     handleWrapperHover = (e) => {
@@ -63,6 +85,10 @@ class ProductSlider extends Component {
             )
     }
 
+    componentDidMount() {
+        this.lastCoord = null;
+    }
+
     render() {
         const { productToShow, currentImageIndex, arrowsHovered } = this.state;
         return (
@@ -70,7 +96,8 @@ class ProductSlider extends Component {
                 className={styles.sliderWrapper}
                 onMouseEnter={this.handleWrapperHover}
                 onMouseLeave={this.handleWrapperHover}
-                onTouchStart={e => this.handleScrollOnImg(e)}
+                onTouchStart={e => this.handleTouchOnSlider(e)}
+                onTouchEnd={e => this.handleTouchOnSlider(e)}
             >
                 <div className={styles.itemToShowIdentifiersWrapper}>
                     <div className={styles.identifiers}>
