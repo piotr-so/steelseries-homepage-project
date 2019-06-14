@@ -8,6 +8,7 @@ import hamburgerMenu from "../assets/hamburger.svg";
 import cancelIco from "../assets/cancel-ico.svg";
 import basket from "../assets/Basket.svg";
 import userImg from "../assets/Male User.svg";
+import {smartphoneAndLandscape, mediumUp} from '../components/MediaQueries';
 
 class Header extends Component {
     state = {
@@ -23,7 +24,7 @@ class Header extends Component {
         return (
             <header className={styles.header}>
                 <div className={styles.appHeader}>
-                    <MediaQuery maxWidth={799}>
+                    <MediaQuery {...smartphoneAndLandscape}>
                         <img
                             src={this.state.isVisible ? cancelIco : hamburgerMenu}
                             className={this.state.isVisible ? styles.cancelIco : undefined}
@@ -36,7 +37,7 @@ class Header extends Component {
                         <img src={logo} alt="logo" />
                     </div>
 
-                    <MediaQuery minWidth={800}>
+                    <MediaQuery {...mediumUp}>
                         <Navigation />
                     </MediaQuery>
 
@@ -45,12 +46,12 @@ class Header extends Component {
                             <div className={styles.indicatorValue}>2</div>
                         </div>
                         <a href="#"><img href="#" src={basket} alt="basket" /></a>
-                        <MediaQuery minWidth={800}>
+                        <MediaQuery {...mediumUp}>
                             <img src={userImg} alt="user" />
                         </MediaQuery>
                     </div>
                 </div>
-                <MediaQuery maxWidth={799}>
+                <MediaQuery {...smartphoneAndLandscape}>
                     <div className={`${styles.expandedMenu} ${this.state.isVisible ? styles.visible : styles.hidden}`}>
                         <MobileNav shouldResetChildren={this.state.isVisible} />
                     </div>

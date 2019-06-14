@@ -1,3 +1,4 @@
+@import 'media_query';
 @keyframes reveal {
     from {opacity: 0;}
     to {opacity: 1;}
@@ -5,36 +6,37 @@
 
 .sliderWrapper {
     display: grid;
-    @media only screen and (max-width: 799px) {
-        padding-top: 77px;
+    @include for-size(smartphone-and-landscape) {
+        position: relative;
+        padding-top: 50px;
     }
 
-    @media only screen and (min-width: 800px) {    
+    @include for-size(medium-up) {    
         grid-template-columns: 87px 2fr 2fr;
-        height: 630px;
-        margin: 0 115px;
+        // height: 630px;
+        margin: 77px 115px 0px 115px;
     }
     
     
-    @media only screen and (min-width: 800px) and (max-width: 950px) {
-        margin: 0 20px 0 20px;
+    @include for-size(medium-only) {
+        margin: 77px 20px 0 20px;
         
     }
     
-    @media screen and (min-width: 1400px) {
+    @include for-size(big-screen) {
         width: 1170px;
-        margin: 0 auto;
+        margin: 77px auto 0 auto;
     }
 }
 
 .itemToShowIdentifiersWrapper {
-    @media only screen and (max-width: 799px) {
+    @include for-size(smartphone-and-landscape) {
         display: flex;
         justify-content: center;
         grid-row: 2;  
     }
 
-    @media only screen and (min-width: 800px) {
+    @include for-size(medium-up) {
         display: grid;
         grid-template-columns: 1fr 2fr;
         grid-template-rows: 2fr 1fr 2fr;
@@ -45,7 +47,7 @@
     .identifiers {
         display: flex;
 
-        @media only screen and (min-width: 800px) {
+        @include for-size(medium-up) {
             flex-direction: column;
             justify-content: space-evenly;
             height: inherit;
@@ -96,51 +98,71 @@
 
 .slidePrev,
 .slideNext {
+    cursor: pointer;
     width: 77px;
     height: 77px;
     background: rgba(255, 255, 255, 0.02);
     border-radius: 50%;
-    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    z-index: 1;
+    transition: all .3s;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    @include for-size(medium-up) {
+        position: absolute;
+    }
 }
 
 .slidePrev {
-    grid-row: 1/2;
-    grid-column: 2/2;
-    align-self: end;
-    user-select: none;
+    // grid-row: 1/2;
+    // grid-column: 2/2;
+    // align-self: end;
 
-    @media only screen and (max-width: 799px) {
+    @include for-size(medium-up) {
+        top: 135px;
+        left: -25px;
+    }
+
+    @include for-size(smartphone-and-landscape) {
         position: absolute;
-        top: 320px;
-        left: 5px;
+        top: 290px;
+        left: 15px;
         transform: rotate(-90deg);
     }
 }
 
 .slideNext {
-    grid-row: 3/3;
-    grid-column: 2/2;
-    user-select: none;
+    // grid-row: 3/3;
+    // grid-column: 2/2;
 
-    @media only screen and (max-width: 799px) {
+    @include for-size(medium-up) {
+        bottom: 135px;
+        left: -25px;
+    }
+
+    @include for-size(smartphone-and-landscape) {
         position: absolute;
-        top: 320px;
-        right: 5px;
+        top: 290px;
+        right: 15px;
         transform: rotate(-90deg);
     }
 }
 
-.slidePrevActive {
-    @extend .slidePrev;
-    background: rgba(255, 255, 255, 0.15);
-    transition: all .3s;
-}
+// .slidePrevActive {
+//     @extend .slidePrev;
+//     background: rgba(255, 255, 255, 0.15);
+//     transition: all .3s;
+// }
 
-.slideNextActive {
-    @extend .slideNext;
-    background: rgba(255, 255, 255, 0.15);
-    transition: all .3s;
-}
+// .slideNextActive {
+//     @extend .slideNext;
+//     background: rgba(255, 255, 255, 0.15);
+//     transition: all .3s;
+// }
 
 .arrowUp {
     display: block;
@@ -155,14 +177,39 @@
     transform: rotate(180deg);
 }
 
-.productImage {
-    align-self: center;
-    justify-self: center;
-    animation: reveal .7s;
+// .productImage {
+//     align-self: center;
+//     justify-self: center;
+//     animation: reveal .7s;
 
-    @media only screen and (max-width: 799px) {
+//     @include for-size(smartphone-and-landscape) {
+//         max-width: 150px;
+//     }
+// }
+
+.productImgWrapper {
+    justify-self: center;
+    width: 277px;
+    
+    
+    @include for-size(smartphone-and-landscape) {
         max-width: 150px;
     }
+
+    @include for-size(medium-up) {
+        position: relative;
+    }
+    
+    img {
+        @include for-size(smartphone-and-landscape) {
+            max-width: 150px;
+        }
+
+        animation: reveal .7s;
+        pointer-events: none;
+        z-index: 2;
+    }
+    
 }
 
 .productDescription {
@@ -172,8 +219,8 @@
     font-family: Arial, sans-serif;
     animation: reveal .5s; 
 
-    @media only screen and (max-width: 799px) {
-        padding: 10px 10px 0 10px;
+    @include for-size(smartphone-and-landscape) {
+        padding: 10px 30px 0 30px;
     }
 
     
@@ -185,7 +232,7 @@
         margin: 0 0 17.5px 0;
         opacity: 1;
 
-        @media only screen and (max-width: 799px) {
+        @include for-size(smartphone-and-landscape) {
             font-size: 3rem;
             text-align: center;
             margin: 0;
@@ -194,12 +241,13 @@
     }
 
     p {
+        max-width: 560px;
         color: #78787B;
         font-size: 1.8rem;
         line-height: 2.5rem;
 
-        @media only screen and (max-width: 799px) {
-            margin: 0;
+        @include for-size(smartphone-and-landscape) {
+            margin: 10px auto;
         }
     }
 
@@ -212,7 +260,7 @@
         border-radius: 5px;
         margin-top: 10px;
 
-        @media only screen and (max-width: 799px) {
+        @include for-size(smartphone-and-landscape) {
             margin: 0 auto;
         }
     }

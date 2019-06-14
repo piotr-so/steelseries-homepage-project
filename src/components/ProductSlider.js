@@ -10,17 +10,17 @@ const itemsForSlider = [
     {
         name: "SIBERIA 200",
         image: headset,
-        description: "The Siberia 200 gaming headset combines the comfort and sound of the best-selling Siberia V2 with quality updates, reclaiming its title as the best gaming headset in eSports and PC gaming",
+        description: "The Siberia 200 gaming headset combines the comfort and sound of the best-selling Siberia V2 with quality updates, reclaiming its title as the best gaming headset in eSports and PC gaming.",
     },
     {
         name: "ARCTIS 5",
         image: keyboard,
-        description: "Specifically designed for the PC Gamer, Arctis 5 combines independent game and chat control, cutting-edge DTS surround sound, and dual zone RGB illumination to create the perfect audio solution for your battlestation.",
+        description: "Specifically designed for the PC Gamer, Arctis 5 combines independent game and chat control, cutting-edge DTS surround sound, and dual zone RGB illumination.",
     },
     {
         name: "RIVAL 500",
         image: mice,
-        description: "The Rival 500 is the first MOBA/MMO mouse designed to function with the natural movements of your hand. Featuring a next-gen button layout, flickdown switches, and tactile alerts, the Rival 500 helps you react quickly and effectively to anything thrown your way.",
+        description: "The Rival 500 is the first MOBA/MMO mouse designed to function with the natural movements of your hand. It helps you react quickly and effectively to anything thrown your way.",
     }
 ];
 
@@ -29,31 +29,40 @@ class ProductSlider extends Component {
     state = {
         productToShow: [...itemsForSlider],
         currentImageIndex: 0,
-        arrowsHovered: false,
     }
 
     slideToNext = (e) => {
-        this.state.currentImageIndex < itemsForSlider.length - 1 && (
+        if (this.state.currentImageIndex < itemsForSlider.length - 1) {
             this.setState(prevState => ({
                 currentImageIndex: prevState.currentImageIndex + 1
             }))
-        )
+        }
+        else {
+            this.setState({
+                currentImageIndex: 0
+            })
+        }
     }
 
     slideToPrev = (e) => {
-        this.state.currentImageIndex > 0 && (
+        if (this.state.currentImageIndex > 0) {
             this.setState(prevState => ({
                 currentImageIndex: prevState.currentImageIndex - 1
             }))
-        )
+        }
+        else {
+            this.setState({
+                currentImageIndex: itemsForSlider.length - 1
+            })
+        }
     }
 
 
     handleTouchOnSlider = (e) => {
         const { currentImageIndex } = this.state;
-        const touchCoords = e.changedTouches[e.changedTouches.length-1].pageX;
-        console.log(this.lastCoord+" - last Coord")
-        console.log(touchCoords+" - touch coords");
+        const touchCoords = e.changedTouches[e.changedTouches.length - 1].pageX;
+        // console.log(this.lastCoord + " - last Coord")
+        // console.log(touchCoords + " - touch coords");
 
         if (this.lastCoord === null) {
             this.lastCoord = touchCoords;
@@ -61,28 +70,24 @@ class ProductSlider extends Component {
         else {
             const offsetDifference = touchCoords - this.lastCoord;
             const offsetValue = Math.abs(offsetDifference);
-            if (currentImageIndex !== 0 && offsetDifference > 0 && offsetValue > 50) {
-                this.setState(prevState => ({currentImageIndex: prevState.currentImageIndex - 1}));
-                this.lastCoord = null;
+            if (offsetDifference > 0 && offsetValue > 50) {
+                if (currentImageIndex !== 0) {
+                    this.setState(prevState => ({ currentImageIndex: prevState.currentImageIndex - 1 }));
+                }
+                else if (currentImageIndex === 0) {
+                    this.setState({ currentImageIndex: itemsForSlider.length - 1 })
+                }
             }
-            else if (currentImageIndex < 2 && offsetDifference < 0 && offsetValue > 50) {
-                this.setState(prevState => ({currentImageIndex: prevState.currentImageIndex + 1}));
-                this.lastCoord = null;
+            else if (offsetDifference < 0 && offsetValue > 50) {
+                if (currentImageIndex < itemsForSlider.length - 1) {
+                    this.setState(prevState => ({ currentImageIndex: prevState.currentImageIndex + 1 }));
+                }
+                else if (currentImageIndex === itemsForSlider.length - 1) {
+                    this.setState({ currentImageIndex: 0 })
+                }
             }
             this.lastCoord = null;
         }
-    }
-
-    handleWrapperHover = (e) => {
-        this.state.arrowsHovered === false ? (
-            this.setState(prevState => ({
-                arrowsHovered: !prevState.arrowsHovered
-            }))
-        ) : (
-                this.setState(prevState => ({
-                    arrowsHovered: !prevState.arrowsHovered
-                }))
-            )
     }
 
     componentDidMount() {
@@ -90,12 +95,10 @@ class ProductSlider extends Component {
     }
 
     render() {
-        const { productToShow, currentImageIndex, arrowsHovered } = this.state;
+        const { productToShow, currentImageIndex } = this.state;
         return (
             <div
                 className={styles.sliderWrapper}
-                onMouseEnter={this.handleWrapperHover}
-                onMouseLeave={this.handleWrapperHover}
                 onTouchStart={e => this.handleTouchOnSlider(e)}
                 onTouchEnd={e => this.handleTouchOnSlider(e)}
             >
@@ -112,25 +115,21 @@ class ProductSlider extends Component {
                         })
                         }
                     </div>
-                    {currentImageIndex !== 0 && (
-                        <div className={arrowsHovered ? styles.slidePrevActive : styles.slidePrev} onClick={this.slideToPrev}>
-                            <img src={arrow} className={styles.arrowUp} alt="arrow-prev" />
-                        </div>
-                    )
-                    }
-                    {currentImageIndex !== 2 && (
-                        <div className={arrowsHovered ? styles.slideNextActive : styles.slideNext} onClick={this.slideToNext}>
-                            <img src={arrow} className={styles.arrowDown} alt="arrow-next" />
-                        </div>
-                    )
-                    }
                 </div>
-                <img
-                    src={productToShow[currentImageIndex].image}
-                    key={this.state.currentImageIndex + "img"}
-                    className={styles.productImage}
-                    alt={productToShow[currentImageIndex].name}
-                />
+                <div className={styles.productImgWrapper}>
+                    <img
+                        src={productToShow[currentImageIndex].image}
+                        key={this.state.currentImageIndex + "img"}
+                        alt={productToShow[currentImageIndex].name}
+                    />
+                    <div className={styles.slidePrev} onClick={this.slideToPrev}>
+                        <img src={arrow} className={styles.arrowUp} alt="arrow-prev" />
+                    </div>
+
+                    <div className={styles.slideNext} onClick={this.slideToNext}>
+                        <img src={arrow} className={styles.arrowDown} alt="arrow-next" />
+                    </div>
+                </div>
                 <div className={styles.productDescription} key={this.state.currentImageIndex + "descSec"}>
                     <h1>{productToShow[currentImageIndex].name}</h1>
                     <p>{productToShow[currentImageIndex].description}</p>
