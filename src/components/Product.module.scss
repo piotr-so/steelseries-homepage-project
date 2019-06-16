@@ -1,3 +1,4 @@
+@import 'media_query';
 .element {
     position: absolute;
     width: 320px;
@@ -105,11 +106,17 @@
 .right {
     z-index: 0;
     transform: translate(41%, 0);
-    @include cardHover;
+
+    @include for-size(medium-up) {
+        @include cardHover;       
+    }  
 }
   
 .left {
     z-index: 1;
     transform: translate(-141%, 0);
-    @include cardHover;
+    
+    @include for-size(medium-up) {
+        @include cardHover;       
+    }
 }

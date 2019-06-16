@@ -43,17 +43,17 @@ class ProductCarousel extends Component {
     switchElementsStyle = (elemIdx) => {
         this.setState({
             elementsStyle: {
-                ['elem'+ elemIdx]: 'center',
-                ['elem'+ ((elemIdx + 1) % 3)]: 'right',
-                ['elem'+ ((elemIdx + 2) % 3)]: 'left',
-            }  
+                ['elem' + elemIdx]: 'center',
+                ['elem' + ((elemIdx + 1) % 3)]: 'right',
+                ['elem' + ((elemIdx + 2) % 3)]: 'left',
+            }
         }, () => this.props.whichIsCentered(checker(this.state.elementsStyle)));
         // callback information for ProductGuide component
-        
+
         const checker = (elemObj) => {
             const centeredElem = Object.keys(elemObj).find(key => elemObj[key] === 'center');
-            const nameOfCentered = this.state.carouselElements[centeredElem.substring(4,5)].name;
-            return nameOfCentered            
+            const nameOfCentered = this.state.carouselElements[centeredElem.substring(4, 5)].name;
+            return nameOfCentered
         }
     }
 
@@ -74,12 +74,57 @@ class ProductCarousel extends Component {
         let desciptionRenderTimeout = setTimeout(unlockRender, 500);
     }
 
+    handleTouchOnCarousel = (e) => {
+        const stylesToChange = Object.values(this.state.elementsStyle);
+        const touchCoords = e.changedTouches[e.changedTouches.length - 1].pageX;
+
+        if (this.lastCoord === null) {
+            this.lastCoord = touchCoords;
+        }
+        else {
+            const offsetDifference = touchCoords - this.lastCoord;
+            const offsetValue = Math.abs(offsetDifference);
+            if (offsetDifference > 0 && offsetValue > 50) {
+                const firstElement = stylesToChange.shift();
+                stylesToChange.push(firstElement);
+
+                const elementsStyleCopy = {...this.state.elementsStyle};
+                const newElementsStyle = Object.fromEntries(Object.entries(elementsStyleCopy).map(([key], idx) => [key, stylesToChange[idx]]));
+
+                this.setState({
+                    elementsStyle: {...newElementsStyle}
+                });
+
+            }
+            else if (offsetDifference < 0 && offsetValue > 50) {
+                const lastElement = stylesToChange.pop();
+                stylesToChange.unshift(lastElement);
+
+                const elementsStyleCopy = {...this.state.elementsStyle};
+                const newElementsStyle = Object.fromEntries(Object.entries(elementsStyleCopy).map(([key], idx) => [key, stylesToChange[idx]]));
+
+                this.setState({
+                    elementsStyle: {...newElementsStyle}
+                });
+            }
+            this.lastCoord = null;
+        }
+    }
+
+    componentDidMount() {
+        this.lastCoord = null;
+    }
+
     render() {
         const { carouselElements } = this.state;
         return (
             <div className={styles.carousel}>
                 <h1>SELECT PRODUCT</h1>
-                <div className={styles.wrapper}>
+                <div
+                    className={styles.wrapper}
+                    onTouchStart={e => this.handleTouchOnCarousel(e)}
+                    onTouchEnd={e => this.handleTouchOnCarousel(e)}
+                >
                     {carouselElements.map((element, mapIdx) => (
                         <Product
                             key={`id_0${element.index}`}

@@ -1,9 +1,14 @@
+@import 'media_query';
 .carousel {
     position: relative;
-    width: 904px;
-
+    // width: 904px;
+    width: 100%;
     margin: 102px auto 0;
 
+    @include for-size(smartphone-and-landscape) {
+        overflow: hidden;
+        
+    }
     h1 {
         text-align: center;
         font-family: Arial, sans-serif;
@@ -19,5 +24,11 @@
     position: relative;
     height: 550px;
     margin-top: 46px;
+    width: 100%;
+    
+    @include for-size(smartphone-and-landscape) {
+        transform: scale(0.7);
+        margin-top: 0;   
+    }
 }
 

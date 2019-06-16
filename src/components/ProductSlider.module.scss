@@ -159,6 +159,7 @@
 .productImgWrapper {
     justify-self: center;
     width: 277px;
+    z-index: 1;
     
     
     @include for-size(smartphone-and-landscape) {
