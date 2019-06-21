@@ -1,6 +1,11 @@
+@import 'media_query';
 .wrapper {
     max-width: 915px;
     margin: 171px auto 0 auto;
+
+    @include for-size(smartphone-and-landscape) {
+        margin: 0 auto;
+    }
 
     h1 {
         width: 70%;
@@ -19,6 +24,10 @@
     height: 580px;
     margin: 50px auto 0 auto;
     overflow-y: hidden;
+
+    // @include for-size(smartphone-and-landscape) {
+    //     margin: 50px 15px 0 15px;
+    // }
 }
 
 .card1 {

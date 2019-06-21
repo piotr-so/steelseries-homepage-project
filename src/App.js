@@ -26,7 +26,7 @@ class App extends Component {
         <Header/>
         <ProductSlider />
         <ProductCarousel whichIsCentered={this.setCenteredToRender}/>
-        {/* <ProductGuide productCategory={this.state.productCategory}/> */}
+        <ProductGuide productCategory={this.state.productCategory}/>
         {/* <ProductComparison productCategory={this.state.productCategory}/> */}
         {/* <MostPopular /> */}
       </div>
