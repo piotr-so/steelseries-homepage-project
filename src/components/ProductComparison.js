@@ -1,12 +1,35 @@
 import React, { Component } from 'react';
 import styles from "./ProductComparison.module.scss";
 import productsData from "../assets/data/products-comp-data.json";
+import MediaQuery from "react-responsive";
+import {mediumUp, smartphoneAndLandscape} from '../components/MediaQueries';
+import ProductComparisonMobile from './ProductComparisonMobile';
 
 
 class ProductComparison extends Component {
     state = {
         isFixed: false,
         scrollTimesCounter: 0,
+        availableTimesToScroll: 0,
+    }
+
+    modifyVisibleColumns = () => {
+        const width = window.innerWidth;
+        if (width <= 1110 && this.state.availableTimesToScroll === this.quantityOfProducts - 6) {
+            this.setState({
+                availableTimesToScroll: this.state.availableTimesToScroll + 2
+            })
+        }
+        else if (width > 1110 && this.state.availableTimesToScroll !== this.quantityOfProducts - 6) {
+            this.setState({
+                availableTimesToScroll: this.quantityOfProducts - 6,
+            })
+            if (this.state.scrollTimesCounter > this.state.availableTimesToScroll) {
+                this.setState({
+                    scrollTimesCounter: this.state.availableTimesToScroll
+                })
+            }
+        }  
     }
 
     toggleStickyBarVisibility = () => {
@@ -14,93 +37,113 @@ class ProductComparison extends Component {
     }
 
     checkStickyBarPos = () => {
-        const tableELemPosToWindow = this.tableElement.getBoundingClientRect().top; 
+        if (this.tableElement) {
+            const tableELemPosToWindow = this.tableElement.getBoundingClientRect().top; 
 
-        const { isFixed } = this.state;
-        // console.log(tableELemPosToWindow);
-        const quantityOfFeaturesRows = productsData[this.props.productCategory].features.length;
-        // console.log(quantityOfFeaturesRows+"features_rows")
-        const productHeadHeight = 124;
-        const productColumnPadding = 100;
-        const rowHeight = 113;
-        const TwoLastElementsVisibleBreakpoint = -(productHeadHeight + productColumnPadding + (rowHeight * quantityOfFeaturesRows - 4 * rowHeight) + 23);
-
-        if (isFixed === false) {
-            if (tableELemPosToWindow < 0 && tableELemPosToWindow > TwoLastElementsVisibleBreakpoint) this.toggleStickyBarVisibility();   
-        }
-        else {
-            if (tableELemPosToWindow >= 0 || tableELemPosToWindow <= TwoLastElementsVisibleBreakpoint) this.toggleStickyBarVisibility();
-        }
+            const { isFixed } = this.state;
+            const quantityOfFeaturesRows = productsData[this.props.productCategory].features.length;
+            const productHeadHeight = 124;
+            const productColumnPadding = 100;
+            const rowHeight = 113;
+            const TwoLastElementsVisibleBreakpoint = -(productHeadHeight + productColumnPadding + (rowHeight * quantityOfFeaturesRows - 4 * rowHeight) + 23);
+    
+            if (isFixed === false) {
+                if (tableELemPosToWindow < 0 && tableELemPosToWindow > TwoLastElementsVisibleBreakpoint) this.toggleStickyBarVisibility();   
+            }
+            else {
+                if (tableELemPosToWindow >= 0 || tableELemPosToWindow <= TwoLastElementsVisibleBreakpoint) this.toggleStickyBarVisibility();
+            }
+        }     
     }
 
     clickTranslateX = (value) => {
-        const { scrollTimesCounter } = this.state;
-        const { quantityOfProducts, availableTimesToScroll } = this;
+        const { scrollTimesCounter, availableTimesToScroll } = this.state;
+        const { quantityOfProducts } = this;;
 
-        if (quantityOfProducts > 6 &&
-            (scrollTimesCounter > 0 || scrollTimesCounter < availableTimesToScroll)) {
-            this.setState(prevState =>({
-                scrollTimesCounter: prevState.scrollTimesCounter + value
-            }));
-        } 
+        if (quantityOfProducts > 6) {
+            if (scrollTimesCounter > 0 && value === -1) {
+                this.setState(prevState =>({
+                    scrollTimesCounter: prevState.scrollTimesCounter + value
+                }));
+            }
+            else if (scrollTimesCounter < availableTimesToScroll && value === 1) {
+                this.setState(prevState =>({
+                    scrollTimesCounter: prevState.scrollTimesCounter + value
+                }));
+            }
+        }
     }
 
     componentDidMount() {
         this.tableElement = document.getElementsByClassName(styles.product)[0];
-        // console.log(this.tableElement.getBoundingClientRect().top+"- didmount");
         this.quantityOfProducts = productsData[this.props.productCategory].products.length;
-        this.availableTimesToScroll = this.quantityOfProducts - 6;
+
+        // availableTimesToScroll control depending on media query breakpoint
+        if (!this.tableElement) {
+            this.setState({availableTimesToScroll: this.quantityOfProducts - 1})
+        }
+        else {
+            this.setState({
+                availableTimesToScroll: this.quantityOfProducts - 6
+            })
+        }
+        
         window.addEventListener('scroll', this.checkStickyBarPos);
+        window.addEventListener('resize', this.modifyVisibleColumns);
     }
 
     componentDidUpdate(prevProps) {
-        
+        // Update tableElement for stickyBar when media query breakpoints change
+        this.tableElement = document.getElementsByClassName(styles.product)[0];
+
         if (this.props.productCategory !== prevProps.productCategory) {
-            console.log('changed');
             window.removeEventListener('scroll', this.checkStickyBarPos);
             this.tableElement = document.getElementsByClassName(styles.product)[0];
-            // console.log(this.tableElement.getBoundingClientRect().top+"nowy");
             this.quantityOfProducts = productsData[this.props.productCategory].products.length;
-            this.availableTimesToScroll = this.quantityOfProducts - 6;
             window.addEventListener('scroll', this.checkStickyBarPos);
 
             this.setState({
-                scrollTimesCounter: 0
+                scrollTimesCounter: 0,
+                availableTimesToScroll: this.quantityOfProducts - 6
             })
         }   
     }
 
     render() {
         const { productCategory } = this.props;
-        const { availableTimesToScroll } = this;
-        const { isFixed, scrollTimesCounter } = this.state;
+        const { isFixed, scrollTimesCounter, availableTimesToScroll } = this.state;
         return (
             // Container width control depending on quantity of elements rendered (ensuring enough space is left for floating)
-            <div className={styles.wrapper} style={{ 'width': `${130 + 160 * productsData[productCategory].products.length}px` }}>
+            // style={{ 'width': `${130 + 160 * productsData[productCategory].products.length}px` }}
+            <div className={styles.wrapper} >
                 <header className={styles.title}>
                     <h1>COMPARE OUR GAMING MOUSE LINEUP</h1>
                 </header>
+                <MediaQuery {...mediumUp}>
                 <div className={styles.productsTable}>
                 {/*Sticky bar for scrolling table vertically */}
-                    <div className={`${styles.fixedFeaturesCover} ${isFixed ? styles.visible : styles.hidden}`}></div>
                     <div className={`${styles.stickyBar} ${isFixed ? styles.visible : styles.hidden}`}>
-                        <div className={styles.stickyElementsWrapper} style={{'width': `${160 * productsData[productCategory].products.length}px`, 'transform': `translateX(-${this.state.scrollTimesCounter * 160}px)`}}>
-                            {productsData[productCategory].products.map((singleProduct, singleProductIdx) =>
-                                <div 
-                                    className={`
-                                    ${styles.stickyElement} 
-                                    ${singleProductIdx % 2 === 0 ? styles.headColorVar2 : singleProductIdx % 2 !== 0 && styles.headColorVar1}
-                                    `}
-                                    key={`sticky-item-${singleProductIdx}`}
-                                >
-                                    <h2>{singleProduct.name.toUpperCase()}</h2>
-                                    <div className={styles.stickyElementImg} style={{ 'background': `url(${singleProduct.url}) center no-repeat / cover` }} />
-                                </div>
-                            )}
+                        <div className={styles.featuresCover}></div>
+                        <div className={styles.stickyBarHeader}>
+                            <div className={styles.stickyElementsWrapper} style={{'width': `${160 * productsData[productCategory].products.length}px`, 'transform': `translateX(-${this.state.scrollTimesCounter * 160}px)`}}>
+                                {productsData[productCategory].products.map((singleProduct, singleProductIdx) =>
+                                    <div 
+                                        className={`
+                                        ${styles.stickyElement} 
+                                        ${singleProductIdx % 2 === 0 ? styles.headColorVar2 : singleProductIdx % 2 !== 0 && styles.headColorVar1}
+                                        `}
+                                        key={`sticky-item-${singleProductIdx}`}
+                                    >
+                                        <h2>{singleProduct.name.toUpperCase()}</h2>
+                                        <div className={styles.stickyElementImg} style={{ 'background': `url(${singleProduct.url}) center no-repeat / cover` }} />
+                                    </div>
+                                )}
+                            </div>
+                            <div className={`${styles.arrowLeft} ${scrollTimesCounter === 0 && styles.hidden}`} onClick={() => this.clickTranslateX(-1)}></div>
+                            <div className={`${styles.arrowRight} ${scrollTimesCounter === availableTimesToScroll && styles.hidden}`} onClick={() => this.clickTranslateX(1)}></div>    
                         </div>
-                        <div className={`${styles.arrowLeft} ${scrollTimesCounter === 0 && styles.hidden}`} onClick={() => this.clickTranslateX(-1)}></div>
-                        <div className={`${styles.arrowRight} ${scrollTimesCounter === availableTimesToScroll && styles.hidden}`} onClick={() => this.clickTranslateX(1)}></div>    
                     </div>
+               
                 {/*  */}
                 {/* Features column */}
                     <ul className={styles.productsFeatures}>
@@ -141,6 +184,16 @@ class ProductComparison extends Component {
                         <div className={`${styles.arrowRight} ${scrollTimesCounter === availableTimesToScroll && styles.hidden}`} onClick={() => this.clickTranslateX(1)}></div>
                     </div>
                 </div>
+                </MediaQuery>
+                <MediaQuery {...smartphoneAndLandscape}>
+                    <ProductComparisonMobile
+                        products={productsData[productCategory].products}
+                        availableTimesToScroll={this.state.availableTimesToScroll}
+                        scrollTimesCounter={this.state.scrollTimesCounter}
+                        clickTranslateX={this.clickTranslateX}
+                        setState={e => this.setState(e)}
+                    />
+                </MediaQuery>
             </div>
         )
     }

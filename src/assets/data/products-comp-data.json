@@ -1,10 +1,10 @@
 {
     "Mouse": {
-        "features": ["SensorType", "Illumination", "Cover Material", "Ideal Grip Style", "Buttons", "CPI & IPS", "Gamesense", "Engine Support", "Double Shot Injected Rubber Sides", "Unique Features"],
+        "features": ["Sensor Type", "Illumination", "Cover Material", "Ideal Grip Style", "Buttons", "CPI & IPS", "Gamesense", "Engine Support", "Double Shot Injected Rubber Sides", "Unique Features"],
         "products": [
             {
                 "name": "rival-700",
-                "url": "/ProductsComparison/Mouse/rival-700.png",
+                "url": "/ProductsComparison/Mouse/hi-res/rival-700-hi-res@2x.png",
                 "Sensor Type": "Optical, Laser sensor sold separately",
                 "Illumination": "2 RGB Zones",
                 "Cover Material": "Matte Black",
@@ -18,7 +18,7 @@
             },
             {
                 "name": "rival-300",
-                "url": "/ProductsComparison/Mouse/rival-300.png",
+                "url": "/ProductsComparison/Mouse/hi-res/rival-300-hi-res@2x.png",
                 "Sensor Type": "Optical",
                 "Illumination": "2 RGB Zones",
                 "Cover Material": "Soft-Touch black, glossy white, matte grey",
@@ -32,7 +32,7 @@
             },
             {
                 "name": "rival-100",
-                "url": "/ProductsComparison/Mouse/rival-100.png",
+                "url": "/ProductsComparison/Mouse/hi-res/rival-100-hi-res@2x.png",
                 "Sensor Type": "Optical",
                 "Illumination": "1 RGB Zone",
                 "Cover Material": "Soft-Touch black, glossy colors",
@@ -46,7 +46,7 @@
             },
             {
                 "name": "sensei-raw",
-                "url": "/ProductsComparison/Mouse/sensei-raw.png",
+                "url": "/ProductsComparison/Mouse/hi-res/sensei-raw-hi-res@2x.png",
                 "Sensor Type": "Laser",
                 "Illumination": "2 single-color zones",
                 "Cover Material": "Soft-Touch black, glossy black",
@@ -60,7 +60,7 @@
             },
             {
                 "name": "sensei",
-                "url": "/ProductsComparison/Mouse/sensei.png",
+                "url": "/ProductsComparison/Mouse/hi-res/sensei-hi-res@2x.png",
                 "Sensor Type": "Laser",
                 "Illumination": "3 RGB zones",
                 "Cover Material": "Metallic",
@@ -74,7 +74,7 @@
             },
             {
                 "name": "sensei-wireless",
-                "url": "/ProductsComparison/Mouse/sensei-wireless.png",
+                "url": "/ProductsComparison/Mouse/hi-res/sensei-wireless-hi-res@2x.png",
                 "Sensor Type": "Laser",
                 "Illumination": "3 RGB zones",
                 "Cover Material": "Soft-Touch",
@@ -88,7 +88,7 @@
             },
             {
                 "name": "Test1",
-                "url": "/ProductsComparison/Mouse/sensei.png",
+                "url": "/ProductsComparison/Mouse/hi-res/sensei-hi-res@2x.png",
                 "Sensor Type": "Laser",
                 "Illumination": "3 RGB zones",
                 "Cover Material": "Metallic",
@@ -102,7 +102,7 @@
             },
             {
                 "name": "Test2",
-                "url": "/ProductsComparison/Mouse/sensei.png",
+                "url": "/ProductsComparison/Mouse/hi-res/sensei-hi-res@2x.png",
                 "Sensor Type": "Laser",
                 "Illumination": "3 RGB zones",
                 "Cover Material": "Metallic",
@@ -116,7 +116,7 @@
             },
             {
                 "name": "Test3",
-                "url": "/ProductsComparison/Mouse/sensei.png",
+                "url": "/ProductsComparison/Mouse/hi-res/sensei-hi-res@2x.png",
                 "Sensor Type": "Laser",
                 "Illumination": "3 RGB zones",
                 "Cover Material": "Metallic",
@@ -130,7 +130,7 @@
             },
             {
                 "name": "Test4",
-                "url": "/ProductsComparison/Mouse/sensei.png",
+                "url": "/ProductsComparison/Mouse/hi-res/sensei-hi-res@2x.png",
                 "Sensor Type": "Laser",
                 "Illumination": "3 RGB zones",
                 "Cover Material": "Metallic",

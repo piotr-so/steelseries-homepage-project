@@ -24,6 +24,7 @@
     height: 580px;
     margin: 50px auto 0 auto;
     overflow-y: hidden;
+    z-index: 1;
 
     // @include for-size(smartphone-and-landscape) {
     //     margin: 50px 15px 0 15px;

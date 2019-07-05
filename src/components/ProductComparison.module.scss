@@ -1,13 +1,30 @@
+@import 'media_query';
 .wrapper {
     position: relative;
-    max-width: 1140px;
+    // max-width: 1140px;
+    max-width: 1090px;
     margin: 50px auto 0 auto;
+
+    @include for-size (smartphone-and-landscape) {
+        overflow: hidden;
+        min-width: 320px;
+        max-width: 60%;
+        margin: 50px auto 0 auto;
+    }
+
+    @include for-size (table_breakpoint1) {
+        max-width: calc(130px + 160px * 4);
+    }
 }
 
 .title {
-    position: absolute;
     top: 55px;
     left: 200px;
+
+    @include for-size (medium-up) {
+        position: absolute;
+    }
+
     h1 {
         width: 100%;
         text-align: center;
@@ -23,28 +40,29 @@
 .productsTable {
     position: relative;
     background: url('../assets/Background-b.png') 130px 195px no-repeat ;
-    background-size: 100%;
-    
+    background-size: 100%;   
 }
 
-.fixedFeaturesCover {
-    display: inline-block;
+.stickyBar {
+    display: flex;
     position: sticky;
     top: 0;
+    width: inherit;
+    z-index: 3;
+}
+
+.featuresCover {
+    display: inline-block;
     width: 130px;
     height: 193px;
     border-bottom: 1px solid #4D4D4F;
     background-color: #282829;
-    z-index: 3;
+    flex-shrink: 0;
 }
 
-.stickyBar {
-    display: inline-block;
-    position: sticky;
+.stickyBarHeader {
+    position: relative;
     overflow: hidden;
-    max-width: 960px;
-    top: 0;
-    z-index:3;
 
     div {
         float: left;
@@ -86,10 +104,14 @@
     position: absolute;
     width: 130px;
     text-align: end;
-    top: 467px;
+ 
     left: 0;
     padding: 0 30px 0 0;
     margin: 0;
+
+    @include for-size (medium-up) {
+        top: 467px;
+    }
 
     li {
         height: 113px;
@@ -103,7 +125,7 @@
 .productsWrapper {
     position: relative;
     overflow-x: hidden;
-    width: 960px;
+    max-width: 960px;
     // -webkit-overflow-scrolling: touch;
     margin-left: 130px;
     &::-webkit-scrollbar-track {

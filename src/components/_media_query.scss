@@ -11,6 +11,11 @@
     @else if $size == desktop {
         @media (min-width: 951px) and (max-width: 1399px) { @content; }
     }
+    // Specific breakpoint for table component
+    @else if $size == table_breakpoint1 {
+        @media (min-width: 850px) and (max-width: 1110px) { @content; }
+    }
+    //
     @else if $size == big-screen {
         @media (min-width: 1400px) { @content; }
     }

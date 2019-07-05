@@ -1,0 +1,116 @@
+.wrapper {
+    position: relative;
+}
+
+.arrow {
+    position: absolute;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    top: 100px;
+    background-color: rgba(#111111, 0.2);
+    border-radius: 50%;
+    z-index: 1;
+
+    &::after {
+        content: '';
+        mask: url('../assets/left-arrow.svg');
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: 20px;
+        left: 20px;
+        background-color: #AEAEB2;
+        opacity: 0.8;
+    }
+}
+
+.arrowLeft {
+    @extend .arrow;
+    left: 0;
+    &::after {
+        transform: rotate(360deg) scale(1.5);
+    }
+}
+
+.arrowRight {
+    @extend .arrow;
+    right: 0;
+    &::after {
+        transform: rotate(180deg) scale(1.5);
+    }
+}
+
+.productsWrapper {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    transition: transform 0.5s ease-in-out;
+}
+.product {
+    position: relative;
+    min-width: 100%;
+    margin-right: 20px;
+}
+.header {
+    width: 100%;
+    h2 {
+        text-align: center;
+        font-size: 3rem;
+        color: #4D4D4F;
+        margin-bottom: 20px;
+    }
+
+    .productImg {
+        max-width: 280px;
+        height: 100px;
+        margin: 20px auto;
+    }
+}
+
+.featuresWrapper {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.singleFeature {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    height: 40px;
+}
+
+.featureName {
+    width: 40%;
+    font-size: 1.3rem;
+    color: #505052;
+}
+
+.featureContent {
+    width: 60%;
+    font-size: 1.3rem;
+    color: #AEAEB2;
+    text-align: end;
+}
+
+.tickIcon {
+    height: 20px;
+    &::after {
+        content: "";
+        mask: url('../assets/tick.svg');
+        position: absolute;
+        right: 0;
+        width: 25px;
+        height: 20px;
+        background-color: #505052;
+    }
+}
+
+.visible {
+    visibility: visible;
+}
+
+.hidden {
+    visibility: hidden;
+}
