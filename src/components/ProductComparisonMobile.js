@@ -49,6 +49,10 @@ class ProductComparisonMobile extends Component {
         this.lastCoord = null;
         window.addEventListener('resize', this.changeWindowWidth);
     }
+
+    componentWillUnmount(){
+        window.removeEventListener('resize', this.changeWindowWidth);
+    }
     render() {
         const { products, scrollTimesCounter, availableTimesToScroll, clickTranslateX } = this.props;
         return (
