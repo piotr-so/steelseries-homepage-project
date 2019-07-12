@@ -28,7 +28,7 @@ class App extends Component {
         <ProductCarousel whichIsCentered={this.setCenteredToRender}/>
         <ProductGuide productCategory={this.state.productCategory}/>
         <ProductComparison productCategory={this.state.productCategory}/>
-        {/* <MostPopular /> */}
+        <MostPopular />
       </div>
     );
   }

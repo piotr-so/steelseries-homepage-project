@@ -1,3 +1,4 @@
+@import 'media_query';
 @keyframes reveal {
     from {opacity: 0;}
     to {opacity: 1;}
@@ -6,45 +7,95 @@
 .wrapper {
     position: relative;
     font-family: Arial, sans-serif;
-    width: 1171px;
-    height: calc(820px + 132px);
-    margin: 200px auto 0 auto;
+    max-width: 1171px;
+    // height: calc(820px + 132px);
+    margin: 70px auto 0 auto;
+    z-index: 1;
+
+    @include for-size (medium-to-mostPopular_breakpoint1) {
+        transform: scale(0.9);
+        width: 100%;
+    }
 }
 
 .header {
     margin: 0;
     h1 {
-        font-size: 14rem;
+        font-size: 13rem;
         font-weight: 100;
         margin: 0 0 0 23px;
+
+        @include for-size (smartphone-and-landscape) {
+            margin: 0;
+            font-size: 12vw;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        @include for-size (medium-only) {
+            font-size: 10rem;
+        }
+
+        @include for-size (desktop-to-mostPopular_breakpoint1) {
+            font-size: 11rem;
+        }
     }
     color: #252526; 
 }
 
 .productWrapper {
-    position: absolute;
     display: flex;
     height: 660px;
     top: 110px;
     background-color: #252526;
     box-shadow: -26px 29px 40px 15px rgba(17,17,17,0.25);
+    transform: translateY(-50px);
+
+    @include for-size (smartphone-and-medium) {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+    }
+    @include for-size (medium-only) {
+        transform: translateY(-40px);
+    }
+    
+    @include for-size (desktop-to-mostPopular_breakpoint1) {
+        transform: translateY(-40px);
+    }
 }
 
 .imgContainer {
     position: relative;
     user-select: none;
+
+    @include for-size (smartphone-and-medium) {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
     
 
     .spriteContainer {
-        width: 562px;
+        max-width: 562px;
+        height: auto;
         margin-top: 200px;
         overflow: hidden;
+
+        @include for-size (smartphone-and-medium) {
+            max-width: 266px;
+            margin-top: 0;
+        }
 
         img {
             position: relative;
             pointer-events: none;
             z-index: 2;
             animation: reveal .5s;
+
+            @include for-size (smartphone-and-medium) {
+                height: 220px;
+            }
         }
     }
 
@@ -67,10 +118,18 @@
 
     .slidePrev {
         top: 182px;
+        @include for-size (smartphone-and-medium) {
+            top: 0;
+            left: 70%;
+        }
     }
 
     .slideNext {
         bottom: 200px;
+        @include for-size (smartphone-and-medium) {
+            bottom: 0;
+            left: 70%;
+        }
     }
 
     .arrowUp {
@@ -88,12 +147,25 @@
 }
 
 .description {
-    margin: 123px 82px 0 47px;
+    margin: 123px 0 0 47px;
+
+    @include for-size (smartphone-and-medium) {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     h2 {
       font-size: 4.8rem;
       font-weight: 100;
       color: #624C3C;
       margin: 0 0 17px 16px;
+
+      @include for-size (smartphone-and-landscape) {
+        margin-bottom: 0;
+        order: 2;
+    }
     }
 
     .descriptionText {
@@ -101,7 +173,22 @@
         color: #78787B;
         text-indent: 4px;
         line-height: 28px;
-        margin: 0 0 17px 0;
+        margin: 0 82px 17px 0;
+
+        @include for-size (smartphone-and-medium) {
+            max-width: 500px;
+            margin: 10px 20px;
+            font-size: 1.6rem;
+            order: 3;
+        }
+    }
+
+    .deliveryTime {
+        margin-bottom: 10px;
+
+        @include for-size (smartphone-and-landscape) {
+            order: 5;
+        }
     }
 }
 
@@ -109,6 +196,11 @@
     display: flex;
     height: 20px;
     margin-bottom: 53px;
+
+    @include for-size (smartphone-and-medium) {
+        order: 1;
+        margin-bottom: 10px;
+    }
 
     .circle {
         cursor: pointer;
@@ -122,9 +214,15 @@
     }
 }
 
-.purchase {
+.purchaseWrapper {
+    @include for-size (smartphone-and-medium) {
+        order: 4;
+    }
+}
+
+.purchaseWrapperItems {
     display: flex;
-    margin-bottom: 10px;
+    margin-bottom: 10px;   
 
     button {
         position: relative;
@@ -162,6 +260,15 @@
         font-size: 4.7rem;
         color: #3A3A3C;
         margin: 0px 0 0 35px;
+
+        @include for-size (smartphone-and-medium) {
+            font-size: 3.8rem;
+            align-self: center;
+            order: 4;
+        }
+        @include for-size (medium-to-mostPopular_breakpoint1) {
+            font-size: 3.9rem;
+        }
         &::before {
             content: "$";
             position: absolute;

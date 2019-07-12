@@ -2,6 +2,9 @@
     @if $size == smartphone-and-landscape {
         @media (max-width: 849px) { @content; }
     }
+    @else if $size == smartphone-and-medium {
+        @media (max-width: 950px) { @content };
+    }
     @else if $size == medium-only {
         @media (min-width: 850px) and (max-width: 950px) { @content; }
     }
@@ -14,6 +17,14 @@
     // Specific breakpoint for table component
     @else if $size == table_breakpoint1 {
         @media (min-width: 850px) and (max-width: 1110px) { @content; }
+    }
+    //
+    //Specific breakpoint for MostPopular
+    @else if $size == medium-to-mostPopular_breakpoint1 {
+        @media (min-width: 851px) and (max-width: 1200px) { @content; }
+    }
+    @else if $size == desktop-to-mostPopular_breakpoint1 {
+        @media (min-width: 951px) and (max-width: 1200px) { @content; }
     }
     //
     @else if $size == big-screen {

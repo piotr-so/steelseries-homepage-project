@@ -8,6 +8,7 @@ class MostPopular extends Component {
     state = {
         whichProductIsRendered: 0,
         whichVariantIsRendered: 0,
+        windowWidth: 0,
     }
 
     switchColor = (clickedElement) => {
@@ -30,6 +31,22 @@ class MostPopular extends Component {
         }))
     }
 
+    changeWindowWidth = () => {
+        const currentWindowWidth = window.innerWidth;
+        if (currentWindowWidth < 951) {
+            this.setState({ windowWidth: currentWindowWidth });
+        }
+        else {
+            this.setState({ windowWidth: "bigScreen" })
+        }
+    }
+
+    componentDidMount() {
+        this.screenWidth = window.innerWidth;
+        this.setState({ windowWidth: this.screenWidth });
+        window.addEventListener('resize', this.changeWindowWidth);
+    }
+
     render() {
         const { whichProductIsRendered, whichVariantIsRendered } = this.state;
         return (
@@ -38,11 +55,24 @@ class MostPopular extends Component {
                     <h1>MOST POPULAR</h1>
                 </header>
 
-                <div className={styles.productWrapper}>
+                <div
+                    className={styles.productWrapper}
+                    style={this.state.windowWidth !== null ? { "transform": `translatey(-${0.04 * this.state.windowWidth}px)` } : undefined}
+                >
                     <div className={styles.imgContainer}>
                         <div className={styles.spriteContainer}>
                             {/* Adding key property to force re-render and fire animation */}
-                            <img src={products[whichProductIsRendered].url} key={"product-"+ whichProductIsRendered} style={products[0] ? { "transform": `translateX(-${562 * whichVariantIsRendered}px)` } : undefined} alt={products[whichProductIsRendered].name}></img>
+                            <img
+                                src={products[whichProductIsRendered].url}
+                                key={"product-" + whichProductIsRendered}
+                                style={
+                                    whichProductIsRendered === 0 ?
+                                        this.state.windowWidth === "bigScreen" ? { "transform": `translateX(-${562 * whichVariantIsRendered}px)` }
+                                            : { "transform": `translateX(-${266 * whichVariantIsRendered}px)` }
+                                        : undefined
+                                }
+                                alt={products[whichProductIsRendered].name}>
+                            </img>
                         </div>
                         <div className={`
                             ${styles.slidePrev}
@@ -68,11 +98,11 @@ class MostPopular extends Component {
                             {products[whichProductIsRendered]["color-variants"] ? products[whichProductIsRendered]["color-variants"].map((color, Idx) =>
                                 <div
                                     className={styles.circle}
-                                    numberId={Idx}
+                                    numberid={Idx}
                                     style={{
-                                        "border-color": `${color}`,
+                                        "borderColor": `${color}`,
                                         "opacity": `${whichVariantIsRendered === Idx ? 1 : 0.29}`,
-                                        "background-color": `${whichVariantIsRendered === Idx ? color : "transparent"}`
+                                        "backgroundColor": `${whichVariantIsRendered === Idx ? color : "transparent"}`
                                     }}
                                     key={`color-variant-${Idx + 1}`}
                                     onClick={(e) => this.switchColor(e)}
@@ -83,14 +113,16 @@ class MostPopular extends Component {
                                 undefined
                             }
                         </div>
-                        <div className={styles.purchase}>
-                            <Button text={"buy now"}/>
-                            <span>{products[whichProductIsRendered].price}</span>
+                        <div className={styles.purchaseWrapper}>
+                            <div className={styles.purchaseWrapperItems}>
+                                <Button text={"buy now"} />
+                                <span>{products[whichProductIsRendered].price}</span>
+                            </div>
+                            <p className={styles.deliveryTime}>3-5 day delivery</p>
                         </div>
-                        <p className={styles.deliveryTime}>3-5 day delivery</p>
                     </div>
                 </div>
-            </div>
+            </div >
         )
     }
 }
