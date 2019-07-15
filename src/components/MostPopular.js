@@ -9,6 +9,7 @@ class MostPopular extends Component {
         whichProductIsRendered: 0,
         whichVariantIsRendered: 0,
         windowWidth: 0,
+        isWidthAdjustabale: false,
     }
 
     switchColor = (clickedElement) => {
@@ -34,10 +35,13 @@ class MostPopular extends Component {
     changeWindowWidth = () => {
         const currentWindowWidth = window.innerWidth;
         if (currentWindowWidth < 951) {
-            this.setState({ windowWidth: currentWindowWidth });
+            this.setState({
+                windowWidth: currentWindowWidth,
+                isWidthAdjustabale: true
+            });
         }
         else {
-            this.setState({ windowWidth: "bigScreen" })
+            this.setState({ isWidthAdjustabale: false })
         }
     }
 
@@ -57,7 +61,7 @@ class MostPopular extends Component {
 
                 <div
                     className={styles.productWrapper}
-                    style={this.state.windowWidth !== null ? { "transform": `translatey(-${0.04 * this.state.windowWidth}px)` } : undefined}
+                    style={this.state.isWidthAdjustabale === true ? { "transform": `translatey(-${0.04 * this.state.windowWidth}px)` } : undefined}
                 >
                     <div className={styles.imgContainer}>
                         <div className={styles.spriteContainer}>
@@ -67,7 +71,7 @@ class MostPopular extends Component {
                                 key={"product-" + whichProductIsRendered}
                                 style={
                                     whichProductIsRendered === 0 ?
-                                        this.state.windowWidth === "bigScreen" ? { "transform": `translateX(-${562 * whichVariantIsRendered}px)` }
+                                        this.state.isWidthAdjustabale === false ? { "transform": `translateX(-${562 * whichVariantIsRendered}px)` }
                                             : { "transform": `translateX(-${266 * whichVariantIsRendered}px)` }
                                         : undefined
                                 }

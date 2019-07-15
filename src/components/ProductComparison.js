@@ -172,7 +172,7 @@ class ProductComparison extends Component {
                                             <li key={singleProduct.name + '_' + (featureIdx + 1)}
                                                 className={feature[1] === "yes" ? styles.tickIcon : undefined}
                                             >
-                                                {feature[1] === "no" || feature[1] === "yes" ? "" : feature[1]}
+                                                {feature[1] === "no" ? "-" : feature[1] === "yes" ? "" : feature[1]}
                                             </li>
                                         )}
                                     </ul>
