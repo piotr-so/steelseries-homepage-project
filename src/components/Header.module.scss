@@ -31,6 +31,14 @@
     height: calc(100vh - 50px);
     top: 50px;
     background-color: #282829;
+
+    nav {
+        // height: 100%;
+    }
+}
+
+.noscroll {
+    overflow:hidden;
 }
 //
 

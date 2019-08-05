@@ -12,13 +12,31 @@ import {smartphoneAndLandscape, mediumUp} from '../components/MediaQueries';
 
 class Header extends Component {
     state = {
-        isVisible: false
+        isVisible: false,
+        expandedMenuHeight: null
     }
 
     showHamburgerMenu = () => {
+        if (!this.state.isVisible) {
+            document.body.classList.add(styles.noscroll)
+        }
+        else {
+            document.body.classList.remove(styles.noscroll)
+        }
         this.setState(prevState => ({
             isVisible: !prevState.isVisible
-        }))
+        }));
+        
+    }
+
+    fixMobileMenuViewport = () => {
+        this.setState({expandedMenuHeight: window.innerHeight});
+    }
+
+    componentDidMount() {
+        this.initialHeight = window.innerHeight;
+        this.setState({expandedMenuHeight: this.initialHeight});
+        window.addEventListener('resize', this.fixMobileMenuViewport);
     }
     render() {
         return (
@@ -52,7 +70,10 @@ class Header extends Component {
                     </div>
                 </div>
                 <MediaQuery {...smartphoneAndLandscape}>
-                    <div className={`${styles.expandedMenu} ${this.state.isVisible ? styles.visible : styles.hidden}`}>
+                    <div 
+                    className={`${styles.expandedMenu} ${this.state.isVisible ? styles.visible : styles.hidden}`}
+                    style={{"height": `${window.innerHeight - 50}px`}}
+                    >
                         <MobileNav shouldResetChildren={this.state.isVisible} />
                     </div>
                 </MediaQuery>

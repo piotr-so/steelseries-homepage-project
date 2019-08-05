@@ -58,7 +58,7 @@ class ProductComparisonMobile extends Component {
         return (
             <>
             <div className={styles.productTitles}>
-                <div class={styles.scroller}>
+                <div className={styles.scroller}>
                 <div className={styles.productTitles} style={{ 'transform': `translateX(-${scrollTimesCounter * this.state.windowWidth}px)` }}>
                     {products.map((singleProduct, singleProductIdx) =>
                         <h2
