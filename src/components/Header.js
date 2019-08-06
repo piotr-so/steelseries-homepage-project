@@ -13,6 +13,7 @@ import {smartphoneAndLandscape, mediumUp} from '../components/MediaQueries';
 class Header extends Component {
     state = {
         isVisible: false,
+        pageScrolled: false,
         expandedMenuHeight: null
     }
 
@@ -29,6 +30,14 @@ class Header extends Component {
         
     }
 
+    handleMenuSize = () => {
+        const pageScrollOffset = window.pageYOffset;
+        if (pageScrollOffset !== 0) {
+            this.setState({pageScrolled: true})
+        }
+        else this.setState({pageScrolled: false})
+    }
+
     fixMobileMenuViewport = () => {
         this.setState({expandedMenuHeight: window.innerHeight});
     }
@@ -37,11 +46,14 @@ class Header extends Component {
         this.initialHeight = window.innerHeight;
         this.setState({expandedMenuHeight: this.initialHeight});
         window.addEventListener('resize', this.fixMobileMenuViewport);
+        window.addEventListener('scroll', this.handleMenuSize);
     }
     render() {
         return (
-            <header className={styles.header}>
-                <div className={styles.appHeader}>
+            <header 
+            className={`${styles.main} ${this.state.pageScrolled && styles.scrolling}`}
+            >
+                <div className={styles.menu}>
                     <MediaQuery {...smartphoneAndLandscape}>
                         <img
                             src={this.state.isVisible ? cancelIco : hamburgerMenu}

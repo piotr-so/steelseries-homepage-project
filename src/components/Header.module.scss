@@ -1,25 +1,30 @@
 @import 'media_query';
-.header {
+.main {
     margin: 0 auto;
+    position: fixed;
+    top: 0;
+    transition: transform 0.5s ease-out;
+
     @include for-size(smartphone-and-landscape) {
         width: 100%;
         position: fixed;
         z-index: 2;
     }
 
-    @include for-size(medium-only) {
-        margin: 0 20px 0 20px;
-    }
-
     @include for-size(medium-up) {
-        max-width: 1170px;
+        width: 100%;
+        z-index: 3;
+        height: 87px;
         padding-top: 55px;
         
     }
+}
 
-    @include for-size(desktop) {
-        margin: 0 115px 0 115px;
-    }
+.scrolling {
+    @include for-size(medium-up) {
+        transform: translateY(-50px);
+        background-color: #282829;    
+    }  
 }
 
 //Hamburger menu dropdown
@@ -38,12 +43,17 @@
 }
 
 .noscroll {
-    overflow:hidden;
+    overflow: hidden;
 }
 //
 
 
-.appHeader {
+.menu {
+    display: grid;
+    grid-template-columns: 3fr 1fr 520px 1fr;
+    max-width: 1170px;
+    margin: 0 auto;
+
     @include for-size(smartphone-and-landscape) {
         position: fixed;
         display: flex;
@@ -58,12 +68,20 @@
             width: 50px;
         }
     }
+    
+    @include for-size(medium-only) {
+        margin: 0 20px 0 20px;
+    }
 
-    display: grid;
-    grid-template-columns: 3fr 1fr 520px 1fr;
+    @include for-size(desktop) {
+        margin: 0 115px 0 115px;
+    }
+
     
     nav {
         grid-column: 3/4;
+        display: grid;
+        align-items: center;
     }
 
     // Fix for hamburgermenu cancel ico
@@ -75,6 +93,8 @@
 
 .logo {
     @include for-size(medium-up) {
+        display: grid;
+        align-items: center;
         padding-right: 30px;
     } 
 }

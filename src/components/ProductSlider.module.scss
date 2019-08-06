@@ -13,18 +13,18 @@
 
     @include for-size(medium-up) {    
         grid-template-columns: 87px 2fr 2fr;
-        margin: 77px 115px 0px 115px;
+        margin: 0 115px 0px 115px;
+        padding-top: 200px;
     }
     
     
     @include for-size(medium-only) {
-        margin: 77px 20px 0 20px;
-        
+        margin: 0 20px 0 20px;  
     }
     
     @include for-size(big-screen) {
         width: 1170px;
-        margin: 77px auto 0 auto;
+        margin: 0 auto;
     }
 }
 
