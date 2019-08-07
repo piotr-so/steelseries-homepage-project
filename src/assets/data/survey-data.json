@@ -2,114 +2,36 @@
     "Headset" : [
         {
             "index": 1,
-            "question" : "Filler question?",
+            "question" : "Which one of these are the most important for you?",
             "answers": [
                 {
-                    "text": "Option1",
+                    "text": "Comfort",
                     "url": ""
                 },
                 {
-                    "text": "Option2",
+                    "text": "Durability",
                     "url": ""
                 },
                 {
-                    "text": "Option3",
-                    "url": ""
-                },
-                {
-                    "text": "Option4",
+                    "text": "Quality",
                     "url": ""
                 }
             ]
         },
         {
             "index": 2,
-            "question" : "Filler question?",
+            "question" : "Which type of headset do you prefer?",
             "answers": [
                 {
-                    "text": "Option1",
+                    "text": "Wired",
                     "url": ""
                 },
                 {
-                    "text": "Option2",
-                    "url": ""
-                },
-                {
-                    "text": "Option3",
-                    "url": ""
-                },
-                {
-                    "text": "Option4",
+                    "text": "Wireless",
                     "url": ""
                 }
             ]
-        },
-        {
-            "index": 3,
-            "question" : "Filler question?",
-            "answers": [
-                {
-                    "text": "Option1",
-                    "url": ""
-                },
-                {
-                    "text": "Option2",
-                    "url": ""
-                },
-                {
-                    "text": "Option3",
-                    "url": ""
-                },
-                {
-                    "text": "Option4",
-                    "url": ""
-                }
-            ]
-        },
-        {
-            "index": 4,
-            "question" : "Filler question?",
-            "answers": [
-                {
-                    "text": "Option1",
-                    "url": ""
-                },
-                {
-                    "text": "Option2",
-                    "url": ""
-                },
-                {
-                    "text": "Option3",
-                    "url": ""
-                },
-                {
-                    "text": "Option4",
-                    "url": ""
-                }
-            ]
-        },
-        {
-            "index": 5,
-            "question" : "Filler question?",
-            "answers": [
-                {
-                    "text": "Option1",
-                    "url": ""
-                },
-                {
-                    "text": "Option2",
-                    "url": ""
-                },
-                {
-                    "text": "Option3",
-                    "url": ""
-                },
-                {
-                    "text": "Option4",
-                    "url": ""
-                }
-            ]
-        }  
+        } 
     ],
     "Mouse" : [
         {
@@ -140,7 +62,7 @@
         },
         {
             "index": 2,
-            "question" : "What is your preffered grip type?",
+            "question" : "What is your prefered grip type?",
             "answers" : [
                 {
                     "text": "CLAW",
@@ -158,7 +80,7 @@
         },
         {
             "index": 3,
-            "question" : "Do you preffer left or right-handed mouse?",
+            "question" : "Do you prefer left or right-handed mouse?",
             "answers" : [
                 {
                     "text": "Left",
@@ -174,7 +96,21 @@
     "Keyboard" : [
         {
             "index": 1,
-            "question" : "Do you enjoy 'click sound'?",
+            "question" : "Do you prefer quieter or louder sound on keypress?",
+            "answers": [
+                {
+                    "text": "Quieter",
+                    "url": ""
+                },
+                {
+                    "text": "Louder",
+                    "url": ""
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "question" : "'Some LED backlight would be a great addition'",
             "answers": [
                 {
                     "text": "Yes",
@@ -187,67 +123,15 @@
             ]
         },
         {
-            "index": 2,
-            "question" : "Filler question?",
-            "answers": [
-                {
-                    "text": "Option1",
-                    "url": ""
-                },
-                {
-                    "text": "Option2",
-                    "url": ""
-                },
-                {
-                    "text": "Option3",
-                    "url": ""
-                },
-                {
-                    "text": "Option4",
-                    "url": ""
-                }
-            ]
-        },
-        {
             "index": 3,
-            "question" : "Filler question?",
+            "question" : "Do you prefer lighter or heavier keyboard?",
             "answers": [
                 {
-                    "text": "Option1",
+                    "text": "Lighter",
                     "url": ""
                 },
                 {
-                    "text": "Option2",
-                    "url": ""
-                },
-                {
-                    "text": "Option3",
-                    "url": ""
-                },
-                {
-                    "text": "Option4",
-                    "url": ""
-                }
-            ]
-        },
-        {
-            "index": 4,
-            "question" : "Filler question?",
-            "answers": [
-                {
-                    "text": "Option1",
-                    "url": ""
-                },
-                {
-                    "text": "Option2",
-                    "url": ""
-                },
-                {
-                    "text": "Option3",
-                    "url": ""
-                },
-                {
-                    "text": "Option4",
+                    "text": "Heavier",
                     "url": ""
                 }
             ]

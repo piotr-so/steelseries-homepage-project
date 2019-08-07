@@ -8,6 +8,7 @@
     padding-left: 59.5px;
     box-shadow: -26.1px 28.98px 40px rgba(#000000, .2);
     background: url('../assets/background_productGuide.png') no-repeat #252526;
+    // user-select: none;
 
     @include for-size(smartphone-and-landscape) {
         width: inherit; 
@@ -200,6 +201,7 @@
 
 .nextButton {
     position: relative;
+    user-select: none;
     width: 170px;
     height: 50px;
     color: #ACACAC;
@@ -237,12 +239,67 @@
             background-color: white;
         }
     }
+
+    
+}
+
+.greyed {
+    background-color: none;
+    color: rgba(#ACACAC, .3);
+    border: 3px solid rgba(#624C3C, .3);
+
+    &::before {
+        background-color: rgba(#78787B, .3); 
+    }
+
+    &:hover {
+        cursor: default;
+        background-color: initial;
+        color: rgba(#ACACAC, .3);
+        
+        &::before {
+            background-color: rgba(#78787B, .3);
+        }        
+    }
+}
+
+.greyedClicked {
+    span {
+        &::before {
+            content: "";
+            position: absolute;
+            display: block;
+            background-size: 25px 25px;
+            background-image: url('../assets/Exclamation_encircled.svg');
+            background-repeat: no-repeat;
+            width: 25px;
+            height: 25px;
+            left: -3px;
+            top: -40px;
+        }
+        &::after {
+            content: "Please select an answer first";
+            position: absolute;
+            top: -35px;
+            right: -25px;
+            width: 160px;
+            color: #ACACAC;
+            font-size: 1.2rem;
+            text-align: center;
+        } 
+    }
 }
 
 .submitButton {
     @extend .nextButton;
     display: block;
     padding: 0 37px 0 16px;
+
+    &:focus {
+        outline: none;
+        @extend .greyedClicked;
+    }
+
     &::before {
         transform: translateX(0) rotate(-90deg);
         left: 139px;

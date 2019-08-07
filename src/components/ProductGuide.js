@@ -34,7 +34,7 @@ class ProductGuide extends Component {
     initialVisibilityOfCards = () => {
         const arr1 = [];
         for (let i=0; i < (2 * surveyData[this.props.productCategory].length) - 1; i++) {
-            if (i <= 2) {
+            if (i <= surveyData[this.props.productCategory].length - 1 && i <= 2) {
                 arr1.push(styles[`card${i+1}`]);
             }
             else {

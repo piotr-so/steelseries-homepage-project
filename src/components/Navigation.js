@@ -9,7 +9,7 @@ function FirstChild(props) {
 
 class Dropdown extends Component {
     state = {
-        displayMenu: false, //switching for development purpose
+        displayMenu: false, //manual switching for development purpose
     }
 
     handleMouseEvent = () => {
@@ -21,6 +21,7 @@ class Dropdown extends Component {
 
 
     render() {
+        const shouldBeNonTransparent  = this.props.menuElementsTransparency;
         return (
             <nav>
                 <ul className={styles.menu}>
@@ -35,13 +36,13 @@ class Dropdown extends Component {
                             {this.state.displayMenu ? (
                                 <div key={'dropdownMenu'} className={styles.dropMenu} >
                                     <ul>
-                                        <li>
+                                        <li className={shouldBeNonTransparent ? styles.nonTransparent : undefined}>
                                             <a href="#">Headsets</a>
                                         </li>
-                                        <li>
+                                        <li className={shouldBeNonTransparent ? styles.nonTransparent : undefined}>
                                             <a href="#">Keyboards</a>
                                         </li>
-                                        <li>
+                                        <li className={shouldBeNonTransparent ? styles.nonTransparent : undefined}>
                                             <a href="#">Mice</a>
                                         </li>
                                     </ul>

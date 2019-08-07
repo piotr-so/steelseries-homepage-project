@@ -14,7 +14,7 @@
     @include for-size(medium-up) {
         width: 100%;
         z-index: 3;
-        height: 87px;
+        height: 100px;
         padding-top: 55px;
         
     }
@@ -22,7 +22,7 @@
 
 .scrolling {
     @include for-size(medium-up) {
-        transform: translateY(-50px);
+        transform: translateY(-30px);
         background-color: #282829;    
     }  
 }
@@ -36,10 +36,6 @@
     height: calc(100vh - 50px);
     top: 50px;
     background-color: #282829;
-
-    nav {
-        // height: 100%;
-    }
 }
 
 .noscroll {

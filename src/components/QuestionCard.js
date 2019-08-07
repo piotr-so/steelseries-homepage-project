@@ -8,6 +8,8 @@ class QuestionCard extends Component {
         handTypeToShow: 'left',
         showGripType: 0,
         showHandType: 0,
+        validatedQuestionCardUpTo: -1,
+        greyedClicked: false
     }
 
     //Function for specific image control in q2 & q3 in Mouse category
@@ -33,11 +35,32 @@ class QuestionCard extends Component {
         })
     }
 
+    // Validation
+
+    validateForNextQuestion = (questionNumber) => {
+        if (questionNumber > this.state.validatedQuestionCardUpTo) {
+            // -1 from cardIdx
+            this.setState({
+                validatedQuestionCardUpTo: questionNumber - 1,
+                greyedClicked: false
+            })
+        }
+        
+    }
+
+    handleGreyedClick = () => {
+        this.setState({greyedClicked: true})
+    }
+
+    //
+
     componentDidUpdate(prevProps) {
         if (this.props.productCategory !== prevProps.productCategory) {
             this.setState({
                 showGripType: 0,
                 showHandType: 0,
+                validatedQuestionCardUpTo: -1,
+                greyedClicked: false
             })
         }
     }
@@ -79,6 +102,7 @@ class QuestionCard extends Component {
                                             <label
                                                 htmlFor={productCategory + '_question' + (cardIdx+1) + '_variant' + (idx + 1)}
                                                 key={`${productCategory}_answer-variant${idx+1}`}
+                                                onClick={e => this.validateForNextQuestion(cardIdx+1)}
                                             >
                                                 <input
                                                     type='radio'
@@ -118,9 +142,24 @@ class QuestionCard extends Component {
                                 }
                                 {/* Next Question button or Sumbit button on last card - render control */}
                                 {questionCard.index !== surveyData[productCategory].length ?
-                                    <div className={styles.nextButton} onClick={() => switchQuestion('next')}>NEXT QUESTION</div>
+                                    <div 
+                                        className={`
+                                        ${styles.nextButton} 
+                                        ${this.state.validatedQuestionCardUpTo < cardIdx && styles.greyed}
+                                        ${this.state.greyedClicked && styles.greyedClicked}
+                                        `} 
+                                        onClick={this.state.validatedQuestionCardUpTo >= cardIdx ? (() => switchQuestion('next')) 
+                                        : () => this.handleGreyedClick()}
+                                    >
+                                        <span>NEXT QUESTION</span>
+                                    </div>
                                     :
-                                    <button className={styles.submitButton} type='submit'>SEE PRODUCTS</button>
+                                    <button 
+                                        className={`${styles.submitButton} ${this.state.validatedQuestionCardUpTo < cardIdx && styles.greyed}`} 
+                                        type='submit'
+                                    >
+                                        <span>SEE PRODUCTS</span>
+                                    </button>
                                 }
                         </div>
                     </div>

@@ -68,7 +68,7 @@ class Header extends Component {
                     </div>
 
                     <MediaQuery {...mediumUp}>
-                        <Navigation />
+                        <Navigation menuElementsTransparency={this.state.pageScrolled} />
                     </MediaQuery>
 
                     <div className={styles.userSection}>
