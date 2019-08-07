@@ -83,6 +83,15 @@
     width: 160px;
     height: 193px;
     border-bottom: 1px solid #4D4D4F;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(#282829, 1);
+        box-shadow: 0 0 46px 0 rgba(#111111, 0.78);
+        h2 {
+            color: #624C3C;
+        }    
+    }
     
     h2 {
         font-size: 1.6rem;
@@ -178,7 +187,6 @@
     transition: transform 0.2s linear, box-shadow 0.05s linear;
 
     &:hover {
-        cursor: pointer;
         box-shadow: 0 0 46px 0 rgba(#111111, 0.78);
         .head {
             color: #624C3C;
@@ -196,11 +204,14 @@
     .head {
         position: absolute;
         width: 160px;
-        height: 124px;
+        height: 175px;
         top: 0px;
         padding-top: 42px;
-        padding-bottom: 61px;
         color: #4D4D4F;
+
+        &:hover {
+            cursor: pointer;
+        }
         
         h2 {
             font-size: 1.6rem;

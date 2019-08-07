@@ -92,25 +92,28 @@ class ProductComparison extends Component {
         window.addEventListener('resize', this.modifyVisibleColumns);
     }
 
-    componentDidUpdate(prevProps) {
+    // ** WIP ** for other props, no content right now
+    //
+    // componentDidUpdate(prevProps) {
+        
         // Update tableElement for stickyBar when media query breakpoints change
-        this.tableElement = document.getElementsByClassName(styles.product)[0];
+        // this.tableElement = document.getElementsByClassName(styles.product)[0];
 
-        if (this.props.productCategory !== prevProps.productCategory) {
-            window.removeEventListener('scroll', this.checkStickyBarPos);
-            this.tableElement = document.getElementsByClassName(styles.product)[0];
-            this.quantityOfProducts = productsData[this.props.productCategory].products.length;
-            window.addEventListener('scroll', this.checkStickyBarPos);
+        // if (this.props.productCategory !== prevProps.productCategory) {
+        //     window.removeEventListener('scroll', this.checkStickyBarPos);
+        //     this.tableElement = document.getElementsByClassName(styles.product)[0];
+        //     this.quantityOfProducts = productsData[this.props.productCategory].products.length;
+        //     window.addEventListener('scroll', this.checkStickyBarPos);
 
-            this.setState({
-                scrollTimesCounter: 0,
-                availableTimesToScroll: this.quantityOfProducts - 6
-            })
-        }   
-    }
+        //     this.setState({
+        //         scrollTimesCounter: 0,
+        //         availableTimesToScroll: this.quantityOfProducts - 6
+        //     })
+        // }   
+    // }
 
     render() {
-        const { productCategory } = this.props;
+        const productCategory = "Mouse"; // this.props; ** WIP ** for other props, no content right now
         const { isFixed, scrollTimesCounter, availableTimesToScroll } = this.state;
         return (
             // Container width control depending on quantity of elements rendered (ensuring enough space is left for floating)
@@ -158,7 +161,7 @@ class ProductComparison extends Component {
                         <ul className={styles.columns} style={{ 'width': `${160 * productsData[productCategory].products.length}px`, 'transform': `translate(-${scrollTimesCounter * 160}px)` }}>
 
                             {productsData[productCategory].products.map((singleProduct, singleProductIdx) =>
-                                <li className={styles.product} key={`product-column-${singleProduct.name}`}>
+                                <li className={styles.product} key={`product-column-${singleProduct.id}`}>
                                     <div className={styles.tableHeadFiller}></div>
                                     {/* // Head of the product // */}
                                     <div className={styles.head}>
@@ -168,7 +171,7 @@ class ProductComparison extends Component {
                                     {/*  */}
                                     {/* // Single product features // */}
                                     <ul className={`${styles.featuresList} ${singleProductIdx % 2 === 0 ? styles.colorVar1 : styles.colorVar2}`}>
-                                        {Object.entries(singleProduct).map((feature, featureIdx) => feature[0] === "name" || feature[0] === "url" ? undefined :
+                                        {Object.entries(singleProduct).map((feature, featureIdx) => feature[0] === "name" || feature[0] === "url" || feature[0] === "id" ? undefined :
                                             <li key={singleProduct.name + '_' + (featureIdx + 1)}
                                                 className={feature[1] === "yes" ? styles.tickIcon : undefined}
                                             >

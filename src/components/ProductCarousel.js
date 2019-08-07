@@ -84,6 +84,11 @@ class ProductCarousel extends Component {
         else {
             const offsetDifference = touchCoords - this.lastCoord;
             const offsetValue = Math.abs(offsetDifference);
+            const checker = (elemObj) => {
+                const centeredElem = Object.keys(elemObj).find(key => elemObj[key] === 'center');
+                const nameOfCentered = this.state.carouselElements[centeredElem.substring(4, 5)].name;
+                return nameOfCentered
+            }
             if (offsetDifference > 0 && offsetValue > 50) {
                 const firstElement = stylesToChange.shift();
                 stylesToChange.push(firstElement);
@@ -93,7 +98,7 @@ class ProductCarousel extends Component {
 
                 this.setState({
                     elementsStyle: {...newElementsStyle}
-                });
+                }, () => this.props.whichIsCentered(checker(this.state.elementsStyle)));
 
             }
             else if (offsetDifference < 0 && offsetValue > 50) {
@@ -105,7 +110,7 @@ class ProductCarousel extends Component {
 
                 this.setState({
                     elementsStyle: {...newElementsStyle}
-                });
+                }, () => this.props.whichIsCentered(checker(this.state.elementsStyle)));
             }
             this.lastCoord = null;
         }
