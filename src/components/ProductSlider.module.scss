@@ -156,14 +156,16 @@
     transform: rotate(180deg);
 }
 
-.productImgWrapper {
+.products {
     justify-self: center;
     width: 277px;
+    height: 506px;
     z-index: 1;
     
     
     @include for-size(smartphone-and-landscape) {
         max-width: 150px;
+        height: 274px;
     }
 
     @include for-size(medium-up) {
@@ -171,18 +173,38 @@
     }
     
     img {
-        
         position: relative;
         pointer-events: none;
         user-select: none;
         z-index: 2;
-        animation: reveal .7s;
 
         @include for-size(smartphone-and-landscape) {
             max-width: 150px;
         }
     }
     
+}
+
+
+.productsImgWrapper {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+.imgVisible {
+    animation: reveal .5s;
+    
+}
+
+.imgHidden {
+    opacity: 0;
 }
 
 .productDescription {

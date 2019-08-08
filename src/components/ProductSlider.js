@@ -6,7 +6,7 @@ import mice from '../assets/steelseries-mice_mod.png';
 import arrow from '../assets/slider-arrow.svg';
 import Button from './Button';
 
-const itemsForSlider = [
+const productsToShow = [
     {
         name: "SIBERIA 200",
         image: headset,
@@ -27,12 +27,11 @@ const itemsForSlider = [
 
 class ProductSlider extends Component {
     state = {
-        productToShow: [...itemsForSlider],
         currentImageIndex: 0,
     }
 
     slideToNext = (e) => {
-        if (this.state.currentImageIndex < itemsForSlider.length - 1) {
+        if (this.state.currentImageIndex < productsToShow.length - 1) {
             this.setState(prevState => ({
                 currentImageIndex: prevState.currentImageIndex + 1
             }))
@@ -52,7 +51,7 @@ class ProductSlider extends Component {
         }
         else {
             this.setState({
-                currentImageIndex: itemsForSlider.length - 1
+                currentImageIndex: productsToShow.length - 1
             })
         }
     }
@@ -75,14 +74,14 @@ class ProductSlider extends Component {
                     this.setState(prevState => ({ currentImageIndex: prevState.currentImageIndex - 1 }));
                 }
                 else if (currentImageIndex === 0) {
-                    this.setState({ currentImageIndex: itemsForSlider.length - 1 })
+                    this.setState({ currentImageIndex: productsToShow.length - 1 })
                 }
             }
             else if (offsetDifference < 0 && offsetValue > 50) {
-                if (currentImageIndex < itemsForSlider.length - 1) {
+                if (currentImageIndex < productsToShow.length - 1) {
                     this.setState(prevState => ({ currentImageIndex: prevState.currentImageIndex + 1 }));
                 }
-                else if (currentImageIndex === itemsForSlider.length - 1) {
+                else if (currentImageIndex === productsToShow.length - 1) {
                     this.setState({ currentImageIndex: 0 })
                 }
             }
@@ -95,7 +94,7 @@ class ProductSlider extends Component {
     }
 
     render() {
-        const { productToShow, currentImageIndex } = this.state;
+        const { currentImageIndex } = this.state;
         return (
             <div
                 className={styles.sliderWrapper}
@@ -104,7 +103,7 @@ class ProductSlider extends Component {
             >
                 <div className={styles.itemToShowIdentifiersWrapper}>
                     <div className={styles.identifiers}>
-                        {productToShow.map((element, idx) => {
+                        {productsToShow.map((element, idx) => {
                             return (
                                 currentImageIndex === idx ? (
                                     <span className={styles.active} key={"identifier" + idx} />
@@ -116,12 +115,20 @@ class ProductSlider extends Component {
                         }
                     </div>
                 </div>
-                <div className={styles.productImgWrapper}>
-                    <img
-                        src={productToShow[currentImageIndex].image}
-                        key={this.state.currentImageIndex + "img"}
-                        alt={productToShow[currentImageIndex].name}
-                    />
+                <div className={styles.products}>
+                    <div
+                        className={styles.productsImgWrapper}
+                    >
+                        {productsToShow.map((singleImg, idx) =>
+                            <img
+                                className={currentImageIndex === idx ? styles.imgVisible : styles.imgHidden}
+                                src={singleImg.image}
+                                key={`productSlider_img_${idx + 1}`}
+                                alt={singleImg.name}
+                            />
+                        )}
+                    </div>
+
                     <div className={styles.slidePrev} onClick={this.slideToPrev}>
                         <img src={arrow} className={styles.arrowUp} alt="arrow-prev" />
                     </div>
@@ -131,8 +138,8 @@ class ProductSlider extends Component {
                     </div>
                 </div>
                 <div className={styles.productDescription} key={this.state.currentImageIndex + "descSec"}>
-                    <h1>{productToShow[currentImageIndex].name}</h1>
-                    <p>{productToShow[currentImageIndex].description}</p>
+                    <h1>{productsToShow[currentImageIndex].name}</h1>
+                    <p>{productsToShow[currentImageIndex].description}</p>
                     <Button text={"buy now"} />
                 </div>
             </div >
