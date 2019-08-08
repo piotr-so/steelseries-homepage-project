@@ -6,9 +6,9 @@ import styles from "./Header.module.scss";
 import logo from "../assets/logo.png";
 import hamburgerMenu from "../assets/hamburger.svg";
 import cancelIco from "../assets/cancel-ico.svg";
-import basket from "../assets/Basket.svg";
-import userImg from "../assets/Male User.svg";
-import {smartphoneAndLandscape, mediumUp} from '../components/MediaQueries';
+import { ReactComponent as Basket } from "../assets/Basket.svg";
+import { ReactComponent as UserImg } from "../assets/Male User.svg";
+import { smartphoneAndLandscape, mediumUp } from '../components/MediaQueries';
 
 class Header extends Component {
     state = {
@@ -27,31 +27,31 @@ class Header extends Component {
         this.setState(prevState => ({
             isVisible: !prevState.isVisible
         }));
-        
+
     }
 
     handleMenuSize = () => {
         const pageScrollOffset = window.pageYOffset;
         if (pageScrollOffset !== 0) {
-            this.setState({pageScrolled: true})
+            this.setState({ pageScrolled: true })
         }
-        else this.setState({pageScrolled: false})
+        else this.setState({ pageScrolled: false })
     }
 
     fixMobileMenuViewport = () => {
-        this.setState({expandedMenuHeight: window.innerHeight});
+        this.setState({ expandedMenuHeight: window.innerHeight });
     }
 
     componentDidMount() {
         this.initialHeight = window.innerHeight;
-        this.setState({expandedMenuHeight: this.initialHeight});
+        this.setState({ expandedMenuHeight: this.initialHeight });
         window.addEventListener('resize', this.fixMobileMenuViewport);
         window.addEventListener('scroll', this.handleMenuSize);
     }
     render() {
         return (
-            <header 
-            className={`${styles.main} ${this.state.pageScrolled && styles.scrolling}`}
+            <header
+                className={`${styles.main} ${this.state.pageScrolled && styles.scrolling}`}
             >
                 <div className={styles.menu}>
                     <MediaQuery {...smartphoneAndLandscape}>
@@ -64,7 +64,7 @@ class Header extends Component {
                     </MediaQuery>
 
                     <div className={styles.logo}>
-                        <img src={logo} alt="logo" />
+                        <a href="/"><img src={logo} alt="logo" /></a>
                     </div>
 
                     <MediaQuery {...mediumUp}>
@@ -72,19 +72,23 @@ class Header extends Component {
                     </MediaQuery>
 
                     <div className={styles.userSection}>
-                        <div className={styles.basketIndicator}>
-                            <div className={styles.indicatorValue}>2</div>
-                        </div>
-                        <a href="#"><img href="#" src={basket} alt="basket" /></a>
+
+                        <a id={styles.basketLink} href="#">
+                            <div className={styles.basketIndicator}>
+                                <div className={styles.indicatorValue}>2</div>
+                            </div><Basket className={styles.basket} />
+                        </a>
                         <MediaQuery {...mediumUp}>
-                            <img src={userImg} alt="user" />
+                        <a href="#">
+                            <UserImg className={styles.profileIco}/>
+                        </a>
                         </MediaQuery>
                     </div>
                 </div>
                 <MediaQuery {...smartphoneAndLandscape}>
-                    <div 
-                    className={`${styles.expandedMenu} ${this.state.isVisible ? styles.visible : styles.hidden}`}
-                    style={{"height": `${window.innerHeight - 50}px`}}
+                    <div
+                        className={`${styles.expandedMenu} ${this.state.isVisible ? styles.visible : styles.hidden}`}
+                        style={{ "height": `${window.innerHeight - 50}px` }}
                     >
                         <MobileNav shouldResetChildren={this.state.isVisible} />
                     </div>

@@ -6,6 +6,7 @@ import ProductCarousel from "./components/ProductCarousel";
 import ProductGuide from "./components/ProductGuide";
 import ProductComparison from "./components/ProductComparison";
 import MostPopular from './components/MostPopular';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class App extends Component {
   state = {
@@ -22,14 +23,21 @@ class App extends Component {
 
   render() {
     return (
-      <div className={styles.main}>
-        <Header/>
-        <ProductSlider />
-        <ProductCarousel whichIsCentered={this.setCenteredToRender}/>
-        <ProductGuide productCategory={this.state.productCategory}/>
-        <ProductComparison productCategory={this.state.productCategory}/>
-        <MostPopular />
-      </div>
+      <Router>
+        <Header />
+        <Switch>
+          <Route exact path="/">
+            <div className={styles.main}>            
+              <ProductSlider />
+              <ProductCarousel whichIsCentered={this.setCenteredToRender} />
+              <ProductGuide productCategory={this.state.productCategory} />
+              <ProductComparison productCategory={this.state.productCategory} />
+              <MostPopular />
+            </div>
+          </Route>
+        </Switch>
+      </Router>
+
     );
   }
 }
