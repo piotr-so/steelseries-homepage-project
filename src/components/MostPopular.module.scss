@@ -76,7 +76,8 @@
     }
     
 
-    .spriteContainer {
+    .productImg {
+        position: relative;
         max-width: 562px;
         height: auto;
         margin-top: 200px;
@@ -87,6 +88,11 @@
             margin-top: 0;
         }
 
+        @include for-size (medium-up) {
+            width: 562px;
+            height: 420px;
+        }
+
         img {
             position: relative;
             pointer-events: none;
@@ -95,6 +101,12 @@
 
             @include for-size (smartphone-and-medium) {
                 height: 220px;
+            }
+
+            @include for-size (medium-up) {
+                position: absolute;
+                top: 0;
+                left: 0;
             }
         }
     }
@@ -136,7 +148,6 @@
         display: block;
         margin: 0 auto;
         padding-top: calc(77px/3);
-        // opacity: 0.6;
     }
     
     .arrowDown {

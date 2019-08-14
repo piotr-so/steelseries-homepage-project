@@ -150,13 +150,12 @@ class ProductComparison extends Component {
                         <div className={styles.stickyBarHeader}>
                             <div className={styles.stickyElementsWrapper} style={{'width': `${160 * productsData[productCategory].products.length}px`, 'transform': `translateX(-${this.state.scrollTimesCounter * 160}px)`}}>
                                 {productsData[productCategory].products.map((singleProduct, singleProductIdx) =>
-                                    <a href={singleProduct.name}>
+                                    <a href={singleProduct.name} key={`sticky-item-${singleProductIdx}`}>
                                         <div 
                                             className={`
                                             ${styles.stickyElement} 
                                             ${singleProductIdx % 2 === 0 ? styles.headColorVar2 : singleProductIdx % 2 !== 0 && styles.headColorVar1}
                                             `}
-                                            key={`sticky-item-${singleProductIdx}`}
                                         >
                                             <h2>{singleProduct.name.toUpperCase()}</h2>
                                             <img src={singleProduct.url} className={styles.stickyElementImg} alt={singleProduct.name}/>

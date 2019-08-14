@@ -6,8 +6,8 @@ import Button from './Button';
 
 class MostPopular extends Component {
     state = {
-        whichProductIsRendered: 0,
-        whichVariantIsRendered: 0,
+        whichProductIsShown: 0,
+        whichVariantIsShown: 0,
         windowWidth: 0,
         isWidthAdjustabale: false,
     }
@@ -15,20 +15,20 @@ class MostPopular extends Component {
     switchColor = (clickedElement) => {
         if (clickedElement === "reset") {
             this.setState({
-                whichVariantIsRendered: 0
+                whichVariantIsShown: 0
             })
         }
         else {
             const idOfElement = clickedElement.currentTarget.attributes.numberId.value;
             this.setState({
-                whichVariantIsRendered: Number(idOfElement)
+                whichVariantIsShown: Number(idOfElement)
             })
         }
     }
 
     changeRenderedProduct = (value) => {
         this.setState(prevState => ({
-            whichProductIsRendered: prevState.whichProductIsRendered + value
+            whichProductIsShown: prevState.whichProductIsShown + value
         }))
     }
 
@@ -52,7 +52,7 @@ class MostPopular extends Component {
     }
 
     render() {
-        const { whichProductIsRendered, whichVariantIsRendered } = this.state;
+        const { whichProductIsShown, whichVariantIsShown } = this.state;
         return (
             <div className={styles.wrapper}>
                 <header className={styles.header}>
@@ -64,23 +64,25 @@ class MostPopular extends Component {
                     style={this.state.isWidthAdjustabale === true ? { "transform": `translatey(-${0.04 * this.state.windowWidth}px)` } : undefined}
                 >
                     <div className={styles.imgContainer}>
-                        <div className={styles.spriteContainer}>
-                            {/* Adding key property to force re-render and fire animation */}
-                            <img
-                                src={products[whichProductIsRendered].url}
-                                key={"product-" + whichProductIsRendered}
-                                style={
-                                    whichProductIsRendered === 0 ?
-                                        this.state.isWidthAdjustabale === false ? { "transform": `translateX(-${562 * whichVariantIsRendered}px)` }
-                                            : { "transform": `translateX(-${266 * whichVariantIsRendered}px)` }
-                                        : undefined
-                                }
-                                alt={products[whichProductIsRendered].name}>
-                            </img>
+                        <div className={styles.productImg}>
+                            {products.map((singleProduct, idx) =>
+                                <img
+                                    src={singleProduct.url}
+                                    className={whichProductIsShown === idx ? styles.visible : styles.hidden}
+                                    key={"most-popular-product-" + idx}
+                                    style={
+                                        whichProductIsShown === 0 && whichProductIsShown === idx ?
+                                            this.state.isWidthAdjustabale === false ? { "transform": `translateX(-${562 * whichVariantIsShown}px)` }
+                                                : { "transform": `translateX(-${266 * whichVariantIsShown}px)` }
+                                            : undefined
+                                    }
+                                    alt={singleProduct.name}>
+                                </img>
+                            )}
                         </div>
                         <div className={`
                             ${styles.slidePrev}
-                            ${whichProductIsRendered === 0 ? styles.hidden : styles.visible}
+                            ${whichProductIsShown === 0 ? styles.hidden : styles.visible}
                             `}
                             onClick={() => { this.changeRenderedProduct(-1); this.switchColor("reset") }}
                         >
@@ -88,7 +90,7 @@ class MostPopular extends Component {
                         </div>
                         <div className={`
                             ${styles.slideNext}
-                            ${whichProductIsRendered === 2 ? styles.hidden : styles.visible}
+                            ${whichProductIsShown === 2 ? styles.hidden : styles.visible}
                             `}
                             onClick={() => { this.changeRenderedProduct(1); this.switchColor("reset") }}
                         >
@@ -96,17 +98,17 @@ class MostPopular extends Component {
                         </div>
                     </div>
                     <div className={styles.description}>
-                        <h2>{products[whichProductIsRendered].name.toUpperCase()}</h2>
-                        <p className={styles.descriptionText}>{products[whichProductIsRendered].description}</p>
+                        <h2>{products[whichProductIsShown].name.toUpperCase()}</h2>
+                        <p className={styles.descriptionText}>{products[whichProductIsShown].description}</p>
                         <div className={styles.colorVariants}>
-                            {products[whichProductIsRendered]["color-variants"] ? products[whichProductIsRendered]["color-variants"].map((color, Idx) =>
+                            {products[whichProductIsShown]["color-variants"] ? products[whichProductIsShown]["color-variants"].map((color, Idx) =>
                                 <div
                                     className={styles.circle}
                                     numberid={Idx}
                                     style={{
                                         "borderColor": `${color}`,
-                                        "opacity": `${whichVariantIsRendered === Idx ? 1 : 0.29}`,
-                                        "backgroundColor": `${whichVariantIsRendered === Idx ? color : "transparent"}`
+                                        "opacity": `${whichVariantIsShown === Idx ? 1 : 0.29}`,
+                                        "backgroundColor": `${whichVariantIsShown === Idx ? color : "transparent"}`
                                     }}
                                     key={`color-variant-${Idx + 1}`}
                                     onClick={(e) => this.switchColor(e)}
@@ -120,7 +122,7 @@ class MostPopular extends Component {
                         <div className={styles.purchaseWrapper}>
                             <div className={styles.purchaseWrapperItems}>
                                 <Button text={"buy now"} />
-                                <span>{products[whichProductIsRendered].price}</span>
+                                <span>{products[whichProductIsShown].price}</span>
                             </div>
                             <p className={styles.deliveryTime}>3-5 day delivery</p>
                         </div>
