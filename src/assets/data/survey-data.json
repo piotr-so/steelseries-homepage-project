@@ -110,7 +110,7 @@
         },
         {
             "index": 2,
-            "question" : "'Some LED backlight would be a great addition'",
+            "question" : "LED backlight would be a great addition.",
             "answers": [
                 {
                     "text": "Yes",

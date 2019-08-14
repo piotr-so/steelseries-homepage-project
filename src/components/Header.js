@@ -73,7 +73,7 @@ class Header extends Component {
 
                     <div className={styles.userSection}>
 
-                        <a id={styles.basketLink} href="#">
+                        <a id={styles.basketLink} href="#" aria-label="basket">
                             <div className={styles.basketIndicator}>
                                 <div className={styles.indicatorValue}>2</div>
                             </div><Basket className={styles.basket} />

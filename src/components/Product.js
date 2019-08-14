@@ -39,7 +39,7 @@ class Product extends Component {
                     {isDescAllowedToRender && renderDescription === styles.center ? (
                         <>
                             <h2>{`FIND THE PERFECT GAMING ${item.name.toUpperCase()} FOR YOU`}</h2>
-                            <Button text={"start guide"}/>
+                            <Button text={"start guide"} sectionIdToScroll={"product-guide"}/>
                         </>
                     ) : null}
                     <img src={item.img} alt={item.name}></img>

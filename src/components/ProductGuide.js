@@ -58,7 +58,7 @@ class ProductGuide extends Component {
         const { productCategory } = this.props;
 
         return (
-            <div className={styles.wrapper}>
+            <div className={styles.wrapper} id="product-guide">
 
                 <h1>FIND THE PERFECT<br />GAMING {productCategory.toUpperCase()} FOR YOU</h1>
 

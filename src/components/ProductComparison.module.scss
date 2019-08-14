@@ -1,13 +1,11 @@
 @import 'media_query';
 .wrapper {
     position: relative;
-    // max-width: 1140px;
     max-width: 1090px;
-    margin: 50px auto 0 auto;
+    margin: 0 auto;
     z-index: 1;
 
     @include for-size (smartphone-and-landscape) {
-        // overflow: hidden;
         min-width: 320px;
         max-width: 60%;
         margin: 50px auto 0 auto;
@@ -19,8 +17,9 @@
 }
 
 .title {
-    top: 55px;
+    top: 110px;
     left: 180px;
+    z-index: 2;
 
     @include for-size (medium-up) {
         position: absolute;
@@ -69,13 +68,27 @@
     position: relative;
     overflow: hidden;
 
-    div {
-        float: left;
+    &::after {
+        content: "";
+        clear: both;
+        display: table;
     }
 }
 
 .stickyElementsWrapper {
     transition: transform 0.2s linear;
+    float: left;
+    a{
+        display: inline-block;
+        color: blue;
+        text-decoration: none;
+    }
+    &::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+    
 }
 
 .stickyElement {
@@ -99,18 +112,13 @@
         text-align: center;
         margin: 0;
         padding-top: 39px;
-        padding-bottom: 61px;
         color: #4D4D4F;
     }
 }
 
 .stickyElementImg {
-    // url and background are injected in jsx
-    position: absolute;
-    width: 130px;
-    height: 59px;
-    top: 97px;
-    left: 18px;
+    // url is injected in jsx
+    @extend .productImg;
 }
 
 
@@ -199,6 +207,11 @@
         .colorVar2 {
             background-color: rgba(#282829, 1);
         }
+        .tickIcon {
+            &::after {
+                background-color: #AEAEB2;
+            }      
+        }
     }
 
     .head {
@@ -219,20 +232,7 @@
             text-align: center;
             margin: 0;
         }
-        .productImg {
-            // url and background are injected in jsx
-            position: absolute;
-            width: 130px;
-            height: 59px;
-            top: 100px;
-            left: 18px;
-        }
-    }
-
-    .tableHeadFiller {
-        width: 158px;
-        height: 124px;
-        margin: 0; 
+        
     }
 
     .featuresList {
@@ -240,8 +240,17 @@
         text-align: center;
         font-size: 1.2rem;
         color: #505052;
-        padding: 0;
-        padding-top: 100px;
+        padding: 100px 10px 0 10px;
+        margin-top: 124px;
+    }
+
+    a {
+        position: absolute;
+        display: block;
+        color: blue;
+        text-decoration: none;
+        width: 160px;
+        height: 175px; 
     }
 
     li {
@@ -249,6 +258,15 @@
         height: 113px;
         padding-bottom: 56px;
     }
+}
+
+.productImg {
+    // url is injected in jsx
+    position: absolute;
+    width: 130px;
+    height: auto;
+    top: 100px;
+    left: 14px;
 }
 
 .headColorVar1 {

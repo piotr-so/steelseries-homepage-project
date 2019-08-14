@@ -28,7 +28,7 @@
     }
 }
 
-.itemToShowIdentifiersWrapper {
+.indicatorsWrapper {
     @include for-size(smartphone-and-landscape) {
         display: flex;
         justify-content: center;
@@ -43,7 +43,7 @@
     }
     
 
-    .identifiers {
+    .indicatorsPos {
         display: flex;
 
         @include for-size(medium-up) {
@@ -63,35 +63,35 @@
         grid-row: 2/3;
         margin-right: 10px;
     }
-    
-    .inactive {
+
+    %indicators-state-shared {
         position: relative;
+        cursor: pointer;
 
         &::after {
             position: absolute;
             content: '';
             width: 6px;
             height: 6px;
-            right: 2px;
-            top: 2px;
-            background-color: #FFFFFF;
             border-radius: 50%;
+        }
+    }
+    
+    .inactive {
+        @extend %indicators-state-shared;
+        &::after {
+            top: 2px;
+            right: 2px;
+            background-color: #FFFFFF;
         }
     }
 
     .active {
-        position: relative;
-
+        @extend %indicators-state-shared;
         &::after {
-            position: absolute;
-            content: '';
-            width: 6px;
-            height: 6px;
             border: 2px solid #FFFFFF;
-            border-radius: 50%;
             animation: reveal 1s;
-        }
-
+        }       
     }
 }
 
@@ -224,7 +224,7 @@
         color:#624C3C;
         font-weight: 300;
         font-size: 4.8rem;
-        margin: 0 0 17.5px 0;
+        margin: 0 0 12.5px 0;
         opacity: 1;
 
         @include for-size(smartphone-and-landscape) {
@@ -240,6 +240,7 @@
         color: #78787B;
         font-size: 1.8rem;
         line-height: 2.5rem;
+        margin: 0 0 55px 0;
 
         @include for-size(smartphone-and-landscape) {
             margin: 10px auto;
@@ -253,10 +254,13 @@
         color: #FFEADB;
         border: transparent;
         border-radius: 5px;
-        margin-top: 10px;
 
         @include for-size(smartphone-and-landscape) {
             margin: 0 auto;
         }
+        // @include for-size(tablet) {
+        //     margin-top: 30px;
+        // }
+        
     }
 }

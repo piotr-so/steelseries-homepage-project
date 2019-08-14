@@ -56,6 +56,10 @@ class ProductSlider extends Component {
         }
     }
 
+    handleIndicatorClick = (indicatorId) => {
+        this.setState({ currentImageIndex: indicatorId })
+    }
+
 
     handleTouchOnSlider = (e) => {
         const { currentImageIndex } = this.state;
@@ -101,18 +105,15 @@ class ProductSlider extends Component {
                 onTouchStart={e => this.handleTouchOnSlider(e)}
                 onTouchEnd={e => this.handleTouchOnSlider(e)}
             >
-                <div className={styles.itemToShowIdentifiersWrapper}>
-                    <div className={styles.identifiers}>
-                        {productsToShow.map((element, idx) => {
-                            return (
-                                currentImageIndex === idx ? (
-                                    <span className={styles.active} key={"identifier" + idx} />
-                                ) : (
-                                        <span className={styles.inactive} key={"identifier" + idx} />
-                                    )
-                            )
-                        })
-                        }
+                <div className={styles.indicatorsWrapper}>
+                    <div className={styles.indicatorsPos}>
+                        {productsToShow.map((element, idx) =>
+                            <span
+                                className={currentImageIndex === idx ? styles.active : styles.inactive}
+                                onClick={() => this.handleIndicatorClick(idx)}
+                                key={"indicator" + idx}
+                            ></span>
+                        )}
                     </div>
                 </div>
                 <div className={styles.products}>

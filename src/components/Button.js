@@ -1,9 +1,14 @@
 import React from 'react';
 import styles from './Button.module.scss';
 
-const Button = ({ text }) => {
+const Button = ({ text, sectionIdToScroll }) => {
     return (
-        <button className={styles.button}>{text.toUpperCase()}</button>
+        <button
+            className={styles.button}
+            onClick={sectionIdToScroll ? () => document.getElementById(`${sectionIdToScroll}`).scrollIntoView(false) : undefined}
+        >
+            {text.toUpperCase()}
+        </button>
     )
 }
 

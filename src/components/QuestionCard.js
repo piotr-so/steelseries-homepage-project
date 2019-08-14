@@ -145,8 +145,8 @@ class QuestionCard extends Component {
                                     <div 
                                         className={`
                                         ${styles.nextButton} 
-                                        ${this.state.validatedQuestionCardUpTo < cardIdx && styles.greyed}
-                                        ${this.state.greyedClicked && styles.greyedClicked}
+                                        ${this.state.validatedQuestionCardUpTo < cardIdx ? styles.greyed : undefined}
+                                        ${this.state.greyedClicked ? styles.greyedClicked : undefined}
                                         `} 
                                         onClick={this.state.validatedQuestionCardUpTo >= cardIdx ? (() => switchQuestion('next')) 
                                         : () => this.handleGreyedClick()}
@@ -155,8 +155,13 @@ class QuestionCard extends Component {
                                     </div>
                                     :
                                     <button 
-                                        className={`${styles.submitButton} ${this.state.validatedQuestionCardUpTo < cardIdx && styles.greyed}`} 
+                                        className={`
+                                        ${styles.submitButton} 
+                                        ${this.state.validatedQuestionCardUpTo < cardIdx ? styles.greyed : undefined}
+                                        ${this.state.greyedClicked ? styles.greyedClicked : undefined}
+                                        `} 
                                         type='submit'
+                                        onClick={this.state.validatedQuestionCardUpTo < cardIdx ? () => this.handleGreyedClick() : undefined }
                                     >
                                         <span>SEE PRODUCTS</span>
                                     </button>

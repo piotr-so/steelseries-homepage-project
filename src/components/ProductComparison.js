@@ -8,6 +8,7 @@ import ProductComparisonMobile from './ProductComparisonMobile';
 
 class ProductComparison extends Component {
     state = {
+        mobileOrDesktop: "",
         isFixed: false,
         scrollTimesCounter: 0,
         availableTimesToScroll: 0,
@@ -74,6 +75,19 @@ class ProductComparison extends Component {
         }
     }
 
+    // **fix** Function for tableElement repeated assign after coming back from mobile window size (resize)
+    updateWindowSize = () => {
+        const windowSize = window.innerWidth;
+        let version = "";
+        if (windowSize > smartphoneAndLandscape.maxWidth) {
+            version = "desktop"
+        }
+        else {
+            version = "mobile"
+        }
+        this.setState({mobileOrDesktop: version})
+    }
+
     componentDidMount() {
         this.tableElement = document.getElementsByClassName(styles.product)[0];
         this.quantityOfProducts = productsData[this.props.productCategory].products.length;
@@ -89,7 +103,13 @@ class ProductComparison extends Component {
         }
         
         window.addEventListener('scroll', this.checkStickyBarPos);
-        window.addEventListener('resize', this.modifyVisibleColumns);
+        window.addEventListener('resize', ()=>{this.modifyVisibleColumns(); this.updateWindowSize();});
+    }
+
+    componentDidUpdate() {
+        if (this.state.mobileOrDesktop === "desktop") {
+            this.tableElement = document.getElementsByClassName(styles.product)[0];
+        }    
     }
 
     // ** WIP ** for other props, no content right now
@@ -130,16 +150,18 @@ class ProductComparison extends Component {
                         <div className={styles.stickyBarHeader}>
                             <div className={styles.stickyElementsWrapper} style={{'width': `${160 * productsData[productCategory].products.length}px`, 'transform': `translateX(-${this.state.scrollTimesCounter * 160}px)`}}>
                                 {productsData[productCategory].products.map((singleProduct, singleProductIdx) =>
-                                    <div 
-                                        className={`
-                                        ${styles.stickyElement} 
-                                        ${singleProductIdx % 2 === 0 ? styles.headColorVar2 : singleProductIdx % 2 !== 0 && styles.headColorVar1}
-                                        `}
-                                        key={`sticky-item-${singleProductIdx}`}
-                                    >
-                                        <h2>{singleProduct.name.toUpperCase()}</h2>
-                                        <div className={styles.stickyElementImg} style={{ 'background': `url(${singleProduct.url}) center no-repeat / cover` }} />
-                                    </div>
+                                    <a href={singleProduct.name}>
+                                        <div 
+                                            className={`
+                                            ${styles.stickyElement} 
+                                            ${singleProductIdx % 2 === 0 ? styles.headColorVar2 : singleProductIdx % 2 !== 0 && styles.headColorVar1}
+                                            `}
+                                            key={`sticky-item-${singleProductIdx}`}
+                                        >
+                                            <h2>{singleProduct.name.toUpperCase()}</h2>
+                                            <img src={singleProduct.url} className={styles.stickyElementImg} alt={singleProduct.name}/>
+                                        </div>
+                                    </a>
                                 )}
                             </div>
                             <div className={`${styles.arrowLeft} ${scrollTimesCounter === 0 && styles.hidden}`} onClick={() => this.clickTranslateX(-1)}></div>
@@ -162,12 +184,13 @@ class ProductComparison extends Component {
 
                             {productsData[productCategory].products.map((singleProduct, singleProductIdx) =>
                                 <li className={styles.product} key={`product-column-${singleProduct.id}`}>
-                                    <div className={styles.tableHeadFiller}></div>
                                     {/* // Head of the product // */}
-                                    <div className={styles.head}>
-                                        <h2>{singleProduct.name.toUpperCase()}</h2>
-                                        <div className={styles.productImg} style={{'background': `url(${singleProduct.url}) center no-repeat / cover`}}/> 
-                                    </div>
+                                    <a href={singleProduct.name}>
+                                        <div className={styles.head}>
+                                            <h2>{singleProduct.name.toUpperCase()}</h2>
+                                            <img src={singleProduct.url} className={styles.productImg} alt={singleProduct.name}/>
+                                        </div>
+                                    </a>
                                     {/*  */}
                                     {/* // Single product features // */}
                                     <ul className={`${styles.featuresList} ${singleProductIdx % 2 === 0 ? styles.colorVar1 : styles.colorVar2}`}>

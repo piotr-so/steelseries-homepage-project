@@ -28,4 +28,8 @@
             width: inherit;
         }
     }
+
+    &:focus {
+        outline: none;
+    }
 }

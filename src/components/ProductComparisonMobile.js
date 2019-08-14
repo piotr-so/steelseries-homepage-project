@@ -90,7 +90,7 @@ class ProductComparisonMobile extends Component {
                                     <div className={styles.productImg} style={{ 'background': `url(${singleProduct.url}) center no-repeat / cover` }} />
                                 </div>
                                 <ul className={styles.featuresWrapper}>
-                                    {Object.entries(singleProduct).map((feature, featureIdx) => feature[0] === "name" || feature[0] === "url" ? undefined :
+                                    {Object.entries(singleProduct).map((feature, featureIdx) => feature[0] === "name" || feature[0] === "url" || feature[0] === "id" ? undefined :
                                         <li className={styles.singleFeature} key={`feature_nr-${featureIdx}`}>
                                             <div className={styles.featureName}>{feature[0]}</div>
                                             <div key={singleProduct.name + '_' + (featureIdx + 1)}
