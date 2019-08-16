@@ -2,14 +2,15 @@
 [
     {
         "name": "rival 700",
-        "url": "/MostPopular/Most_popular_rival700_sprite.png",
+        "url": "",
         "description": "The Rival 700, equipped with gaming's first fully customizable OLED display, customizable tactile alerts and swappable physical components. Altogether, this makes the Rival700 the most powerful gaming mouse in the world, giving gamers real-time information and notifications while they play.",
         "color-variants": ["#FF8F21", "#AF31A8", "#4363BF", "#FFFFFF"],
+        "variants-url": ["/MostPopular/original_color.png", "/MostPopular/violet_color.png", "/MostPopular/blue_color.png", "/MostPopular/white_color.png"],
         "price": "249,95"
     },
     {
         "name": "siberia 200",
-        "url": "/MostPopular/Headset_mod.png",
+        "url": "/MostPopular/Headset_mod2.png",
         "description": "The Siberia 200 gaming headset combines the comfort and sound of the best-selling Siberia V2 with quality updates, reclaiming its title as the best gaming headset in eSports and PC gaming",
         "price": "109,99"
     },

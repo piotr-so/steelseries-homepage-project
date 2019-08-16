@@ -8,7 +8,6 @@
     position: relative;
     font-family: Arial, sans-serif;
     max-width: 1171px;
-    // height: calc(820px + 132px);
     margin: 70px auto 0 auto;
     z-index: 1;
 
@@ -46,7 +45,6 @@
 .productWrapper {
     display: flex;
     height: 660px;
-    top: 110px;
     background-color: #252526;
     box-shadow: -26px 29px 40px 15px rgba(17,17,17,0.25);
     transform: translateY(-50px);
@@ -54,6 +52,7 @@
     @include for-size (smartphone-and-medium) {
         flex-direction: column;
         width: 100%;
+        min-height: 600px;
         height: auto;
     }
     @include for-size (medium-only) {
@@ -68,6 +67,7 @@
 .imgContainer {
     position: relative;
     user-select: none;
+    display: flex;
 
     @include for-size (smartphone-and-medium) {
         margin-top: 20px;
@@ -80,33 +80,42 @@
         position: relative;
         max-width: 562px;
         height: auto;
-        margin-top: 200px;
+        margin-top: 100px;
         overflow: hidden;
 
+        @mixin size($width, $height) {
+            width: $width;
+            height: $height;
+        }
+
         @include for-size (smartphone-and-medium) {
-            max-width: 266px;
+            // max-width: 266px;
             margin-top: 0;
+            @include size(266px, 220px);
         }
 
-        @include for-size (medium-up) {
-            width: 562px;
-            height: 420px;
+        @include for-size (medium-only) {
+            margin-top: 0;
+            @include size(266px, 220px);
         }
 
+        @include for-size (desktop) {
+            @include size(562px, auto);
+        }
+
+        @include for-size (big-screen) {
+            @include size(562px, auto);
+        }
+        
         img {
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
             pointer-events: none;
             z-index: 2;
-            animation: reveal .5s;
 
             @include for-size (smartphone-and-medium) {
                 height: 220px;
-            }
-
-            @include for-size (medium-up) {
-                position: absolute;
-                top: 0;
-                left: 0;
             }
         }
     }
@@ -300,6 +309,11 @@
 
 .visible {
     visibility: visible;
+}
+
+.imgVisible {
+    visibility: visible;
+    animation: reveal .8s;
 }
 
 .hidden {

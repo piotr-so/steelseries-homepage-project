@@ -3,11 +3,13 @@ import styles from '../components/MostPopular.module.scss';
 import products from '../assets/data/most-popular.json';
 import arrow from '../assets/slider-arrow.svg';
 import Button from './Button';
+import { smartphoneAndLandscape } from '../components/MediaQueries';
 
 class MostPopular extends Component {
     state = {
         whichProductIsShown: 0,
         whichVariantIsShown: 0,
+        variantsSwitching: false,
         windowWidth: 0,
         isWidthAdjustabale: false,
     }
@@ -15,13 +17,15 @@ class MostPopular extends Component {
     switchColor = (clickedElement) => {
         if (clickedElement === "reset") {
             this.setState({
-                whichVariantIsShown: 0
+                whichVariantIsShown: 0,
+                variantsSwitching: false
             })
         }
         else {
             const idOfElement = clickedElement.currentTarget.attributes.numberId.value;
             this.setState({
-                whichVariantIsShown: Number(idOfElement)
+                whichVariantIsShown: Number(idOfElement),
+                variantsSwitching: true
             })
         }
     }
@@ -47,12 +51,18 @@ class MostPopular extends Component {
 
     componentDidMount() {
         this.screenWidth = window.innerWidth;
-        this.setState({ windowWidth: this.screenWidth });
+        if (this.screenWidth <= smartphoneAndLandscape.maxWidth) {
+            this.setState({
+                windowWidth: this.screenWidth,
+                isWidthAdjustabale: true
+            })
+        }
+        else {this.setState({ windowWidth: this.screenWidth });}      
         window.addEventListener('resize', this.changeWindowWidth);
     }
 
     render() {
-        const { whichProductIsShown, whichVariantIsShown } = this.state;
+        const { whichProductIsShown, whichVariantIsShown, variantsSwitching } = this.state;
         return (
             <div className={styles.wrapper}>
                 <header className={styles.header}>
@@ -65,19 +75,34 @@ class MostPopular extends Component {
                 >
                     <div className={styles.imgContainer}>
                         <div className={styles.productImg}>
-                            {products.map((singleProduct, idx) =>
-                                <img
-                                    src={singleProduct.url}
-                                    className={whichProductIsShown === idx ? styles.visible : styles.hidden}
-                                    key={"most-popular-product-" + idx}
-                                    style={
-                                        whichProductIsShown === 0 && whichProductIsShown === idx ?
-                                            this.state.isWidthAdjustabale === false ? { "transform": `translateX(-${562 * whichVariantIsShown}px)` }
-                                                : { "transform": `translateX(-${266 * whichVariantIsShown}px)` }
-                                            : undefined
-                                    }
-                                    alt={singleProduct.name}>
-                                </img>
+                            {products.map((singleProduct, idx) => 
+
+                                singleProduct["variants-url"] ? (
+                                    singleProduct["variants-url"].map((colorVariant, variantIdx) => 
+                                        <img
+                                            src={colorVariant}
+                                            className={
+                                                whichProductIsShown === 0 ? 
+                                                    variantIdx === 0 ? 
+                                                        whichVariantIsShown === variantIdx ? 
+                                                            variantsSwitching ? styles.visible : styles.imgVisible 
+                                                        : styles.hidden
+                                                    :
+                                                    variantIdx === whichVariantIsShown ? styles.visible : styles.hidden
+                                                : styles.hidden
+                                            }
+                                            key={`most-popular-product-${idx}-cVariant-${variantIdx}`}
+                                            alt={singleProduct.name}>
+                                        </img>
+                                    )
+                                ) : (
+                                    <img
+                                        src={singleProduct.url}
+                                        className={whichProductIsShown === idx ? styles.imgVisible : styles.hidden}
+                                        key={"most-popular-product-" + idx}
+                                        alt={singleProduct.name}>
+                                    </img>  
+                                )
                             )}
                         </div>
                         <div className={`
