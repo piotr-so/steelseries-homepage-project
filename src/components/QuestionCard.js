@@ -146,7 +146,7 @@ class QuestionCard extends Component {
                                         className={`
                                         ${styles.nextButton} 
                                         ${this.state.validatedQuestionCardUpTo < cardIdx ? styles.greyed : undefined}
-                                        ${this.state.greyedClicked ? styles.greyedClicked : undefined}
+                                        ${this.state.greyedClicked ? styles.greyedClicked : styles.greyedNotClicked}
                                         `} 
                                         onClick={this.state.validatedQuestionCardUpTo >= cardIdx ? (() => switchQuestion('next')) 
                                         : () => this.handleGreyedClick()}
@@ -158,7 +158,7 @@ class QuestionCard extends Component {
                                         className={`
                                         ${styles.submitButton} 
                                         ${this.state.validatedQuestionCardUpTo < cardIdx ? styles.greyed : undefined}
-                                        ${this.state.greyedClicked ? styles.greyedClicked : undefined}
+                                        ${this.state.greyedClicked ? styles.greyedClicked : styles.greyedNotClicked}
                                         `} 
                                         type='submit'
                                         onClick={this.state.validatedQuestionCardUpTo < cardIdx ? () => this.handleGreyedClick() : undefined }

@@ -66,7 +66,9 @@ class ProductComparisonMobile extends Component {
                             className={styles.singleProductTitle}
                             
                         >
-                            {singleProduct.name.toUpperCase()}
+                            <a href={`/${singleProduct.name}`}>
+                                {singleProduct.name.toUpperCase()}
+                            </a>
                         </h2>
                     )}
                 </div>
@@ -86,8 +88,9 @@ class ProductComparisonMobile extends Component {
                         {products.map((singleProduct, singleProductIdx) =>
                             <div className={styles.product} key={`mobile_product_card_nr-${singleProductIdx}`}>
                                 <div className={styles.header}>
-                                    {/* <h2>{singleProduct.name.toUpperCase()}</h2> */}
-                                    <div className={styles.productImg} style={{ 'background': `url(${singleProduct.url}) center no-repeat / cover` }} />
+                                    <a href={`${singleProduct.name}`}>
+                                        <img src={singleProduct.url} className={styles.productImg} alt={singleProduct.name}/>
+                                    </a>
                                 </div>
                                 <ul className={styles.featuresWrapper}>
                                     {Object.entries(singleProduct).map((feature, featureIdx) => feature[0] === "name" || feature[0] === "url" || feature[0] === "id" ? undefined :
@@ -96,7 +99,7 @@ class ProductComparisonMobile extends Component {
                                             <div key={singleProduct.name + '_' + (featureIdx + 1)}
                                                 className={feature[1] === "yes" ? styles.tickIcon : styles.featureContent}
                                             >
-                                                {feature[1] === "no" || feature[1] === "yes" ? "" : feature[1]}
+                                                {feature[1] === "no" ? "-" : feature[1] === "yes" ? "" : feature[1]}
                                             </div>
                                         </li>
                                     )}

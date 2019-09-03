@@ -65,15 +65,15 @@
             "question" : "What is your prefered grip type?",
             "answers" : [
                 {
-                    "text": "CLAW",
+                    "text": "Claw",
                     "url": "/ProductGuide/Mouse/q2/finter_tips.png"
                 },
                 {
-                    "text": "FINGERTIP",
+                    "text": "Fingertip",
                     "url": "/ProductGuide/Mouse/q2/finter_tips.png"
                 },
                 {
-                    "text": "PALM",
+                    "text": "Palm",
                     "url": "/ProductGuide/Mouse/q2/finter_tips.png"
                 }
             ]

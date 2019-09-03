@@ -45,17 +45,28 @@
         background-color: #AEAEB2;  
     }
 }
-#products {
+.products {
     position: relative;
     &::before {
         content: "";
         position: absolute;
-        // display: block;
         background: url("../assets/arrow.svg");
         width: 14px;
         height: 8px;
-        right: 60px;
-        top: 28px;   
+        right: -25px;
+        top: 15px;
+        transform: rotate(0);
+        // transition: 0.3s ease-in-out;  
+    }
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.productsRotate {
+    @extend .products;
+    &::before {
+        transform: rotate(180deg);
     }
 }
 

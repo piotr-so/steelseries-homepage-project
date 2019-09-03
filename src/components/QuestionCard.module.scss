@@ -264,7 +264,34 @@
     }
 }
 
-%greyedClicked-and-submitbutton-shared {
+// %greyedClicked-and-submitbutton-shared {
+//     span {
+//         &::before {
+//             content: "";
+//             position: absolute;
+//             display: block;
+//             background-size: 25px 25px;
+//             background-image: url('../assets/Exclamation_encircled.svg');
+//             background-repeat: no-repeat;
+//             width: 25px;
+//             height: 25px;
+//             left: -3px;
+//             top: -40px;
+//         }
+//         &::after {
+//             content: "Please select an answer first";
+//             position: absolute;
+//             top: -35px;
+//             right: -25px;
+//             width: 160px;
+//             color: #ACACAC;
+//             font-size: 1.2rem;
+//             text-align: center;
+//         } 
+//     }
+// }
+
+.greyedNotClicked {
     span {
         &::before {
             content: "";
@@ -277,6 +304,7 @@
             height: 25px;
             left: -3px;
             top: -40px;
+            visibility: hidden;
         }
         &::after {
             content: "Please select an answer first";
@@ -287,12 +315,21 @@
             color: #ACACAC;
             font-size: 1.2rem;
             text-align: center;
+            visibility: hidden;
         } 
     }
 }
 
 .greyedClicked {
-    @extend %greyedClicked-and-submitbutton-shared;
+    @extend .greyedNotClicked;
+    span {
+        &::before {
+            visibility: visible;
+        }
+        &::after {
+            visibility: visible;
+        }
+    }
 }
 
 .submitButton {

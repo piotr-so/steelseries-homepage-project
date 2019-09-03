@@ -26,7 +26,7 @@ class Dropdown extends Component {
             <nav>
                 <ul className={styles.menu}>
                     <li className={styles.productsList} onMouseEnter={this.handleMouseEvent} onMouseLeave={this.handleMouseEvent}>
-                        <a href="#">PRODUCTS</a>
+                        <a href="/products">PRODUCTS</a>
                         <CSSTransitionGroup
                             component={FirstChild}
                             transitionName="reveal"
@@ -37,13 +37,13 @@ class Dropdown extends Component {
                                 <div key={'dropdownMenu'} className={styles.dropMenu} >
                                     <ul>
                                         <li className={shouldBeNonTransparent ? styles.nonTransparent : undefined}>
-                                            <a href="#">Headsets</a>
+                                            <a href="/headsets">Headsets</a>
                                         </li>
                                         <li className={shouldBeNonTransparent ? styles.nonTransparent : undefined}>
-                                            <a href="#">Keyboards</a>
+                                            <a href="/keyboards">Keyboards</a>
                                         </li>
                                         <li className={shouldBeNonTransparent ? styles.nonTransparent : undefined}>
-                                            <a href="#">Mice</a>
+                                            <a href="/mice">Mice</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -56,15 +56,15 @@ class Dropdown extends Component {
 
                     </li>
                     <li>
-                        <a href="#">ESPORTS</a>
+                        <a href="/esports">ESPORTS</a>
 
                     </li>
                     <li>
-                        <a href="#">SUPPORT</a>
+                        <a href="/support">SUPPORT</a>
 
                     </li>
                     <li>
-                        <a href="#">COMMUNITY</a>
+                        <a href="/community">COMMUNITY</a>
                     </li>
                 </ul>
             </nav>

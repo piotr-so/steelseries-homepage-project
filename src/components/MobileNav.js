@@ -22,38 +22,44 @@ class MobileNav extends Component {
     }
 
     render() {
+        const { isDisplayed } = this.state;
         return (
             <nav>
                 <ul className={styles.menu}>
                     <li>
-                        <a href="#" id={styles.products} onClick={this.changeVisibility}>PRODUCTS</a>
+                        <span
+                            className={!isDisplayed ? styles.products : styles.productsRotate} 
+                            onClick={this.changeVisibility}
+                        >
+                            PRODUCTS
+                        </span> 
                         <div className={`${styles.productsItems} ${!this.state.isDisplayed && styles.hidden}`}>
                             <ul>
                                 <li>
-                                    <a href="#">Headsets</a>
+                                    <a href="/headsets">Headsets</a>
                                 </li>
                                 <li>
-                                    <a href="#">Keyboards</a>
+                                    <a href="/keyboards">Keyboards</a>
                                 </li>
                                 <li>
-                                    <a href="#">Mice</a>
+                                    <a href="/mice">Mice</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li>
-                        <a href="#">ESPORTS</a>
+                        <a href="/esports">ESPORTS</a>
 
                     </li>
                     <li>
-                        <a href="#">SUPPORT</a>
+                        <a href="/support">SUPPORT</a>
 
                     </li>
                     <li id={styles.beforeProfileFix}>
-                        <a href="#">COMMUNITY</a>
+                        <a href="/community">COMMUNITY</a>
                     </li>
                     <li id={styles.profile}>
-                        <a href="#" id={styles.profileLink}>MY PROFILE</a>
+                        <a href="/user_profile" id={styles.profileLink}>MY PROFILE</a>
                     </li>
                 </ul>
             </nav>

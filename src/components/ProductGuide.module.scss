@@ -16,6 +16,10 @@
         color: #624C3C;
         margin: 0 auto;
         line-height: 48px;
+        @include for-size(smartphone-and-landscape) {
+            line-height: normal;
+            font-size: 3rem;
+        }
     }
 }
 
@@ -26,9 +30,9 @@
     overflow-y: hidden;
     z-index: 1;
 
-    // @include for-size(smartphone-and-landscape) {
-    //     margin: 50px 15px 0 15px;
-    // }
+    @include for-size(smartphone-and-landscape) {
+        margin: 30px auto 0 auto;
+    }
 }
 
 .card1 {

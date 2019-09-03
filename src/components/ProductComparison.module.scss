@@ -8,7 +8,7 @@
     @include for-size (smartphone-and-landscape) {
         min-width: 320px;
         max-width: 60%;
-        margin: 50px auto 0 auto;
+        margin: 70px auto 0 auto;
     }
 
     @include for-size (table_breakpoint1) {
@@ -26,6 +26,7 @@
     }
 
     @include for-size (smartphone-and-landscape) {
+        // margin-top: 20px;
         margin-bottom: 25px;
     }
 
@@ -38,6 +39,10 @@
         color: #624C3C;
         margin: 0 auto;
         line-height: 55px;
+        @include for-size (smartphone-and-landscape) {
+            font-size: 3rem;
+            line-height: normal;
+        }
     }
 }
 

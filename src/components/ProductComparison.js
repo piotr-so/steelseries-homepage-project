@@ -42,7 +42,8 @@ class ProductComparison extends Component {
             const tableELemPosToWindow = this.tableElement.getBoundingClientRect().top; 
 
             const { isFixed } = this.state;
-            const quantityOfFeaturesRows = productsData[this.props.productCategory].features.length;
+            // changed this.props.productCategory for Mouse, because there is no content for other props right now and it's breaking bar position
+            const quantityOfFeaturesRows = productsData["Mouse"].features.length;
             const productHeadHeight = 124;
             const productColumnPadding = 100;
             const rowHeight = 113;
@@ -106,8 +107,8 @@ class ProductComparison extends Component {
         window.addEventListener('resize', ()=>{this.modifyVisibleColumns(); this.updateWindowSize();});
     }
 
-    componentDidUpdate() {
-        if (this.state.mobileOrDesktop === "desktop") {
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.mobileOrDesktop === "mobile" && this.state.mobileOrDesktop === "desktop") {
             this.tableElement = document.getElementsByClassName(styles.product)[0];
         }    
     }

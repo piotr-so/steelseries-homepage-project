@@ -18,6 +18,11 @@
     background-color: #282829;
     min-width: 100%;
     margin: 0 20px 0 0;
+
+    a {
+        text-decoration: none;
+        color: #4D4D4F;
+    }
 }
 
 
@@ -78,6 +83,12 @@
 }
 .header {
     width: 100%;
+    display: flex;
+
+    a {
+        display: inline-block;
+        margin: 0 auto;
+    }
 
     .productImg {
         max-width: 280px;
@@ -121,7 +132,7 @@
         right: 0;
         width: 25px;
         height: 20px;
-        background-color: #505052;
+        background-color: #AEAEB2;
     }
 }
 
