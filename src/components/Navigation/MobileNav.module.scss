@@ -37,7 +37,7 @@
     &::before {
         content: "";
         position: absolute;
-        mask: url('../assets/Male User.svg');
+        mask: url('../../assets/Male User.svg');
         width: 29px;
         height: 29px;
         left: 40px;
@@ -50,7 +50,7 @@
     &::before {
         content: "";
         position: absolute;
-        background: url("../assets/arrow.svg");
+        background: url("../../assets/arrow.svg");
         width: 14px;
         height: 8px;
         right: -25px;

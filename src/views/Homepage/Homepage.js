@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
-import styles from "./App.module.scss";
-import Header from "./components/Header";
-import ProductSlider from "./components/ProductSlider";
-import ProductCarousel from "./components/ProductCarousel";
-import ProductGuide from "./components/ProductGuide";
-import ProductComparison from "./components/ProductComparison";
-import MostPopular from './components/MostPopular';
+import styles from "./Homepage.module.scss";
+import PageHeader from "../../components/Navigation/PageHeader";
+import ProductSlider from "../../components/ProductSlider";
+import ProductCarousel from "../../components/ProductCarousel";
+import ProductGuide from "../../components/ProductGuide";
+import ProductComparison from "../../components/ProductComparison";
+import MostPopular from '../../components/MostPopular';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-class App extends Component {
+class Homepage extends Component {
   state = {
     windowWidth: null,
     productCategory: 'Mouse',
   }
-  // !!! Change to database later !!!
 
   setCenteredToRender = (centeredELement) => {
     this.setState({
@@ -24,7 +23,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Header />
+        <PageHeader />
         <Switch>
           <Route exact path="/">
             <div className={styles.main}>            
@@ -42,4 +41,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Homepage;

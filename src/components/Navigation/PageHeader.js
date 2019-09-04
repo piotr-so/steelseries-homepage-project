@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import MediaQuery from "react-responsive";
 import Navigation from './Navigation';
 import MobileNav from './MobileNav';
-import styles from "./Header.module.scss";
-import logo from "../assets/logo.png";
-import { ReactComponent as Basket } from "../assets/Basket.svg";
-import { ReactComponent as UserImg } from "../assets/Male User.svg";
-import { smartphoneAndLandscape, mediumUp } from '../components/MediaQueries';
+import styles from "./PageHeader.module.scss";
+import logo from "../../assets/logo.png";
+import { ReactComponent as Basket } from "../../assets/Basket.svg";
+import { ReactComponent as UserImg } from "../../assets/Male User.svg";
+import { smartphoneAndLandscape, mediumUp } from '../MediaQueries';
 
-class Header extends Component {
+class PageHeader extends Component {
     state = {
         isVisible: false,
         pageScrolled: false,
@@ -110,4 +110,4 @@ class Header extends Component {
 }
 
 
-export default Header;
+export default PageHeader;
