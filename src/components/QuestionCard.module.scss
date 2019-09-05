@@ -7,7 +7,7 @@
     margin: auto;
     padding-left: 59.5px;
     box-shadow: -26.1px 28.98px 40px rgba(#000000, .2);
-    background: url('../assets/background_productGuide.png') no-repeat #252526;
+    background: url('../assets/images/background_productGuide.png') no-repeat #252526;
     // user-select: none;
 
     @include for-size(smartphone-and-landscape) {
@@ -19,7 +19,7 @@
     }
 
     &::after {
-        content: url('../assets/steel_logo.png');
+        content: url('../assets/images/steel_logo.png');
         position: absolute;
         width: 41px;
         height: 48px;
@@ -69,7 +69,7 @@
         }
         &::after {
             content: '';
-            mask: url('../assets/left-arrow.svg');
+            mask: url('../assets/images/left-arrow.svg');
             position: absolute;
             width: 15px;
             height: 15px;
@@ -156,7 +156,7 @@
         background-color: grey;
         //!!! Tick icon controlled by CSS part 1 !!!
         &::before {
-            content: url('../assets/SelectedTick.svg');
+            content: url('../assets/images/SelectedTick.svg');
             position: absolute;
             width: 45px;
             height: 52px;
@@ -224,7 +224,7 @@
 
     &::before {
         content: '';
-        mask: url('../assets/arrowsDownSymbol.svg');
+        mask: url('../assets/images/arrowsDownSymbol.svg');
         position: absolute;
         width: 8px;
         height: 10px;
@@ -271,7 +271,7 @@
 //             position: absolute;
 //             display: block;
 //             background-size: 25px 25px;
-//             background-image: url('../assets/Exclamation_encircled.svg');
+//             background-image: url('../assets/images/Exclamation_encircled.svg');
 //             background-repeat: no-repeat;
 //             width: 25px;
 //             height: 25px;
@@ -298,7 +298,7 @@
             position: absolute;
             display: block;
             background-size: 25px 25px;
-            background-image: url('../assets/Exclamation_encircled.svg');
+            background-image: url('../assets/images/Exclamation_encircled.svg');
             background-repeat: no-repeat;
             width: 25px;
             height: 25px;

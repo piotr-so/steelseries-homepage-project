@@ -48,7 +48,7 @@
 
 .productsTable {
     position: relative;
-    background: url('../assets/Background-b.png') 130px 195px no-repeat ;
+    background: url('../assets/images/Background-b.png') 130px 195px no-repeat ;
     background-size: 100%;   
 }
 
@@ -303,7 +303,7 @@
 
     &::after {
         content: '';
-        mask: url('../assets/left-arrow.svg');
+        mask: url('../assets/images/left-arrow.svg');
         position: absolute;
         width: 20px;
         height: 20px;
@@ -340,7 +340,7 @@
 .tickIcon {
     &::after {
         content: "";
-        mask: url('../assets/tick.svg');
+        mask: url('../assets/images/tick.svg');
         position: absolute;
         left: 50%;
         margin-left: -12.5px;

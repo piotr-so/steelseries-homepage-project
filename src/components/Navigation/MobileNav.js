@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './MobileNav.module.scss';
 
 
@@ -23,6 +24,7 @@ class MobileNav extends Component {
 
     render() {
         const { isDisplayed } = this.state;
+        const { toggleHamburger } = this.props;
         return (
             <nav>
                 <ul className={styles.menu}>
@@ -36,30 +38,29 @@ class MobileNav extends Component {
                         <div className={`${styles.productsItems} ${!this.state.isDisplayed && styles.hidden}`}>
                             <ul>
                                 <li>
-                                    <a href="/headsets">Headsets</a>
+                                    <Link to={'/headsets'} onClick={() => toggleHamburger()}>Headsets</Link>
                                 </li>
                                 <li>
-                                    <a href="/keyboards">Keyboards</a>
+                                    <Link to={'/keyboards'} onClick={() => toggleHamburger()}>Keyboards</Link>
                                 </li>
                                 <li>
-                                    <a href="/mice">Mice</a>
+                                    <Link to={'/mice'} onClick={() => toggleHamburger()}>Mice</Link>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li>
-                        <a href="/esports">ESPORTS</a>
+                        <Link to={'/esports'} onClick={() => toggleHamburger()}>ESPORTS</Link>
 
                     </li>
                     <li>
-                        <a href="/support">SUPPORT</a>
-
+                        <Link to={'/support'} onClick={() => toggleHamburger()}>SUPPORT</Link>
                     </li>
                     <li id={styles.beforeProfileFix}>
-                        <a href="/community">COMMUNITY</a>
+                        <Link to={'/community'} onClick={() => toggleHamburger()}>COMMUNITY</Link>
                     </li>
                     <li id={styles.profile}>
-                        <a href="/user_profile" id={styles.profileLink}>MY PROFILE</a>
+                        <Link to={'/user_profile'} id={styles.profileLink} onClick={() => toggleHamburger()}>MY PROFILE</Link>
                     </li>
                 </ul>
             </nav>

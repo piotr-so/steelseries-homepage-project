@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import styles from './ProductCarousel.module.scss';
-import headset from '../assets/Layer 12.png';
-import mouse from '../assets/rival_100 copy.png';
-import keyboard from '../assets/apex300_leadin_proof2_r.png';
-import HeadsetBackground from '../assets/headset_background.png';
-import MouseBackground from '../assets/Layer7.png';
-import KeyboardBackground from '../assets/Layer10.png';
+import headset from '../assets/images/Layer 12.png';
+import mouse from '../assets/images/rival_100 copy.png';
+import keyboard from '../assets/images/apex300_leadin_proof2_r.png';
+import HeadsetBackground from '../assets/images/headset_background.png';
+import MouseBackground from '../assets/images/Layer7.png';
+import KeyboardBackground from '../assets/images/Layer10.png';
 import Product from '../components/Product';
 
 const products = [

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import MediaQuery from "react-responsive";
 import Navigation from './Navigation';
 import MobileNav from './MobileNav';
 import styles from "./PageHeader.module.scss";
-import logo from "../../assets/logo.png";
-import { ReactComponent as Basket } from "../../assets/Basket.svg";
-import { ReactComponent as UserImg } from "../../assets/Male User.svg";
+import logo from "../../assets/images/logo.png";
+import { ReactComponent as Basket } from "../../assets/images/Basket.svg";
+import { ReactComponent as UserImg } from "../../assets/images/Male User.svg";
 import { smartphoneAndLandscape, mediumUp } from '../MediaQueries';
 
 class PageHeader extends Component {
@@ -59,7 +60,7 @@ class PageHeader extends Component {
                             xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 0 32 32" width="32" fill="#624C3C"
                             aria-label="open mobile menu"
                         >
-                            <path d="M4 10h24c1.1 0 2-0.9 2-2s-0.9-2-2-2H4C2.9 6 2 6.9 2 8S2.9 10 4 10zM28 14H4c-1.1 0-2 0.9-2 2s0.9 2 2 2h24c1.1 0 2-0.9 2-2S29.1 14 28 14zM28 22H4c-1.1 0-2 0.9-2 2s0.9 2 2 2h24c1.1 0 2-0.9 2-2S29.1 22 28 22z"/>
+                            <path d="M4 10h24c1.1 0 2-0.9 2-2s-0.9-2-2-2H4C2.9 6 2 6.9 2 8S2.9 10 4 10zM28 14H4c-1.1 0-2 0.9-2 2s0.9 2 2 2h24c1.1 0 2-0.9 2-2S29.1 14 28 14zM28 22H4c-1.1 0-2 0.9-2 2s0.9 2 2 2h24c1.1 0 2-0.9 2-2S29.1 22 28 22z" />
                         </svg>
                         <svg
                             className={this.state.isVisible ? styles.cancelIco : styles.hide}
@@ -68,13 +69,15 @@ class PageHeader extends Component {
                             aria-label="close mobile menu"
                         >
                             <g>
-                                <path d="M131.8 106.5l75.9-75.9c7-7 7-18.3 0-25.3 -7-7-18.3-7-25.3 0l-75.9 75.9L30.6 5.2c-7-7-18.3-7-25.3 0 -7 7-7 18.3 0 25.3l75.9 75.9L5.2 182.4c-7 7-7 18.3 0 25.3 7 7 18.3 7 25.3 0l75.9-75.9 75.9 75.9c7 7 18.3 7 25.3 0 7-7 7-18.3 0-25.3L131.8 106.5z"/>
+                                <path d="M131.8 106.5l75.9-75.9c7-7 7-18.3 0-25.3 -7-7-18.3-7-25.3 0l-75.9 75.9L30.6 5.2c-7-7-18.3-7-25.3 0 -7 7-7 18.3 0 25.3l75.9 75.9L5.2 182.4c-7 7-7 18.3 0 25.3 7 7 18.3 7 25.3 0l75.9-75.9 75.9 75.9c7 7 18.3 7 25.3 0 7-7 7-18.3 0-25.3L131.8 106.5z" />
                             </g>
                         </svg>
                     </MediaQuery>
 
                     <div className={styles.logo}>
-                        <a href="/"><img src={logo} alt="steelseries logo" /></a>
+                        <Link to={'/'} onClick={this.state.isVisible ? () => this.showHamburgerMenu() : undefined}>
+                            <img src={logo} alt="steelseries logo" />
+                        </Link>
                     </div>
 
                     <MediaQuery {...mediumUp}>
@@ -83,16 +86,21 @@ class PageHeader extends Component {
 
                     <div className={styles.userSection}>
 
-                        <a id={styles.basketLink} href="/basket" aria-label="customer basket">
+                        <Link
+                            to={'/basket'}
+                            id={styles.basketLink}
+                            aria-label="customer basket"
+                        >
                             <div className={styles.basketIndicator}>
                                 <div className={styles.indicatorValue}>2</div>
                             </div>
                             <Basket className={styles.basket} />
-                        </a>
+                        </Link>
+                        
                         <MediaQuery {...mediumUp}>
-                            <a href="/user_profile" aria-label="user profile">
-                                <UserImg className={styles.profileIco}/>
-                            </a>
+                            <Link to={'/user_profile'} aria-label="user profile">
+                                <UserImg className={styles.profileIco} />
+                            </Link>
                         </MediaQuery>
                     </div>
                 </div>
@@ -101,7 +109,7 @@ class PageHeader extends Component {
                         className={`${styles.expandedMenu} ${this.state.isVisible ? styles.visible : styles.hidden}`}
                         style={{ "height": `${window.innerHeight - 50}px` }}
                     >
-                        <MobileNav shouldResetChildren={this.state.isVisible} />
+                        <MobileNav shouldResetChildren={this.state.isVisible} toggleHamburger={this.showHamburgerMenu} />
                     </div>
                 </MediaQuery>
             </header>

@@ -34,6 +34,10 @@ class Homepage extends Component {
               <MostPopular />
             </div>
           </Route>
+          <Route path='/products'/>
+          <Route path='/esports'/>
+          <Route path='/support'/>
+          <Route path='/community'/>
         </Switch>
       </Router>
 

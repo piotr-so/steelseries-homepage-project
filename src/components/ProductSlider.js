@@ -1,25 +1,29 @@
 import React, { Component } from 'react';
 import styles from './ProductSlider.module.scss';
-import headset from '../assets/Headset_mod.png';
-import keyboard from '../assets/arctis2.png';
-import mice from '../assets/steelseries-mice_mod.png';
-import arrow from '../assets/slider-arrow.svg';
+import headset from '../assets/images/Headset_mod.png';
+import keyboard from '../assets/images/arctis2.png';
+import mice from '../assets/images/steelseries-mice_mod.png';
+import arrow from '../assets/images/slider-arrow.svg';
 import Button from './Button';
 
+// temporary variable prior to database creation
 const productsToShow = [
     {
         name: "SIBERIA 200",
         image: headset,
+        url: "/siberia200",
         description: "The Siberia 200 gaming headset combines the comfort and sound of the best-selling Siberia V2 with quality updates, reclaiming its title as the best gaming headset in eSports and PC gaming.",
     },
     {
         name: "ARCTIS 5",
         image: keyboard,
+        url: "/arctis5",
         description: "Specifically designed for the PC Gamer, Arctis 5 combines independent game and chat control, cutting-edge DTS surround sound, and dual zone RGB illumination.",
     },
     {
         name: "RIVAL 500",
         image: mice,
+        url: "/rival500",
         description: "The Rival 500 is the first MOBA/MMO mouse designed to function with the natural movements of your hand. It helps you react quickly and effectively to anything thrown your way.",
     }
 ];
@@ -141,7 +145,7 @@ class ProductSlider extends Component {
                 <div className={styles.productDescription} key={this.state.currentImageIndex + "descSec"}>
                     <h1>{productsToShow[currentImageIndex].name}</h1>
                     <p>{productsToShow[currentImageIndex].description}</p>
-                    <Button text={"buy now"} />
+                    <Button text={"buy now"} linkTo={productsToShow[currentImageIndex].url} />
                 </div>
             </div >
         )

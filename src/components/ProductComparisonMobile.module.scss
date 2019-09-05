@@ -43,7 +43,7 @@
 
     &::after {
         content: '';
-        mask: url('../assets/left-arrow.svg');
+        mask: url('../assets/images/left-arrow.svg');
         position: absolute;
         width: 20px;
         height: 20px;
@@ -127,7 +127,7 @@
     height: 20px;
     &::after {
         content: "";
-        mask: url('../assets/tick.svg');
+        mask: url('../assets/images/tick.svg');
         position: absolute;
         right: 0;
         width: 25px;

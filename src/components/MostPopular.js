@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from '../components/MostPopular.module.scss';
 import products from '../assets/data/most-popular.json';
-import arrow from '../assets/slider-arrow.svg';
+import arrow from '../assets/images/slider-arrow.svg';
 import Button from './Button';
 import { smartphoneAndLandscape } from '../components/MediaQueries';
 
@@ -97,7 +97,7 @@ class MostPopular extends Component {
                                     )
                                 ) : (
                                     <img
-                                        src={singleProduct.url}
+                                        src={singleProduct["img-url"]}
                                         className={whichProductIsShown === idx ? styles.imgVisible : styles.hidden}
                                         key={"most-popular-product-" + idx}
                                         alt={singleProduct.name}>
@@ -146,7 +146,7 @@ class MostPopular extends Component {
                         </div>
                         <div className={styles.purchaseWrapper}>
                             <div className={styles.purchaseWrapperItems}>
-                                <Button text={"buy now"} />
+                                <Button text={"buy now"} linkTo={products[whichProductIsShown].url}/>
                                 <span>{products[whichProductIsShown].price}</span>
                             </div>
                             <p className={styles.deliveryTime}>3-5 day delivery</p>

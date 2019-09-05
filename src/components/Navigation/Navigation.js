@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Navigation.module.scss';
 import { CSSTransitionGroup } from 'react-transition-group';
 
@@ -26,7 +27,7 @@ class Dropdown extends Component {
             <nav>
                 <ul className={styles.menu}>
                     <li className={styles.productsList} onMouseEnter={this.handleMouseEvent} onMouseLeave={this.handleMouseEvent}>
-                        <a href="/products">PRODUCTS</a>
+                        <Link to={'/products'}>PRODUCTS</Link>
                         <CSSTransitionGroup
                             component={FirstChild}
                             transitionName="reveal"
@@ -37,13 +38,13 @@ class Dropdown extends Component {
                                 <div key={'dropdownMenu'} className={styles.dropMenu} >
                                     <ul>
                                         <li className={shouldBeNonTransparent ? styles.nonTransparent : undefined}>
-                                            <a href="/headsets">Headsets</a>
+                                            <Link to={'/headsets'}>Headsets</Link>
                                         </li>
                                         <li className={shouldBeNonTransparent ? styles.nonTransparent : undefined}>
-                                            <a href="/keyboards">Keyboards</a>
+                                            <Link to={'/keyboards'}>Keyboards</Link>
                                         </li>
                                         <li className={shouldBeNonTransparent ? styles.nonTransparent : undefined}>
-                                            <a href="/mice">Mice</a>
+                                            <Link to={'/mice'}>Mice</Link>
                                         </li>
                                     </ul>
                                 </div>
@@ -56,15 +57,13 @@ class Dropdown extends Component {
 
                     </li>
                     <li>
-                        <a href="/esports">ESPORTS</a>
-
+                        <Link to={'/esports'}>ESPORTS</Link>
                     </li>
                     <li>
-                        <a href="/support">SUPPORT</a>
-
+                        <Link to={'/support'}>SUPPORT</Link>
                     </li>
                     <li>
-                        <a href="/community">COMMUNITY</a>
+                        <Link to={'/community'}>COMMUNITY</Link>
                     </li>
                 </ul>
             </nav>
