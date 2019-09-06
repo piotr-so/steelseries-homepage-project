@@ -50,7 +50,7 @@ class PageHeader extends Component {
     render() {
         return (
             <header
-                className={`${styles.main} ${this.state.pageScrolled && styles.scrolling}`}
+                className={`${styles.main} ${this.state.pageScrolled ? styles.scrolling : ''}`}
             >
                 <div className={styles.menu}>
                     <MediaQuery {...smartphoneAndLandscape}>
