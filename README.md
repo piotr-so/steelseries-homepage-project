@@ -1,6 +1,6 @@
 # Steelseries homepage project
 
-This is Steelseries homepage created in React,  based on *Nader Keshavarz* design with modifications . It contains basic funcionalities for components like sliders, carousel, quiz and table. Mobile version is also supported. You can check it here "link".
+This is Steelseries homepage created in React,  based on *Nader Keshavarz* design with modifications . It contains basic funcionalities for components like sliders, carousel, quiz and table. Mobile version is also supported. You can check it here [Demo](https://piotr-so.github.io/steelseries-homepage-project/).
 
 # Mobile version preview
 

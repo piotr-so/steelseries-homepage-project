@@ -1,7 +1,7 @@
 import React from 'react';
 import PageHeader from "./components/Navigation/PageHeader";
 import Homepage from "./views/Homepage/Homepage";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = () => {
     return (

@@ -5,7 +5,7 @@
             {
                 "name": "rival-700",
                 "id": "k1",
-                "url": "/ProductsComparison/Mouse/hi-res/rival-700-hi-res@2x_edit.png",
+                "url": "./ProductsComparison/Mouse/hi-res/rival-700-hi-res@2x_edit.png",
                 "Sensor Type": "Optical, Laser sensor sold separately",
                 "Illumination": "2 RGB Zones",
                 "Cover Material": "Matte Black",
@@ -19,7 +19,7 @@
             },
             {
                 "name": "rival-300",
-                "url": "/ProductsComparison/Mouse/hi-res/rival-300-hi-res@2x_edit.png",
+                "url": "./ProductsComparison/Mouse/hi-res/rival-300-hi-res@2x_edit.png",
                 "id": "k2",
                 "Sensor Type": "Optical",
                 "Illumination": "2 RGB Zones",
@@ -34,7 +34,7 @@
             },
             {
                 "name": "rival-100",
-                "url": "/ProductsComparison/Mouse/hi-res/rival-100-hi-res@2x_edit.png",
+                "url": "./ProductsComparison/Mouse/hi-res/rival-100-hi-res@2x_edit.png",
                 "id": "k3",
                 "Sensor Type": "Optical",
                 "Illumination": "1 RGB Zone",
@@ -49,7 +49,7 @@
             },
             {
                 "name": "sensei-raw",
-                "url": "/ProductsComparison/Mouse/hi-res/sensei-raw-hi-res@2x_edit.png",
+                "url": "./ProductsComparison/Mouse/hi-res/sensei-raw-hi-res@2x_edit.png",
                 "id": "k4",
                 "Sensor Type": "Laser",
                 "Illumination": "2 single-color zones",
@@ -64,7 +64,7 @@
             },
             {
                 "name": "sensei",
-                "url": "/ProductsComparison/Mouse/hi-res/sensei-hi-res@2x_edit.png",
+                "url": "./ProductsComparison/Mouse/hi-res/sensei-hi-res@2x_edit.png",
                 "id": "k5",
                 "Sensor Type": "Laser",
                 "Illumination": "3 RGB zones",
@@ -79,7 +79,7 @@
             },
             {
                 "name": "sensei-wireless",
-                "url": "/ProductsComparison/Mouse/hi-res/sensei-wireless-hi-res@2x_edit.png",
+                "url": "./ProductsComparison/Mouse/hi-res/sensei-wireless-hi-res@2x_edit.png",
                 "id": "k6",
                 "Sensor Type": "Laser",
                 "Illumination": "3 RGB zones",
@@ -94,7 +94,7 @@
             },
             {
                 "name": "sensei-raw",
-                "url": "/ProductsComparison/Mouse/hi-res/sensei-raw-hi-res@2x_edit.png",
+                "url": "./ProductsComparison/Mouse/hi-res/sensei-raw-hi-res@2x_edit.png",
                 "id": "k7",
                 "Sensor Type": "Laser",
                 "Illumination": "2 single-color zones",
@@ -109,7 +109,7 @@
             },
             {
                 "name": "rival-100",
-                "url": "/ProductsComparison/Mouse/hi-res/rival-100-hi-res@2x_edit.png",
+                "url": "./ProductsComparison/Mouse/hi-res/rival-100-hi-res@2x_edit.png",
                 "id": "k8",
                 "Sensor Type": "Optical",
                 "Illumination": "1 RGB Zone",
@@ -124,7 +124,7 @@
             },
             {
                 "name": "rival-700",
-                "url": "/ProductsComparison/Mouse/hi-res/rival-700-hi-res@2x_edit.png",
+                "url": "./ProductsComparison/Mouse/hi-res/rival-700-hi-res@2x_edit.png",
                 "id": "k9",
                 "Sensor Type": "Optical, Laser sensor sold separately",
                 "Illumination": "2 RGB Zones",
@@ -139,7 +139,7 @@
             },
             {
                 "name": "rival-300",
-                "url": "/ProductsComparison/Mouse/hi-res/rival-300-hi-res@2x_edit.png",
+                "url": "./ProductsComparison/Mouse/hi-res/rival-300-hi-res@2x_edit.png",
                 "id": "k10",
                 "Sensor Type": "Optical",
                 "Illumination": "2 RGB Zones",
