@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/steelseries-homepage-project/static/media/slider-arrow.d3bd2f59.svg"
   },
   {
-    "revision": "f6925da94026822d5113",
+    "revision": "3c84685abbb7dcd67500",
     "url": "/steelseries-homepage-project/static/css/main.5cd76d04.chunk.css"
   },
   {
@@ -52,8 +52,8 @@ self.__precacheManifest = [
     "url": "/steelseries-homepage-project/static/media/arrow.802b8e5c.svg"
   },
   {
-    "revision": "f6925da94026822d5113",
-    "url": "/steelseries-homepage-project/static/js/main.e00bf3a2.chunk.js"
+    "revision": "3c84685abbb7dcd67500",
+    "url": "/steelseries-homepage-project/static/js/main.7ca14e48.chunk.js"
   },
   {
     "revision": "94445a0c856c3b70b2385ae2791f702e",
@@ -100,7 +100,7 @@ self.__precacheManifest = [
     "url": "/steelseries-homepage-project/static/media/Basket.fd8473b9.svg"
   },
   {
-    "revision": "8f3537bbcd73270e1e8236d973e26c12",
+    "revision": "3f35e18dce5f7668b96a47dd5ddcff50",
     "url": "/steelseries-homepage-project/index.html"
   }
 ];

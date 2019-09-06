@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/steelseries-homepage-project/precache-manifest.940ced57a5545528565edd85f64793fa.js"
+  "/steelseries-homepage-project/precache-manifest.236ef75b9598ba6ec916c01867e20726.js"
 );
 
 workbox.clientsClaim();
