@@ -39,6 +39,7 @@
     top: 40px;
     background-color: rgba(#111111, 0.2);
     border-radius: 50%;
+    -webkit-tap-highlight-color: transparent;
     z-index: 1;
 
     &::after {

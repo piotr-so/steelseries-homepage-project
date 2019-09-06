@@ -131,6 +131,7 @@
         right: 31px;
         background-color: #333334;
         border-radius: 50%;
+        -webkit-tap-highlight-color: transparent;
         z-index: 1;
         &:hover {
             background: rgba(255, 255, 255, 0.15);
